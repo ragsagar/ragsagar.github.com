@@ -1,0 +1,9 @@
+#!/home/ragsagar/Documents/myblog/pelican/bin/python
+# EASY-INSTALL-ENTRY-SCRIPT: 'pelican==3.0','console_scripts','pelican-import'
+__requires__ = 'pelican==3.0'
+import sys
+from pkg_resources import load_entry_point
+
+sys.exit(
+   load_entry_point('pelican==3.0', 'console_scripts', 'pelican-import')()
+)
