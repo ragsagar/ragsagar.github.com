@@ -29,6 +29,6 @@ GITHUB_URL = 'http://github.com/ragsagar'
 REVERSE_ARCHIVE_ORDER = True
 
 # Theme settings
-THEME = '/home/ragsagar/Documents/pelican-themes/waterspill'
+THEME = '/home/ragsagar/Documents/pelican-themes/notmyidea-cms'
 THEME_STATIC_PATHS = ['static']
-CSS_FILE = 'style.css'
+CSS_FILE = 'main.css'
