@@ -23,6 +23,10 @@ SOCIAL = (('Twitter', 'http://twitter.com/ragsagar'),
 DEFAULT_PAGINATION = 5
 
 DISQUS_SITENAME = 'ragsagar'
+TWITTER_USERNAME = 'ragsagar'
+GITHUB_URL = 'http://github.com/ragsagar'
+
+REVERSE_ARCHIVE_ORDER = True
 
 # Theme settings
 THEME = '/home/ragsagar/Documents/pelican-themes/waterspill'
