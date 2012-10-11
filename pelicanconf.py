@@ -25,10 +25,11 @@ DEFAULT_PAGINATION = 5
 DISQUS_SITENAME = 'ragsagar'
 TWITTER_USERNAME = 'ragsagar'
 GITHUB_URL = 'http://github.com/ragsagar'
+GOOGLE_ANALYTICS = 'UA-35491289-1'
 
 REVERSE_ARCHIVE_ORDER = True
 
 # Theme settings
-THEME = '/home/ragsagar/Documents/pelican-themes/dev-random'
+THEME = '/home/ragsagar/Documents/pelican-themes/syte'
 #THEME_STATIC_PATHS = ['static']
 #CSS_FILE = 'main.css'
