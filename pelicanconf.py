@@ -30,6 +30,6 @@ GOOGLE_ANALYTICS = 'UA-35491289-1'
 REVERSE_ARCHIVE_ORDER = True
 
 # Theme settings
-THEME = '/home/ragsagar/Documents/pelican-themes/syte'
+THEME = '/home/ragsagar/Documents/pelican-themes/dev-random'
 #THEME_STATIC_PATHS = ['static']
 #CSS_FILE = 'main.css'
