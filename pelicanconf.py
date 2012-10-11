@@ -21,3 +21,10 @@ SOCIAL = (('Twitter', 'http://twitter.com/ragsagar'),
         ('Flickr', 'http://flickr.com/ragsagar'))
 
 DEFAULT_PAGINATION = 5
+
+DISQUS_SITENAME = 'ragsagar'
+
+# Theme settings
+THEME = '/home/ragsagar/Documents/pelican-themes/waterspill'
+THEME_STATIC_PATHS = ['static']
+CSS_FILE = 'style.css'
