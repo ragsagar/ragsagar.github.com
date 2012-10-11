@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>r4g54g4r's h4ckl0g</title><link href="ragsagar.in/" rel="alternate"></link><link href="ragsagar.in/feeds/all.atom.xml" rel="self"></link><id>ragsagar.in/</id><updated>2012-10-09T00:00:00+05:30</updated><entry><title>Hello World from my new blog!</title><link href="ragsagar.in/hello-world-from-my-new-blog.html" rel="alternate"></link><updated>2012-10-09T00:00:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2012-10-09:hello-world-from-my-new-blog.html</id><summary type="html">&lt;p&gt;I bought the domain ragsagar.in and I was trying to setup github pages to host
-my account. I am using pelican to generate the pages. So see you soon with some
-interesting posts :-)&lt;/p&gt;</summary><category term="blogging"></category><category term="test"></category></entry></feed>
