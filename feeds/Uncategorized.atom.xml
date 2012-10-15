@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>r4g54g4r's h4ckl0g</title><link href="ragsagar.in/" rel="alternate"></link><link href="ragsagar.in/feeds/Uncategorized.atom.xml" rel="self"></link><id>ragsagar.in/</id><updated>2010-11-20T10:31:00+05:30</updated><entry><title>Python script to find Imdb rating</title><link href="ragsagar.in/python-script-to-find-imdb-rating.html" rel="alternate"></link><updated>2010-11-20T10:31:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2010-11-20:python-script-to-find-imdb-rating.html</id><summary type="html">&lt;p&gt;Here is a script i wrote last night.It finds imdb rating of a movie.
+[sourcecode language=&amp;quot;python&amp;quot;] #ragsagar[at]gmail.com from mechanize
+import Browser from BeautifulSoup import BeautifulSoup import sys,re if
+len(sys.argv) != 2: print &amp;quot;\nSyntax: python %s 'Movie title'&amp;quot; %
+(sys.argv[0]) exit() else : movie = '+'.join(sys.argv[1].split()) br =
+Browser() br.open(&amp;quot;&lt;a class="reference external" href="http://www.imdb.com/find?s=tt&amp;amp;q="&gt;http://www.imdb.com/find?s=tt&amp;amp;q=&lt;/a&gt;&amp;quot;+movie) link =
+br.find_link(url_regex = re.compile(r&amp;quot;/title/tt*&amp;quot;)) res =
+br.follow_link(link) soup = BeautifulSoup(res.read()) try : title =
+soup.find('h1').contents[0].strip() rating =
+soup.find('span',attrs='rating-rating').contents[0] print &amp;quot;Movie :
+&amp;quot;,title print &amp;quot;Rating: &amp;quot;,rating,&amp;quot;/ 10.0&amp;quot; except : print &amp;quot;Not Found!&amp;quot;
+[/sourcecode] Here is the screenshot of output. [caption
+id=&amp;quot;attachment_171&amp;quot; align=&amp;quot;alignnone&amp;quot; width=&amp;quot;300&amp;quot; caption=&amp;quot;Output of
+the script&amp;quot;]&lt;a href="#id1"&gt;&lt;span class="problematic" id="id2"&gt;`|image0|`_&lt;/span&gt;&lt;/a&gt;[/caption]&lt;/p&gt;
+&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id1"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/python-script-to-find-imdb-rating.rst&lt;/tt&gt;, line 7); &lt;em&gt;&lt;a href="#id2"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Unknown target name: &amp;quot;|image0|&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="BeautifulSoup"></category><category term="command line"></category><category term="imdb"></category><category term="mechanize"></category><category term="movie"></category><category term="Python"></category><category term="rating"></category><category term="script"></category></entry></feed>

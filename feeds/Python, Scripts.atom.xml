@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>r4g54g4r's h4ckl0g</title><link href="ragsagar.in/" rel="alternate"></link><link href="ragsagar.in/feeds/Python,%20Scripts.atom.xml" rel="self"></link><id>ragsagar.in/</id><updated>2011-07-24T15:14:00+05:30</updated><entry><title>Python code to find solution for jumbled word puzzle</title><link href="ragsagar.in/python-code-to-find-solution-for-jumbled-word-puzzle.html" rel="alternate"></link><updated>2011-07-24T15:14:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2011-07-24:python-code-to-find-solution-for-jumbled-word-puzzle.html</id><summary type="html">&lt;p&gt;Here is a python script to find solution for a jumbled word. Give a
+jumbled word as parameter, it will list the possible solutions.
+[sourcecode language=&amp;quot;python&amp;quot;] import sys dictfile =
+&amp;quot;/usr/share/dict/cracklib-small&amp;quot; def get_words(text): &amp;quot;&amp;quot;&amp;quot; Return a list
+of dict words &amp;quot;&amp;quot;&amp;quot; return text.split() def
+get_possible_words(words,jword): &amp;quot;&amp;quot;&amp;quot; Return a list of possible
+solutions &amp;quot;&amp;quot;&amp;quot; possible_words = [] jword_length = len(jword) for word
+in words: jumbled_word = jword if len(word) == jword_length: letters =
+list(word) for letter in letters: if jumbled_word.find(letter) != -1:
+jumbled_word = jumbled_word.replace(letter,'',1) if not jumbled_word:
+possible_words.append(word) return possible_words if __name__ ==
+'__main__': words = get_words(file(dictfile).read()) if
+len(sys.argv) != 2: print &amp;quot;python %s &amp;lt;jumbled word&amp;gt;&amp;quot; % sys.argv[0]
+sys.exit() jumbled_word = sys.argv[1] words =
+get_possible_words(words,jumbled_word) print &amp;quot;possible words :&amp;quot; print
+'\n'.join(words) [/sourcecode] Don't forget to change the 'dictfile' to
+the wordslist file you have in your system. Here is the screenshot of
+script output. &lt;a href="#id1"&gt;&lt;span class="problematic" id="id2"&gt;`|image0|`_&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id1"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/python-code-to-find-solution-for-jumbled-word-puzzle.rst&lt;/tt&gt;, line 6); &lt;em&gt;&lt;a href="#id2"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Unknown target name: &amp;quot;|image0|&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Python script that ranks Hollywood actors based on number of appearances in top 100 movies</title><link href="ragsagar.in/python-script-that-ranks-hollywood-actors-based-on-number-of-appearances-in-top-100-movies.html" rel="alternate"></link><updated>2011-06-15T19:41:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2011-06-15:python-script-that-ranks-hollywood-actors-based-on-number-of-appearances-in-top-100-movies.html</id><summary type="html">&lt;p&gt;&lt;p&gt;Actually this is a sample question appeared in codejam contest conducted
+by mobme wireless. Imdbpy python module is used to retrieve movie
+informations from imdb. For those who don't know about this event :
+&lt;a class="reference external" href="http://codejam.mobme.in/"&gt;http://codejam.mobme.in/&lt;/a&gt; Sample Question :&lt;/p&gt;
+&lt;blockquote&gt;
+Write a program that ranks Hollywood actors based on the number of
+their appearances in a list of top 100 movies. There are a number of
+top movie lists on the Internet and it's up to you to choose one.
+We'd prefer you choose one that has an open API.&lt;/blockquote&gt;
+&lt;p&gt;Solution in Python : [sourcecode language=&amp;quot;python&amp;quot;] #!/usr/bin/env
+python __author__ = &amp;quot;Rag Sagar.V&amp;quot; __email__ =
+'&amp;#64;'.join(['ragsagar','.'.join([_ for _ in ['gmail','com']])]) from
+twisted.internet import reactor, threads import re,imdb,itertools
+actors_rating = {} #actors_rating['actor name'] = rank rank = 0 count
+= 1 current_rank = 0 concurrent = 5 finished = itertools.count(1)
+reactor.suggestThreadPoolSize(concurrent) try: imdb_access =
+imdb.IMDb() except imdb.IMDbError, err: print err top_100 =
+imdb_access.get_top250_movies()[:100] def populate_actors(mid):
+movie = imdb_access.get_movie(int(mid)) #print movie for i in (0,1):
+actor_name = movie['cast'][i]['name'] if
+actors_rating.has_key(actor_name): actors_rating[actor_name] =
+actors_rating[actor_name] + 1 else: actors_rating[actor_name] = 1 if
+finished.next()==added: reactor.stop() added = 0 for movie in top_100:
+added += 1 req = threads.deferToThread(populate_actors, movie.getID())
+try: reactor.run() except KeyboardInterrupt: reactor.stop() for actor in
+sorted(actors_rating, key=actors_rating.get, reverse=True):
+previous_rank = current_rank current_rank = actors_rating[actor] if
+previous_rank != current_rank : rank += count count = 1 else: count +=
+1 print rank,actor [/sourcecode] Dependency : imdbpy&lt;/p&gt;
+&lt;/p&gt;</summary><category term="actors ranking"></category><category term="codejam"></category><category term="imdb"></category><category term="imdbpy"></category><category term="Python"></category></entry><entry><title>Display wishes depending on time when you open the console</title><link href="ragsagar.in/display-wishes-depending-on-time-when-you-open-the-console.html" rel="alternate"></link><updated>2011-06-07T23:12:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2011-06-07:display-wishes-depending-on-time-when-you-open-the-console.html</id><summary type="html">&lt;p&gt;&lt;p&gt;Here is a python script to wish you Good Morning or Good Evening
+according to the time of the day. [sourcecode language=&amp;quot;python&amp;quot;]
+#!/usr/bin/python import time current_hour =
+time.strptime(time.ctime(time.time())).tm_hour if current_hour &amp;lt; 12 :
+print &amp;quot;Good Morning!&amp;quot; elif current_hour == 12 : print &amp;quot;Good Noon!&amp;quot; elif
+current_hour &amp;gt; 12 and current_hour &amp;lt; 18 : print &amp;quot;Good AfterNoon!&amp;quot; elif
+current_hour &amp;gt;= 18 : print &amp;quot;Good Evening!&amp;quot; [/sourcecode] Now if you
+want to display it when you open the console add the following line to
+your ~/.bashrc file.&lt;/p&gt;
+&lt;blockquote&gt;
+python /path/to/the/script.py&lt;/blockquote&gt;
+&lt;p&gt;Happy Hacking! :)&lt;/p&gt;
+&lt;/p&gt;</summary><category term="bashrc"></category><category term="Python"></category><category term="time"></category></entry><entry><title>Fetch malayalam meanings of english words from ml.wiktionary.org in command line</title><link href="ragsagar.in/fetch-malayalam-meanings-of-english-words-from-mlwiktionaryorg-in-command-line.html" rel="alternate"></link><updated>2010-11-30T16:48:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2010-11-30:fetch-malayalam-meanings-of-english-words-from-mlwiktionaryorg-in-command-line.html</id><summary type="html">&lt;p&gt;This time its the script to fetch the malayalam meanings of english
+words from malayalam wiktionary. [sourcecode language=&amp;quot;python&amp;quot;]
+#!/usr/bin/python #-*- coding: utf-8 -*- #
+&lt;a class="reference external" href="http://ragsagar.wordpress.com"&gt;http://ragsagar.wordpress.com&lt;/a&gt; from HTMLParser import HTMLParser import
+urllib2,sys class Parser(HTMLParser): def __init__(self):
+self.in_header = False self.in_definition = False
+HTMLParser.__init__(self) def handle_starttag(self, tag, attrs): if
+tag == 'li': self.in_header = True if tag == 'a' and self.in_header :
+self.in_definition = True def handle_endtag(self, tag): if tag ==
+'li': self.in_header = False if tag == 'a' : self.in_defintion = False
+def handle_data(self, data): if self.in_definition: print data exit(0)
+try : search_item = sys.argv[1] except IndexError: print &amp;quot; syntax : %s
+&amp;lt;definiton&amp;gt; &amp;quot; % sys.argv[0] exit(1) search_link =
+&amp;quot;&lt;a class="reference external" href="http://ml.wiktionary.org/w/index.php?title=%s&amp;amp;printable=yes"&gt;http://ml.wiktionary.org/w/index.php?title=%s&amp;amp;printable=yes&lt;/a&gt;&amp;quot; %
+(urllib2.quote(search_item.encode('utf-8'))) request =
+urllib2.Request(search_link) request.add_header('User-agent',
+'Mozilla/5.0 (hb)') try : response = urllib2.urlopen(request) except
+urllib2.HTTPError : print &amp;quot;No definition found &amp;quot; except urllib2.URLError
+: print &amp;quot;Unable to connect to internet &amp;quot; else : parser = Parser() data =
+response.read() parser.feed(data) [/sourcecode] Output in my terminal
+[caption id=&amp;quot;attachment_179&amp;quot; align=&amp;quot;alignnone&amp;quot; width=&amp;quot;300&amp;quot;
+caption=&amp;quot;malayalam meaning&amp;quot;]&lt;a href="#id1"&gt;&lt;span class="problematic" id="id2"&gt;`|image0|`_&lt;/span&gt;&lt;/a&gt;[/caption]&lt;/p&gt;
+&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id1"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/174.rst&lt;/tt&gt;, line 7); &lt;em&gt;&lt;a href="#id2"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Unknown target name: &amp;quot;|image0|&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="malayalam"></category><category term="ml.wiktionary"></category><category term="Python"></category><category term="wikipedia"></category></entry><entry><title>Infix To Postfix conversion in python</title><link href="ragsagar.in/infix-to-postfix-conversion-in-python.html" rel="alternate"></link><updated>2009-09-22T22:34:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2009-09-22:infix-to-postfix-conversion-in-python.html</id><summary type="html">&lt;div class="section" id="about-infix-and-postfix"&gt;
+&lt;h2&gt;&lt;strong&gt;About Infix and Postfix&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;In an expression if the operators are placed between the operands, it is
+known as infix notation ( eg A+B) . On the other hand if the operators
+are placed after the operands then the expression is in postfix notation
+.( eg AB+)&lt;/p&gt;
+&lt;div class="section" id="infix-notation-postfix-notation"&gt;
+&lt;h3&gt;&lt;strong&gt;Infix Notation&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; Postfix Notation&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;(A-C)*B&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; AC-B*&lt;/em&gt; &lt;em&gt;A+(B*C)
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; ABC*+&lt;/em&gt;
+&lt;em&gt;(A+B)/(C-D)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; AB+CD-/&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="code"&gt;
+&lt;h2&gt;&lt;strong&gt;Code&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;[sourcecode language=&amp;quot;python&amp;quot;] #!/usr/bin/python
+#http://ragsagar.wordpress.com postfix = [] temp = [] operator = -10
+operand = -20 leftparentheses = -30 rightparentheses = -40 empty = -50
+def precedence(s): if s is '(': return 0 elif s is '+' or '-': return 1
+elif s is '*' or '/' or '%': return 2 else: return 99 def typeof(s): if
+s is '(': return leftparentheses elif s is ')': return rightparentheses
+elif s is '+' or s is '-' or s is '*' or s is '%' or s is '/': return
+operator elif s is ' ': return empty else : return operand infix =
+raw_input(&amp;quot;Enter the infix notation : &amp;quot;) for i in infix : type =
+typeof(i) if type is leftparentheses : temp.append(i) elif type is
+rightparentheses : next = temp.pop() while next is not '(':
+postfix.append(next) next = temp.pop() elif type is operand:
+postfix.append(i) elif type is operator: p = precedence(i) while
+len(temp) is not 0 and p &amp;lt;= precedence(temp[-1]) :
+postfix.append(temp.pop()) temp.append(i) elif type is empty: continue
+while len(temp) &amp;gt; 0 : postfix.append(temp.pop()) print &amp;quot;It's postfix
+notation is &amp;quot;,''.join(postfix) [/sourcecode]&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="code-explanation"&gt;
+&lt;h2&gt;&lt;strong&gt;Code Explanation&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Above code converts infix notation in variable &lt;strong&gt;infix&lt;/strong&gt; into postfix
+notation and stores in &lt;strong&gt;postfix&lt;/strong&gt; list. This algorithm makes use of
+list &lt;strong&gt;temp&lt;/strong&gt;to hold operators and left parantheses in the infix
+notation. The &lt;strong&gt;postfix&lt;/strong&gt; list will be constructed from left to right
+using operands from &lt;strong&gt;infix&lt;/strong&gt; and operators which are removed from
+&lt;strong&gt;temp&lt;/strong&gt;. [caption id=&amp;quot;attachment_149&amp;quot; align=&amp;quot;alignnone&amp;quot; width=&amp;quot;500&amp;quot;
+caption=&amp;quot;output&amp;quot;]&lt;a href="#id1"&gt;&lt;span class="problematic" id="id2"&gt;`|output|`_&lt;/span&gt;&lt;/a&gt;[/caption]&lt;/p&gt;
+&lt;/p&gt;&lt;/div&gt;
+&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id1"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/infix-to-postfix-conversion-in-python.rst&lt;/tt&gt;, line 46); &lt;em&gt;&lt;a href="#id2"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Unknown target name: &amp;quot;|output|&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="conversion"></category><category term="infix"></category><category term="postfix"></category><category term="Python"></category><category term="stack"></category></entry></feed>

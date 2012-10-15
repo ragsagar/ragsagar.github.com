@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>r4g54g4r's h4ckl0g</title><link href="ragsagar.in/" rel="alternate"></link><link href="ragsagar.in/feeds/Gnu/Linux,%20Howtos.atom.xml" rel="self"></link><id>ragsagar.in/</id><updated>2009-03-24T20:54:00+05:30</updated><entry><title>Installing and Setting up Swanalekha in Slackware</title><link href="ragsagar.in/installing-and-setting-up-swanalekha-in-slackware.html" rel="alternate"></link><updated>2009-03-24T20:54:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2009-03-24:installing-and-setting-up-swanalekha-in-slackware.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;E&lt;/strong&gt;arlier we saw how to setup&lt;a class="reference external" href="http://ragsagar.wordpress.com/2008/11/20/setting-up-swanalekha-in-gentoo/"&gt;swanalekha in gentoo!&lt;/a&gt; Now lets see
+how to setup the same in slackware. Now its pretty easy when compared to
+what we have done in gentoo.As gentoo dont have any native binary
+package we downloaded the source from &lt;a href="#id2"&gt;&lt;span class="problematic" id="id3"&gt;`here`_&lt;/span&gt;&lt;/a&gt; and installed it.This time
+no need to install from source as i made a slackware binary package for
+swanalekha which makes the installation a piece of cake ;-) To install
+swanalekha, download the binary package from &lt;a href="#id4"&gt;&lt;span class="problematic" id="id5"&gt;`here`_&lt;/span&gt;&lt;/a&gt;
+&lt;tt class="docutils literal"&gt;$su #wget &lt;span class="pre"&gt;http://ragsagar.freehostia.com/swanalekha_0.3.1_2.tgz&lt;/span&gt; #installpkg swanalekha_0.3.1_2.tgz&lt;/tt&gt;
+Hey thats all. We installed swanalekha. Now start typing malayalam in
+your computer :-) For More Info on typing malayalam using swanalekha, go
+through &lt;a class="reference external" href="http://ragsagar.wordpress.com/2008/11/20/setting-up-swanalekha-in-gentoo/"&gt;this&lt;/a&gt; old post. . PS: Make sure that you have &lt;strong&gt;scim&lt;/strong&gt; already
+installed in your computer.&lt;/p&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/installing-and-setting-up-swanalekha-in-slackware.rst&lt;/tt&gt;, line 22); &lt;em&gt;&lt;a href="#id1"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Duplicate explicit target name: &amp;quot;here&amp;quot;.&lt;/div&gt;
+&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id2"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/installing-and-setting-up-swanalekha-in-slackware.rst&lt;/tt&gt;, line 7); &lt;em&gt;&lt;a href="#id3"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Duplicate target name, cannot be used as a unique reference: &amp;quot;here&amp;quot;.&lt;/div&gt;
+&lt;div class="system-message" id="id4"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/installing-and-setting-up-swanalekha-in-slackware.rst&lt;/tt&gt;, line 7); &lt;em&gt;&lt;a href="#id5"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Duplicate target name, cannot be used as a unique reference: &amp;quot;here&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="linux"></category><category term="malayalam input"></category><category term="malayalam typing"></category><category term="Scim"></category><category term="scim-ml"></category><category term="slackware"></category><category term="slackware binary package"></category><category term="Swanalekha"></category><category term="tgz"></category></entry><entry><title>Setting up swanalekha in Gentoo!</title><link href="ragsagar.in/setting-up-swanalekha-in-gentoo.html" rel="alternate"></link><updated>2008-11-20T14:27:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2008-11-20:setting-up-swanalekha-in-gentoo.html</id><summary type="html">&lt;p&gt;&lt;p&gt;Swanalekha is a scim malayalam phonetic input method.We can type
+malayalam easily using swanalekha as it uses transliteration based input
+method! Iam going to explain(not really :p) how i installed swanalekha
+in my gentoo installation! As it is scim based, swanalekha definitely
+needs scim,so we have to install it frist.To install it you can use
+emerge command.it downloads and compiles its source and solves
+dependecies by itself,so need to worry about dependecy! If you want to
+know the size and list of dependencies of scim that emerge downloads,
+use this command..&lt;/p&gt;
+&lt;blockquote&gt;
+#emerge -pv scim&lt;/blockquote&gt;
+&lt;p&gt;Install it using this command :&lt;/p&gt;
+&lt;blockquote&gt;
+#emerge scim&lt;/blockquote&gt;
+&lt;p&gt;Swanalekha needs another two packages named scim-tables and
+scim-m17n,they wont get installed with scim, so install them manually
+using this command..&lt;/p&gt;
+&lt;blockquote&gt;
+#emerge scim-tables scim-m17n&lt;/blockquote&gt;
+&lt;p&gt;Now get the source tarball from
+&lt;a class="reference external" href="http://savannah.inetbridge.net/smc/Swanalekha/swanalekha_0.3.1_2.tar.gz"&gt;http://savannah.inetbridge.net/smc/Swanalekha/swanalekha_0.3.1_2.tar.gz&lt;/a&gt;
+untar it and cd into it..&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$tar -xvf swanalekha_0.3.1_2.tar.gz&lt;/p&gt;
+&lt;p&gt;$cd swanalekha_0.3.1_2&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;now run make as root&lt;/p&gt;
+&lt;blockquote&gt;
+#make&lt;/blockquote&gt;
+&lt;p&gt;now configure scim and run&lt;/p&gt;
+&lt;blockquote&gt;
+$scim-setup&lt;/blockquote&gt;
+&lt;p&gt;[caption id=&amp;quot;attachment_9&amp;quot; align=&amp;quot;alignnone&amp;quot; width=&amp;quot;331&amp;quot;
+caption=&amp;quot;scim-setup window&amp;quot;]&lt;a href="#id7"&gt;&lt;span class="problematic" id="id8"&gt;`|scim-setup window|`_&lt;/span&gt;&lt;/a&gt;[/caption] In the
+Global Setup tab under IMengine enable Malayalam.Restart scim for the
+changes to take effect.Now open your favourite text editor.Right click
+and select Scim Input Method from Input Methods.Then left click in the
+scim tray icon,select Malalyalam-Swanalekha from it and start typing
+malayalam! &lt;a href="#id9"&gt;&lt;span class="problematic" id="id10"&gt;`|malayalam typed using swanalekha in leafpad texteditor|`_&lt;/span&gt;&lt;/a&gt;
+PS: Hope you have malayalam fonts installed,otherwise get some fonts
+from &lt;a class="reference external" href="http://download.savannah.gnu.org/releases/smc/fonts/malayalam-fonts-04/"&gt;here&lt;/a&gt; and copy it to ~/.fonts or /usr/share/fonts and restart x&lt;/p&gt;
+&lt;/p&gt;&lt;!-- |scim-setup --&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/setting-up-swanalekha-in-gentoo.rst&lt;/tt&gt;, line 67)&lt;/p&gt;
+malformed substitution definition.&lt;/div&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/setting-up-swanalekha-in-gentoo.rst&lt;/tt&gt;, line 68)&lt;/p&gt;
+Explicit markup ends without a blank line; unexpected unindent.&lt;/div&gt;
+&lt;p&gt;window| image:: &lt;a class="reference external" href="http://ragsagar.files.wordpress.com/2008/11/scim-setup.png"&gt;http://ragsagar.files.wordpress.com/2008/11/scim-setup.png&lt;/a&gt;
+.. &lt;a href="#id1"&gt;&lt;span class="problematic" id="id2"&gt;|malayalam typed using swanalekha in leafpad
+texteditor|&lt;/span&gt;&lt;/a&gt; image:: &lt;a class="reference external" href="http://ragsagar.files.wordpress.com/2008/11/swana_leafpad.png"&gt;http://ragsagar.files.wordpress.com/2008/11/swana_leafpad.png&lt;/a&gt;
+.. &lt;a href="#id3"&gt;&lt;span class="problematic" id="id4"&gt;|image2|&lt;/span&gt;&lt;/a&gt; image:: &lt;a class="reference external" href="http://ragsagar.files.wordpress.com/2008/11/scim-setup.png"&gt;http://ragsagar.files.wordpress.com/2008/11/scim-setup.png&lt;/a&gt;
+.. &lt;a href="#id5"&gt;&lt;span class="problematic" id="id6"&gt;|image3|&lt;/span&gt;&lt;/a&gt; image:: &lt;a class="reference external" href="http://ragsagar.files.wordpress.com/2008/11/swana_leafpad.png"&gt;http://ragsagar.files.wordpress.com/2008/11/swana_leafpad.png&lt;/a&gt;&lt;/p&gt;
+&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id1"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/setting-up-swanalekha-in-gentoo.rst&lt;/tt&gt;, line 68); &lt;em&gt;&lt;a href="#id2"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Undefined substitution referenced: &amp;quot;malayalam typed using swanalekha in leafpad texteditor&amp;quot;.&lt;/div&gt;
+&lt;div class="system-message" id="id3"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/setting-up-swanalekha-in-gentoo.rst&lt;/tt&gt;, line 68); &lt;em&gt;&lt;a href="#id4"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Undefined substitution referenced: &amp;quot;image2&amp;quot;.&lt;/div&gt;
+&lt;div class="system-message" id="id5"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/setting-up-swanalekha-in-gentoo.rst&lt;/tt&gt;, line 68); &lt;em&gt;&lt;a href="#id6"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Undefined substitution referenced: &amp;quot;image3&amp;quot;.&lt;/div&gt;
+&lt;div class="system-message" id="id7"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/setting-up-swanalekha-in-gentoo.rst&lt;/tt&gt;, line 49); &lt;em&gt;&lt;a href="#id8"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Unknown target name: &amp;quot;|scim-setup window|&amp;quot;.&lt;/div&gt;
+&lt;div class="system-message" id="id9"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/setting-up-swanalekha-in-gentoo.rst&lt;/tt&gt;, line 49); &lt;em&gt;&lt;a href="#id10"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Unknown target name: &amp;quot;|malayalam typed using swanalekha in leafpad texteditor|&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="Gentoo"></category><category term="Malyalam"></category><category term="Scim"></category><category term="Swanalekha"></category></entry></feed>

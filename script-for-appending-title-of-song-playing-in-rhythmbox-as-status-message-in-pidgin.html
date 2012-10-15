@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  
+    
+    <meta charset="utf-8" />
+    <title>Script for appending Title of Song Playing in Rhythmbox as Status Message in Pidgin — r4g54g4r's h4ckl0g</title>
+    <link rel="stylesheet" type="text/css" href="./theme/css/skeleton.css" />
+    <link rel="stylesheet" type="text/css" href="./theme/css/main.css" />
+    <link rel="shortcut icon" type="text/css" href="./favicon.ico" />
+    <link rel="alternate" type="application/atom+xml"
+                           title="r4g54g4r's h4ckl0g — Flux Atom"
+                           href="./" /> 
+    
+    <!--[if lte IE 8]><script src="./theme/js/html5shiv.js"></script><![endif]-->
+    <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no" />
+    
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-35491289-1']);
+          _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); 
+        ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    
+  
+    <meta name="author"   content="Rag Sagar.V" />
+    <meta name="keywords" content="Current Track, dbus, Now Playing, Pidgin, Python, rhythmbox, status updating" />
+
+  </head>
+  <body>
+    <div class="page">
+      <header class="page-head">
+        <h1>
+          <a href="./index.html">r4g54g4r's h4ckl0g</a>
+        </h1>
+      </header>
+
+      <div class="page-content">
+        
+     <article class="post content">
+      <header class="post-header">
+        <time datetime="2009-03-10T22:48:00" pubdate="pubdate">
+          Tue 10 March 2009
+        </time>
+        <h1>
+          <a rel="bookmark"
+             href="./script-for-appending-title-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.html"
+             title="Lien permanent vers «Script for appending Title of Song Playing in Rhythmbox as Status Message in Pidgin»">
+             Script for appending Title of Song Playing in Rhythmbox as Status Message in Pidgin
+          </a>
+        </h1>
+        <div class="meta">
+            Dans «<a href="./category/gnulinux-howtos-python-scripts.html">Gnu/Linux, Howtos, Python, Scripts</a>» 
+            par <a href="./author/rag-sagarv.html">Rag Sagar.V</a>
+            
+        </div>
+      </header>
+      <div class="post-content"> 
+        <p><p>Yesterday i installed debian lenny ( thanks to <a class="reference external" href="http://aashiks.in">ashik salahudeen</a> who
+sent me those DVDs for free :-) ). I was not ready to waste another
+holiday.So started thinking of doing something and got landed in my
+usual plugin stuff.This time not audacious,its Rhythmbox.So downloaded
+my pidgin-audacious now playing code and rewritten it to access
+rhythmbox methods.This time there is a lot of changes in the code.This
+code is not going to use 'watch' command to execute it after a fixed
+period and another interesting feature is a format specifier kinda
+thing. ie Just write what you want in the status message and place a
+format specifier where you want to see the song title , album title and
+artist. Format Specifiers are</p>
+<blockquote>
+<strong>%rbs --------------&gt; for displaying song title %rbt
+--------------&gt; for displaying album title %rba --------------&gt; for
+displaying artist name</strong></blockquote>
+<p>Script will append a seperate string containg songtitle and albumtitle
+if no format specifier is there in the status message at the time of
+running the script. An example for appending status message using format
+specifier kinda thing:</p>
+<blockquote>
+<strong>%rbs in %rbt by %rba</strong></blockquote>
+<p>[caption id=&quot;attachment_64&quot; align=&quot;alignnone&quot; width=&quot;249&quot;
+caption=&quot;pidgin after appending format specifier kinda thing in status
+message&quot;]<a href="#id1"><span class="problematic" id="id2">|pidgin-after-appending-formatspecifier kinda thing in status
+message|</span></a>[/caption] Now download the script and run it using these
+commands</p>
+<blockquote>
+<strong>$wget http://ragsagar.freehostia.com/pidgin-rb.py $python
+pidgin-rb.py</strong></blockquote>
+<p>[caption id=&quot;attachment_73&quot; align=&quot;alignnone&quot; width=&quot;500&quot;
+caption=&quot;Downloading and running the script&quot;]<a href="#id3"><span class="problematic" id="id4">|Downloading and running
+the script|</span></a>[/caption] [caption id=&quot;attachment_65&quot; align=&quot;alignnone&quot;
+width=&quot;249&quot; caption=&quot;pidgin after running the script&quot;]<a href="#id5"><span class="problematic" id="id6">|pidgin after
+running the script|</span></a>[/caption] <strong>PS : Run the script only after
+appending the format specifier kinda thing. You can run the script
+without appending anything, In this case the script will append status
+message like &quot; listening to [songname] in [albumname] &quot;</strong></p>
+<blockquote>
+<strong>`Download Script`_</strong></blockquote>
+</p><!-- |pidgin-after-appending-formatspecifier kinda thing in status -->
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">/home/ragsagar/Documents/myblog/content/script-for-appending-song-titile-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.rst</tt>, line 61)</p>
+malformed substitution definition.</div>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">/home/ragsagar/Documents/myblog/content/script-for-appending-song-titile-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.rst</tt>, line 62)</p>
+Explicit markup ends without a blank line; unexpected unindent.</div>
+<p>message| image:: <a class="reference external" href="http://ragsagar.files.wordpress.com/2009/03/pidb4run3.png">http://ragsagar.files.wordpress.com/2009/03/pidb4run3.png</a>
+.. <a href="#id7"><span class="problematic" id="id8">|Downloading and running the
+script|</span></a> image:: <a class="reference external" href="http://ragsagar.files.wordpress.com/2009/03/terminal.png">http://ragsagar.files.wordpress.com/2009/03/terminal.png</a>
+.. <a href="#id9"><span class="problematic" id="id10">|pidgin after running the
+script|</span></a> image:: <a class="reference external" href="http://ragsagar.files.wordpress.com/2009/03/pidafterrun.png">http://ragsagar.files.wordpress.com/2009/03/pidafterrun.png</a></p>
+<div class="system-messages section">
+<h2>Docutils System Messages</h2>
+<div class="system-message" id="id1">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">/home/ragsagar/Documents/myblog/content/script-for-appending-song-titile-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.rst</tt>, line 34); <em><a href="#id2">backlink</a></em></p>
+Undefined substitution referenced: &quot;pidgin-after-appending-formatspecifier kinda thing in status message&quot;.</div>
+<div class="system-message" id="id3">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">/home/ragsagar/Documents/myblog/content/script-for-appending-song-titile-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.rst</tt>, line 43); <em><a href="#id4">backlink</a></em></p>
+Undefined substitution referenced: &quot;Downloading and running the script&quot;.</div>
+<div class="system-message" id="id5">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">/home/ragsagar/Documents/myblog/content/script-for-appending-song-titile-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.rst</tt>, line 43); <em><a href="#id6">backlink</a></em></p>
+Undefined substitution referenced: &quot;pidgin after running the script&quot;.</div>
+<div class="system-message" id="id7">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">/home/ragsagar/Documents/myblog/content/script-for-appending-song-titile-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.rst</tt>, line 62); <em><a href="#id8">backlink</a></em></p>
+Undefined substitution referenced: &quot;Downloading and running the script&quot;.</div>
+<div class="system-message" id="id9">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">/home/ragsagar/Documents/myblog/content/script-for-appending-song-titile-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.rst</tt>, line 62); <em><a href="#id10">backlink</a></em></p>
+Undefined substitution referenced: &quot;pidgin after running the script&quot;.</div>
+</div>
+
+      </div>
+      <footer class="post-footer">
+        <div class="meta">
+            Posté dans «<a href="./category/gnulinux-howtos-python-scripts.html">Gnu/Linux, Howtos, Python, Scripts</a>» 
+            par <a href="./author/rag-sagarv.html">Rag Sagar.V</a><br />
+            Mots-clés:  #<a href="./tag/current-track.html">Current Track</a> #<a href="./tag/dbus.html">dbus</a> #<a href="./tag/now-playing.html">Now Playing</a> #<a href="./tag/pidgin.html">Pidgin</a> #<a href="./tag/python.html">Python</a> #<a href="./tag/rhythmbox.html">rhythmbox</a> #<a href="./tag/status-updating.html">status updating</a>
+        </div>
+      </footer>
+      
+      <hr />
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'ragsagar'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+    </article>
+
+      </div>
+          <aside class="page-sidebar">
+      <nav class="widget">
+      <h3>Site</h3>
+        <ul>
+          <li><a href=".">Accueil</a></li>
+          <li><a href="./archives.html">Archives</a></li>
+          <li><a href="./tags.html">Mots-clés</a></li>
+        
+        
+          
+        
+        </ul>
+      </nav>
+
+     
+      <nav class="widget">
+        <h3>Catégories</h3>
+        <ul>
+        
+          <li><a href="./category/blog.html">Blog</a></li>
+        
+          <li><a href="./category/gnulinux-howtos.html">Gnu/Linux, Howtos</a></li>
+        
+          <li><a href="./category/gnulinux-howtos-python-scripts.html">Gnu/Linux, Howtos, Python, Scripts</a></li>
+        
+          <li><a href="./category/gnulinux-my-thoughts.html">Gnu/Linux, My Thoughts</a></li>
+        
+          <li><a href="./category/gnulinux-my_works-python-scripts.html">Gnu/Linux, My_Works, Python, Scripts</a></li>
+        
+          <li><a href="./category/gnulinux-my_works-python-scripts-shell-scripts.html">Gnu/Linux, My_Works, Python, Scripts, Shell Scripts</a></li>
+        
+          <li><a href="./category/gnulinux-scripts-shell-scripts.html">Gnu/Linux, Scripts, Shell Scripts</a></li>
+        
+          <li><a href="./category/howtos.html">Howtos</a></li>
+        
+          <li><a href="./category/howtos-python-scripts.html">Howtos, Python, Scripts</a></li>
+        
+          <li><a href="./category/my-thoughts.html">My Thoughts</a></li>
+        
+          <li><a href="./category/my_works-python-scripts.html">My_Works, Python, Scripts</a></li>
+        
+          <li><a href="./category/my_works-scripts.html">My_Works, Scripts</a></li>
+        
+          <li><a href="./category/python-scripts.html">Python, Scripts</a></li>
+        
+          <li><a href="./category/scripts.html">Scripts</a></li>
+        
+          <li><a href="./category/scripts-shell-scripts.html">Scripts, Shell Scripts</a></li>
+        
+          <li><a href="./category/uncategorized.html">Uncategorized</a></li>
+        
+          <li><a href="./category/django-howtos-python.html">django, Howtos, Python</a></li>
+        
+          <li><a href="./category/misc.html">misc</a></li>
+        
+        </ul>
+      </nav>
+      
+
+      
+      <nav class="widget">
+        <h3>Social</h3>
+        <ul>
+        
+          <li><a href="Twitter">http://twitter.com/ragsagar</a></li>
+        
+          <li><a href="Facebook">http://facebook.com/ragsagar</a></li>
+        
+          <li><a href="Github">http://github.com/ragsagar</a></li>
+        
+          <li><a href="Flickr">http://flickr.com/ragsagar</a></li>
+        
+          <li><a href="./" rel="alternate">Flux Atom</a></li>
+        
+        </ul>
+      </nav>
+      
+    </aside> 
+
+      <footer class="page-footer">
+        <p> Powered by <a href="http://pelican.readthedocs.org">Pelican</a></p>
+        <p><a id="github-link" href="http://github.com/ragsagar">Fork me on Github</a></p>
+      </footer>
+    </div>
+  </body>
+</html>

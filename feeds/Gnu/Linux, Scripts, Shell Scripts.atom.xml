@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>r4g54g4r's h4ckl0g</title><link href="ragsagar.in/" rel="alternate"></link><link href="ragsagar.in/feeds/Gnu/Linux,%20Scripts,%20Shell%20Scripts.atom.xml" rel="self"></link><id>ragsagar.in/</id><updated>2012-02-29T23:03:00+05:30</updated><entry><title>Script to reboot dataone WA3002G4 wireless router</title><link href="ragsagar.in/script-to-reboot-dataone-wa3002g4-wireless-router.html" rel="alternate"></link><updated>2012-02-29T23:03:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2012-02-29:script-to-reboot-dataone-wa3002g4-wireless-router.html</id><summary type="html">&lt;p&gt;With the WA3002G4 wireless router i got recently from my friend i made a
+wifi hotspot in home. Haven't been downloading a lot since my &lt;a class="reference external" href="http://ragsagar.wordpress.com/2011/08/13/script-to-reboot-teracom-router/"&gt;script to
+reboot old teracom router&lt;/a&gt; was not working with the new one.Thinking
+that I should do something on the day which will come only in every four
+years I modified the old script to work with the new wireless router and
+I am sharing it here. [sourcecode language=&amp;quot;bash&amp;quot;] #!/usr/bin/env expect
+set username admin set pass admin set host 192.168.1.1 spawn telnet
+${host} expect -re &amp;quot;Login:&amp;quot; send &amp;quot;${username}\r&amp;quot; expect -re &amp;quot;Password:&amp;quot;
+send &amp;quot;${pass}\r&amp;quot; expect -re &amp;quot;Main Menu&amp;quot; send &amp;quot;13\r&amp;quot; send &amp;quot;1\r&amp;quot; expect
+eof [/sourcecode]&lt;/p&gt;
+</summary><category term="expect"></category><category term="restart router"></category><category term="wa3002g4"></category></entry><entry><title>Shell script to count unique words in a file and print them in alphabetical order</title><link href="ragsagar.in/shell-script-to-count-unique-words-in-a-file-and-print-them-in-alphabetical-order.html" rel="alternate"></link><updated>2009-05-30T19:00:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2009-05-30:shell-script-to-count-unique-words-in-a-file-and-print-them-in-alphabetical-order.html</id><summary type="html">&lt;p&gt;Iam back with another shell script written for my sis as part of her
+assignment. This time what i wanted to do is to count the unique words
+in a file and to print it in alphabetical order. For that i iterated
+through the words in the given file using for loop, filtered out the
+unique words using sort -u and counted it using wc -l. [sourcecode
+language='shell'] #!/usr/bin/bash echo Enter the filename read fn for
+WORD in $(cat $fn) do echo &amp;quot;$WORD&amp;quot; done | sort -u | wc -l for WORD in
+$(cat $fn) do echo &amp;quot;$WORD &amp;quot; done | sort -u [/sourcecode] Hope this will
+help someone to do his/her assignment :-D&lt;/p&gt;
+</summary><category term="assignment"></category><category term="bash"></category><category term="IGNOU"></category><category term="shell script"></category><category term="unique words"></category><category term="unique words count"></category></entry><entry><title>Shell Script to cipher a text file (caesar method)</title><link href="ragsagar.in/shell-script-to-cipher-a-text-file-caesar-method.html" rel="alternate"></link><updated>2009-05-27T22:20:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2009-05-27:shell-script-to-cipher-a-text-file-caesar-method.html</id><summary type="html">&lt;p&gt;Ok here is a script to cipher text contents in a file. It will shift the
+letters to the fifth letter to its right, ie if &lt;strong&gt;a&lt;/strong&gt; is the letter, it
+will change it to &lt;strong&gt;f&lt;/strong&gt;. [sourcecode language='shell'] echo Enter the
+filename read fn while read -n 1 letter do case $letter in '') echo ;; '
+') printf ' ' ;; '.') printf '.' ;; *) asci=$(printf %d \'$letter)
+((asci+=5)) fwd_letter=$(printf &amp;quot;\\$(printf &amp;quot;%03o&amp;quot; $asci)&amp;quot;) printf
+&amp;quot;$fwd_letter&amp;quot; ;; esac done &amp;lt; $fn [/sourcecode] You can decipher it by
+just replacing the &lt;strong&gt;+ in 18th line to-&lt;/strong&gt; Note : This is a assignment my
+sis got from IGNOU. I hope this will help someone to do his/her
+assignment :-)&lt;/p&gt;
+</summary></entry></feed>

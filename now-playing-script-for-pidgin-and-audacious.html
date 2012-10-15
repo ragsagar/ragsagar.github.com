@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  
+    
+    <meta charset="utf-8" />
+    <title>Now Playing script for pidgin and audacious — r4g54g4r's h4ckl0g</title>
+    <link rel="stylesheet" type="text/css" href="./theme/css/skeleton.css" />
+    <link rel="stylesheet" type="text/css" href="./theme/css/main.css" />
+    <link rel="shortcut icon" type="text/css" href="./favicon.ico" />
+    <link rel="alternate" type="application/atom+xml"
+                           title="r4g54g4r's h4ckl0g — Flux Atom"
+                           href="./" /> 
+    
+    <!--[if lte IE 8]><script src="./theme/js/html5shiv.js"></script><![endif]-->
+    <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no" />
+    
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-35491289-1']);
+          _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); 
+        ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    
+  
+    <meta name="author"   content="Rag Sagar.V" />
+    <meta name="keywords" content="Audacious, dbus, Now Playing, Pidgin, Py-dbus, Python" />
+
+  </head>
+  <body>
+    <div class="page">
+      <header class="page-head">
+        <h1>
+          <a href="./index.html">r4g54g4r's h4ckl0g</a>
+        </h1>
+      </header>
+
+      <div class="page-content">
+        
+     <article class="post content">
+      <header class="post-header">
+        <time datetime="2008-11-21T22:39:00" pubdate="pubdate">
+          Fri 21 November 2008
+        </time>
+        <h1>
+          <a rel="bookmark"
+             href="./now-playing-script-for-pidgin-and-audacious.html"
+             title="Lien permanent vers «Now Playing script for pidgin and audacious»">
+             Now Playing script for pidgin and audacious
+          </a>
+        </h1>
+        <div class="meta">
+            Dans «<a href="./category/gnulinux-my_works-python-scripts-shell-scripts.html">Gnu/Linux, My_Works, Python, Scripts, Shell Scripts</a>» 
+            par <a href="./author/rag-sagarv.html">Rag Sagar.V</a>
+            
+        </div>
+      </header>
+      <div class="post-content"> 
+        <p><p>Few days ago i wrote a script to update the status message in pidgin
+with the title of the song playing in audacious music player.It is
+written in python.it makes use of the dbus for the inter application
+communication.when you invoke that script it just appends the title of
+the song currently playing in audacious as the status message in pidgin
+.i used the shell command $watch to invoke it in every 30 seconds so
+that the status message gets updated with the songtitle within 30
+seconds after the song change.You can reduce the number of seconds so
+that the status message gets updated frequently reducing the time delay
+between the song change and updation of status message.What the script
+does is, it retrieves the song title from the audacious music player
+using dbus.Then this songtitle is assigned as the status message in
+pidgin by communicating through dbus.This script needs dbus and
+py-dbus.So make sure that you have both packages installed in your
+system. Here is the script :</p>
+<blockquote>
+def set_message(message): # Get current status type
+(Available/Away/etc.) current =
+purple.PurpleSavedstatusGetType(purple.PurpleSavedstatusGetCurrent())
+# Create new transient status and activate it status =
+purple.PurpleSavedstatusNew(&quot;&quot;, current) msg=&quot;Now Playing: &quot;
+emsg=msg+message purple.PurpleSavedstatusSetMessage(status, emsg)
+purple.PurpleSavedstatusActivate(status) import dbus
+session_bus=dbus.SessionBus() proxy =
+session_bus.get_object(&quot;im.pidgin.purple.PurpleService&quot;,
+&quot;/im/pidgin/purple/PurpleObject&quot;) purple = dbus.Interface(proxy,
+&quot;im.pidgin.purple.PurpleInterface&quot;) proxy1 =
+session_bus.get_object('org.mpris.audacious','/TrackList') purple1
+= dbus.Interface(proxy1,'org.freedesktop.MediaPlayer') ct =
+purple1.GetCurrentTrack() proxy2 =
+session_bus.get_object('org.mpris.audacious','/org/atheme/audacious')
+purple2 = dbus.Interface(proxy2,'org.atheme.audacious') currentsong
+= purple2.SongTitle(ct) print currentsong set_message(currentsong)</blockquote>
+<p>Running this script will update the status message just once , so u have
+to shell command $watch as i said earlier.if you dont want to do this
+things manually, dont worry! i got package for this, grab it from here
+<a class="reference external" href="http://ragsagar.freehostia.com/pidgin-audacious_plugin.tar.gz">http://ragsagar.freehostia.com/pidgin-audacious_plugin.tar.gz</a> , untar
+it and run the installer..</p>
+<blockquote>
+$wget <a class="reference external" href="http://ragsagar.freehostia.com/pidgin-audacious_plugin.tar.gz">http://ragsagar.freehostia.com/pidgin-audacious_plugin.tar.gz</a>
+$tar -xvf pidgin-audacious_plugin.tar.gz $cd pidgin-audacious\
+plugin/ $sudo chmod a+x installer $./installer</blockquote>
+<p>Now run the script using this command :</p>
+<blockquote>
+$pidgin-plugin</blockquote>
+<p>PS: Make sure that you have both audacious and pidgin already running</p>
+</p>
+      </div>
+      <footer class="post-footer">
+        <div class="meta">
+            Posté dans «<a href="./category/gnulinux-my_works-python-scripts-shell-scripts.html">Gnu/Linux, My_Works, Python, Scripts, Shell Scripts</a>» 
+            par <a href="./author/rag-sagarv.html">Rag Sagar.V</a><br />
+            Mots-clés:  #<a href="./tag/audacious.html">Audacious</a> #<a href="./tag/dbus.html">dbus</a> #<a href="./tag/now-playing.html">Now Playing</a> #<a href="./tag/pidgin.html">Pidgin</a> #<a href="./tag/py-dbus.html">Py-dbus</a> #<a href="./tag/python.html">Python</a>
+        </div>
+      </footer>
+      
+      <hr />
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'ragsagar'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+    </article>
+
+      </div>
+          <aside class="page-sidebar">
+      <nav class="widget">
+      <h3>Site</h3>
+        <ul>
+          <li><a href=".">Accueil</a></li>
+          <li><a href="./archives.html">Archives</a></li>
+          <li><a href="./tags.html">Mots-clés</a></li>
+        
+        
+          
+        
+        </ul>
+      </nav>
+
+     
+      <nav class="widget">
+        <h3>Catégories</h3>
+        <ul>
+        
+          <li><a href="./category/blog.html">Blog</a></li>
+        
+          <li><a href="./category/gnulinux-howtos.html">Gnu/Linux, Howtos</a></li>
+        
+          <li><a href="./category/gnulinux-howtos-python-scripts.html">Gnu/Linux, Howtos, Python, Scripts</a></li>
+        
+          <li><a href="./category/gnulinux-my-thoughts.html">Gnu/Linux, My Thoughts</a></li>
+        
+          <li><a href="./category/gnulinux-my_works-python-scripts.html">Gnu/Linux, My_Works, Python, Scripts</a></li>
+        
+          <li><a href="./category/gnulinux-my_works-python-scripts-shell-scripts.html">Gnu/Linux, My_Works, Python, Scripts, Shell Scripts</a></li>
+        
+          <li><a href="./category/gnulinux-scripts-shell-scripts.html">Gnu/Linux, Scripts, Shell Scripts</a></li>
+        
+          <li><a href="./category/howtos.html">Howtos</a></li>
+        
+          <li><a href="./category/howtos-python-scripts.html">Howtos, Python, Scripts</a></li>
+        
+          <li><a href="./category/my-thoughts.html">My Thoughts</a></li>
+        
+          <li><a href="./category/my_works-python-scripts.html">My_Works, Python, Scripts</a></li>
+        
+          <li><a href="./category/my_works-scripts.html">My_Works, Scripts</a></li>
+        
+          <li><a href="./category/python-scripts.html">Python, Scripts</a></li>
+        
+          <li><a href="./category/scripts.html">Scripts</a></li>
+        
+          <li><a href="./category/scripts-shell-scripts.html">Scripts, Shell Scripts</a></li>
+        
+          <li><a href="./category/uncategorized.html">Uncategorized</a></li>
+        
+          <li><a href="./category/django-howtos-python.html">django, Howtos, Python</a></li>
+        
+          <li><a href="./category/misc.html">misc</a></li>
+        
+        </ul>
+      </nav>
+      
+
+      
+      <nav class="widget">
+        <h3>Social</h3>
+        <ul>
+        
+          <li><a href="Twitter">http://twitter.com/ragsagar</a></li>
+        
+          <li><a href="Facebook">http://facebook.com/ragsagar</a></li>
+        
+          <li><a href="Github">http://github.com/ragsagar</a></li>
+        
+          <li><a href="Flickr">http://flickr.com/ragsagar</a></li>
+        
+          <li><a href="./" rel="alternate">Flux Atom</a></li>
+        
+        </ul>
+      </nav>
+      
+    </aside> 
+
+      <footer class="page-footer">
+        <p> Powered by <a href="http://pelican.readthedocs.org">Pelican</a></p>
+        <p><a id="github-link" href="http://github.com/ragsagar">Fork me on Github</a></p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+എന്റെ ആദ്യത്തെ പോസ്റ്റ്
+#######################
+:date: 2008-08-27 02:53
+:category: My Thoughts
+
+അങ്ങന്നെ ഞാന്‍ ആദ്യമായി ബ്ളോഗ്ഗിങ്ങ് തുടങ്ങുകയായി..അക്ഷരപിശകുകള്‍ വളരെ
+സജീവമായി തന്നെ എന്റെ പോസ്റ്റുകളില്‍ ഉണ്ടാകുമെന്നതില്‍
+സംശയമില്ല..നിങ്ങളുടെ സഹായത്തോടെ ഞാനതു കുറയ്ക്കാന്‍
+ശ്രമിക്കുന്നതായിരിക്കും.
+
+`|Spreadfirefox Affiliate Button|`_
+
+.. raw:: html
+
+   </p>
+
+.. _|image1|: http://www.mozilla.com/firefox?from=sfx&uid=0&t=329
+
+.. |Spreadfirefox Affiliate
+Button| image:: http://sfx-images.mozilla.org/affiliates/Buttons/firefox3/120x240.png
+.. |image1| image:: http://sfx-images.mozilla.org/affiliates/Buttons/firefox3/120x240.png

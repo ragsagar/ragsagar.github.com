@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>r4g54g4r's h4ckl0g</title><link href="ragsagar.in/" rel="alternate"></link><link href="ragsagar.in/feeds/Gnu/Linux,%20My_Works,%20Python,%20Scripts,%20Shell%20Scripts.atom.xml" rel="self"></link><id>ragsagar.in/</id><updated>2008-11-21T22:39:00+05:30</updated><entry><title>Now Playing script for pidgin and audacious</title><link href="ragsagar.in/now-playing-script-for-pidgin-and-audacious.html" rel="alternate"></link><updated>2008-11-21T22:39:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2008-11-21:now-playing-script-for-pidgin-and-audacious.html</id><summary type="html">&lt;p&gt;&lt;p&gt;Few days ago i wrote a script to update the status message in pidgin
+with the title of the song playing in audacious music player.It is
+written in python.it makes use of the dbus for the inter application
+communication.when you invoke that script it just appends the title of
+the song currently playing in audacious as the status message in pidgin
+.i used the shell command $watch to invoke it in every 30 seconds so
+that the status message gets updated with the songtitle within 30
+seconds after the song change.You can reduce the number of seconds so
+that the status message gets updated frequently reducing the time delay
+between the song change and updation of status message.What the script
+does is, it retrieves the song title from the audacious music player
+using dbus.Then this songtitle is assigned as the status message in
+pidgin by communicating through dbus.This script needs dbus and
+py-dbus.So make sure that you have both packages installed in your
+system. Here is the script :&lt;/p&gt;
+&lt;blockquote&gt;
+def set_message(message): # Get current status type
+(Available/Away/etc.) current =
+purple.PurpleSavedstatusGetType(purple.PurpleSavedstatusGetCurrent())
+# Create new transient status and activate it status =
+purple.PurpleSavedstatusNew(&amp;quot;&amp;quot;, current) msg=&amp;quot;Now Playing: &amp;quot;
+emsg=msg+message purple.PurpleSavedstatusSetMessage(status, emsg)
+purple.PurpleSavedstatusActivate(status) import dbus
+session_bus=dbus.SessionBus() proxy =
+session_bus.get_object(&amp;quot;im.pidgin.purple.PurpleService&amp;quot;,
+&amp;quot;/im/pidgin/purple/PurpleObject&amp;quot;) purple = dbus.Interface(proxy,
+&amp;quot;im.pidgin.purple.PurpleInterface&amp;quot;) proxy1 =
+session_bus.get_object('org.mpris.audacious','/TrackList') purple1
+= dbus.Interface(proxy1,'org.freedesktop.MediaPlayer') ct =
+purple1.GetCurrentTrack() proxy2 =
+session_bus.get_object('org.mpris.audacious','/org/atheme/audacious')
+purple2 = dbus.Interface(proxy2,'org.atheme.audacious') currentsong
+= purple2.SongTitle(ct) print currentsong set_message(currentsong)&lt;/blockquote&gt;
+&lt;p&gt;Running this script will update the status message just once , so u have
+to shell command $watch as i said earlier.if you dont want to do this
+things manually, dont worry! i got package for this, grab it from here
+&lt;a class="reference external" href="http://ragsagar.freehostia.com/pidgin-audacious_plugin.tar.gz"&gt;http://ragsagar.freehostia.com/pidgin-audacious_plugin.tar.gz&lt;/a&gt; , untar
+it and run the installer..&lt;/p&gt;
+&lt;blockquote&gt;
+$wget &lt;a class="reference external" href="http://ragsagar.freehostia.com/pidgin-audacious_plugin.tar.gz"&gt;http://ragsagar.freehostia.com/pidgin-audacious_plugin.tar.gz&lt;/a&gt;
+$tar -xvf pidgin-audacious_plugin.tar.gz $cd pidgin-audacious\
+plugin/ $sudo chmod a+x installer $./installer&lt;/blockquote&gt;
+&lt;p&gt;Now run the script using this command :&lt;/p&gt;
+&lt;blockquote&gt;
+$pidgin-plugin&lt;/blockquote&gt;
+&lt;p&gt;PS: Make sure that you have both audacious and pidgin already running&lt;/p&gt;
+&lt;/p&gt;</summary><category term="Audacious"></category><category term="dbus"></category><category term="Now Playing"></category><category term="Pidgin"></category><category term="Py-dbus"></category><category term="Python"></category></entry></feed>

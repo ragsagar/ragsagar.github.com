@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>r4g54g4r's h4ckl0g</title><link href="ragsagar.in/" rel="alternate"></link><link href="ragsagar.in/feeds/Scripts,%20Shell%20Scripts.atom.xml" rel="self"></link><id>ragsagar.in/</id><updated>2011-08-13T05:53:00+05:30</updated><entry><title>Script to reboot teracom router</title><link href="ragsagar.in/script-to-reboot-teracom-router.html" rel="alternate"></link><updated>2011-08-13T05:53:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2011-08-13:script-to-reboot-teracom-router.html</id><summary type="html">&lt;p&gt;A slightly edited version of the script to restart router written by
+&lt;a class="reference external" href="http://www.madhusudancs.info/restart-router"&gt;Madhusudan.C.S&lt;/a&gt; to make it work with teracom router given by bsnl.
+[sourcecode language=&amp;quot;bash&amp;quot;] #!/usr/bin/env expect set username admin
+set pass admin set host 192.168.1.1 spawn telnet ${host} expect -re
+&amp;quot;Login:&amp;quot; send &amp;quot;${username}\r&amp;quot; expect &amp;quot;Password:&amp;quot; send &amp;quot;${pass}\r&amp;quot;
+expect -re &amp;quot;successful&amp;quot; send &amp;quot;console enable\r&amp;quot; send &amp;quot;restart\r&amp;quot;
+expect eof [/sourcecode]&lt;/p&gt;
+</summary><category term="expect"></category><category term="restart router"></category></entry></feed>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>r4g54g4r's h4ckl0g</title><link href="ragsagar.in/" rel="alternate"></link><link href="ragsagar.in/feeds/misc.atom.xml" rel="self"></link><id>ragsagar.in/</id><updated>2009-05-09T21:52:00+05:30</updated><entry><title>Screenshots</title><link href="ragsagar.in/screenshots.html" rel="alternate"></link><updated>2009-05-09T21:52:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2009-05-09:screenshots.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Here you can find the screenies of my Gnu/linux installations&lt;/strong&gt;
+[caption id=&amp;quot;attachment_90&amp;quot; align=&amp;quot;alignnone&amp;quot; width=&amp;quot;500&amp;quot; caption=&amp;quot;LFS
+with fluxbox&amp;quot;]&lt;a href="#id1"&gt;&lt;span class="problematic" id="id2"&gt;|LFS with fluxbox|&lt;/span&gt;&lt;/a&gt;[/caption]&lt;/p&gt;
+&lt;!-- |LFS with --&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/screenshots.rst&lt;/tt&gt;, line 9)&lt;/p&gt;
+malformed substitution definition.&lt;/div&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/screenshots.rst&lt;/tt&gt;, line 10)&lt;/p&gt;
+Explicit markup ends without a blank line; unexpected unindent.&lt;/div&gt;
+&lt;p&gt;fluxbox| image:: &lt;a class="reference external" href="http://ragsagar.files.wordpress.com/2009/05/screenie21.jpg"&gt;http://ragsagar.files.wordpress.com/2009/05/screenie21.jpg&lt;/a&gt;&lt;/p&gt;
+&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id1"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/screenshots.rst&lt;/tt&gt;, line 5); &lt;em&gt;&lt;a href="#id2"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Undefined substitution referenced: &amp;quot;LFS with fluxbox&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>About</title><link href="ragsagar.in/about.html" rel="alternate"></link><updated>2008-08-27T02:10:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2008-08-27:about.html</id><summary type="html">&lt;p&gt;Hi friends! Iam Rag Sagar, FOSSill netizen from Palakkad(Kerala), doing
+2nd year Btech IT at SSKCET Coimbatore.&amp;nbsp; &lt;a href="#id1"&gt;&lt;span class="problematic" id="id2"&gt;`|my\_image|`_&lt;/span&gt;&lt;/a&gt; You can find me
+online 24x7 ( not really :-p) in the irc channel #orkut_linux at
+freenode ( &lt;a class="reference external" href="http://www.tuxopia.net/node/18"&gt;http://www.tuxopia.net/node/18&lt;/a&gt; )&lt;/p&gt;
+&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id1"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/about.rst&lt;/tt&gt;, line 5); &lt;em&gt;&lt;a href="#id2"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Unknown target name: &amp;quot;|my_image|&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
+</summary></entry></feed>

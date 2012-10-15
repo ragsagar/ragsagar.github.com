@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>r4g54g4r's h4ckl0g</title><link href="ragsagar.in/" rel="alternate"></link><link href="ragsagar.in/feeds/django,%20Howtos,%20Python.atom.xml" rel="self"></link><id>ragsagar.in/</id><updated>2012-05-09T22:52:00+05:30</updated><entry><title>Making a field in a django admin form visible or invisible depending on the user</title><link href="ragsagar.in/making-a-field-in-a-django-admin-form-visible-or-invisible-depending-on-the-user.html" rel="alternate"></link><updated>2012-05-09T22:52:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2012-05-09:making-a-field-in-a-django-admin-form-visible-or-invisible-depending-on-the-user.html</id><summary type="html">&lt;p&gt;While i was working on the project &lt;a class="reference external" href="https://github.com/ragsagar/onspot_v2"&gt;onspot_v2&lt;/a&gt;, i came across with a
+specific need. &lt;a class="reference external" href="https://github.com/ragsagar/onspot_v2"&gt;onspot_v2&lt;/a&gt; makes use of the django admin interface for
+data entry. When employees are entering data, 'branch' field in the form
+will get populated automatically as per the branch of the employee. When
+a manager is entering data using the form, an extra field should appear
+to select the 'branch' instead of automatically populating. Googling
+didn't help much. Finally i thought of overriding the
+&lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/contrib/admin/#django.contrib.admin.ModelAdmin.add_view"&gt;ModelAdmin.add_view()&lt;/a&gt; method which is invoked when you try to add an
+entry using the admin. I changed the editable property of the field
+'branch' inside after checking the request.user and it worked out. Part
+of my code in admin.py [sourcecode language=&amp;quot;python&amp;quot;] from
+django.contrib import admin from books.models import Agent, PolicyIssue
+class PolicyIssueAdmin(admin.ModelAdmin): def add_view(self, request,
+form_url='', extra_context=None): if
+request.user.get_profile().is_employee:
+self.model.branch.field.editable = False else:
+self.model.branch.field.editable = True return super(PolicyIssueAdmin,
+self).add_view(request, form_url) admin.site.register(PolicyIssue,
+PolicyIssueAdmin) [/sourcecode]&lt;/p&gt;
+</summary><category term="add_view"></category><category term="django admin"></category><category term="django form"></category><category term="Python"></category></entry></feed>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>r4g54g4r's h4ckl0g</title><link href="ragsagar.in/" rel="alternate"></link><link href="ragsagar.in/feeds/My_Works,%20Scripts.atom.xml" rel="self"></link><id>ragsagar.in/</id><updated>2009-11-26T18:46:00+05:30</updated><entry><title>Linked list implementation in C</title><link href="ragsagar.in/linked-list-implementation-in-c.html" rel="alternate"></link><updated>2009-11-26T18:46:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2009-11-26:linked-list-implementation-in-c.html</id><summary type="html">&lt;p&gt;Just thought of sharing the code i written to learn linked list
+implementation the day before my data structures model practical exam.
+[sourcecode language=&amp;quot;python&amp;quot;] /* * linkedlist.c * * Copyright 2009
+Rag Sagar.V &amp;lt;&lt;a class="reference external" href="mailto:ragsagar&amp;#64;gmail.com"&gt;ragsagar&amp;#64;gmail.com&lt;/a&gt;&amp;gt; * * This program is free software;
+you can redistribute it and/or modify * it under the terms of the GNU
+General Public License as published by * the Free Software Foundation;
+either version 2 of the License, or * (at your option) any later
+version. * * This program is distributed in the hope that it will be
+useful, * but WITHOUT ANY WARRANTY; without even the implied warranty
+of * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the *
+GNU General Public License for more details. * * You should have
+received a copy of the GNU General Public License * along with this
+program; if not, write to the Free Software * Foundation, Inc., 51
+Franklin Street, Fifth Floor, Boston, * MA 02110-1301, USA. */
+#include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; typedef struct list { int data;
+struct list *next; }LIST; LIST *ptr,*temp,*start=NULL; void
+insert_after(int ,int ); void remove_item(int ); void display(void);
+int count=0; int main() { int item,opt,dat; system(&amp;quot;clear&amp;quot;); ptr=NULL;
+/* printf(&amp;quot;%d&amp;quot;,sizeof(LIST)); */ do { printf(&amp;quot;\n########## MENU
+##########\n&amp;quot;); printf(&amp;quot;1.Insert\n2.Remove\n3.Display\n4.Exit\n&amp;quot;);
+printf(&amp;quot;Enter your option : &amp;quot;); scanf(&amp;quot;%d&amp;quot;,&amp;amp;opt); switch(opt) { case 1:
+printf(&amp;quot;Enter the data to insert &amp;quot;); scanf(&amp;quot;%d&amp;quot;,&amp;amp;item); if(count==0) {
+ptr = (LIST *)malloc(sizeof(LIST)); ptr-&amp;gt;next = NULL; ptr-&amp;gt;data = item;
+start = ptr; } else { printf(&amp;quot;Enter the item after which you have to
+insert new element : &amp;quot;); scanf(&amp;quot;%d&amp;quot;,&amp;amp;dat); insert_after(dat,item); }
+count++; break; case 2: if(count==0) { printf(&amp;quot;\nList is empty\n&amp;quot;);
+break; } printf(&amp;quot;Enter the item to remove : &amp;quot;); scanf(&amp;quot;%d&amp;quot;,&amp;amp;item);
+remove_item(item); count--; break; case 3: if(count==0) {
+printf(&amp;quot;\nList is empty\n&amp;quot;); break; } else { printf(&amp;quot;List elements are
+\n&amp;quot;); display(); } break; case 4: break; } }while(opt!=4); return 0; }
+void insert_after(int data, int item) { LIST *tmp; temp=(LIST
+*)malloc(sizeof(LIST)); temp-&amp;gt;data=item; ptr=start; while(ptr!=NULL) {
+if(ptr-&amp;gt;data==data) { tmp=ptr-&amp;gt;next; ptr-&amp;gt;next=temp; temp-&amp;gt;next=tmp;
+break; } ptr=ptr-&amp;gt;next; } } void remove_item(int item) { ptr=start;
+if(ptr-&amp;gt;data == item) { start = ptr-&amp;gt;next; free(ptr); }
+while(ptr-&amp;gt;next!=NULL) { if((ptr-&amp;gt;next)-&amp;gt;data==item) { temp=ptr-&amp;gt;next;
+ptr-&amp;gt;next=(ptr-&amp;gt;next)-&amp;gt;next; free(temp); break; } ptr=ptr-&amp;gt;next; } }
+void display() { ptr = start; while(ptr!=NULL) { printf(&amp;quot;%d -&amp;gt;
+&amp;quot;,ptr-&amp;gt;data); ptr=ptr-&amp;gt;next; } } [/sourcecode]&lt;/p&gt;
+</summary><category term="C"></category><category term="data structures"></category><category term="linked list"></category></entry></feed>

@@ -1,0 +1,33 @@
+Fetch malayalam meanings of english words from ml.wiktionary.org in command line
+################################################################################
+:date: 2010-11-30 16:48
+:category: Python, Scripts
+:tags: malayalam, ml.wiktionary, Python, wikipedia
+
+This time its the script to fetch the malayalam meanings of english
+words from malayalam wiktionary. [sourcecode language="python"]
+#!/usr/bin/python #-\*- coding: utf-8 -\*- #
+http://ragsagar.wordpress.com from HTMLParser import HTMLParser import
+urllib2,sys class Parser(HTMLParser): def \_\_init\_\_(self):
+self.in\_header = False self.in\_definition = False
+HTMLParser.\_\_init\_\_(self) def handle\_starttag(self, tag, attrs): if
+tag == 'li': self.in\_header = True if tag == 'a' and self.in\_header :
+self.in\_definition = True def handle\_endtag(self, tag): if tag ==
+'li': self.in\_header = False if tag == 'a' : self.in\_defintion = False
+def handle\_data(self, data): if self.in\_definition: print data exit(0)
+try : search\_item = sys.argv[1] except IndexError: print " syntax : %s
+<definiton> " % sys.argv[0] exit(1) search\_link =
+"http://ml.wiktionary.org/w/index.php?title=%s&printable=yes" %
+(urllib2.quote(search\_item.encode('utf-8'))) request =
+urllib2.Request(search\_link) request.add\_header('User-agent',
+'Mozilla/5.0 (hb)') try : response = urllib2.urlopen(request) except
+urllib2.HTTPError : print "No definition found " except urllib2.URLError
+: print "Unable to connect to internet " else : parser = Parser() data =
+response.read() parser.feed(data) [/sourcecode] Output in my terminal
+[caption id="attachment\_179" align="alignnone" width="300"
+caption="malayalam meaning"]\ `|image0|`_\ [/caption]
+
+.. _|image1|: http://ragsagar.files.wordpress.com/2010/11/malayalamwiki.png
+
+.. |image0| image:: http://ragsagar.files.wordpress.com/2010/11/malayalamwiki.png?w=300
+.. |image1| image:: http://ragsagar.files.wordpress.com/2010/11/malayalamwiki.png?w=300

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>r4g54g4r's h4ckl0g</title><link href="ragsagar.in/" rel="alternate"></link><link href="ragsagar.in/feeds/Howtos.atom.xml" rel="self"></link><id>ragsagar.in/</id><updated>2011-08-15T14:04:00+05:30</updated><entry><title>How to automatically wake up your computer at a particular time ( Resume by RTC alarm in Arch Linux )</title><link href="ragsagar.in/how-to-automatically-wake-up-your-computer-at-a-particular-time-resume-by-rtc-alarm-in-arch-linux.html" rel="alternate"></link><updated>2011-08-15T14:04:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2011-08-15:how-to-automatically-wake-up-your-computer-at-a-particular-time-resume-by-rtc-alarm-in-arch-linux.html</id><summary type="html">&lt;p&gt;My ISP provides unlimited download from 2am to 8am. So i was not able to
+sleep after 2 from the time i switched to the new broadband plan.
+Keeping the system on and setting a cronjob to start downloading after 2
+was an option. But i was more concerned about the increasing electricity
+charge, than my sleep. Besides it is my social responsibility to save
+energy as a gonna-be software engineer :p. After a bit of googling and
+hacking i was able to wake up my system at a particular time. Here i am
+going to explain how i made my arch linux system to boot automatically
+at 2 am. The configuration is done in Arch Linux. For automatic wakeup
+it needs a BIOS which supports RTC alarm. Most of them manufactured
+after 2000 supports this feature.&lt;/p&gt;
+&lt;div class="section" id="check-if-your-bios-supports-automatic-wakeup"&gt;
+&lt;h2&gt;1) Check if your BIOS supports automatic wakeup&lt;/h2&gt;
+&lt;p&gt;Execute the command below as root. [sourcecode language=&amp;quot;text&amp;quot;]# grep
+rtc /var/log/messages.log rtc_cmos 00:03: RTC can wake from S4 rtc0:
+alarms up to one month [/sourcecode] If you can find something like this
+in the output.It says that the system can wakeup and a wakeup time can
+be setup.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="enable-automatic-wakeup-in-bios"&gt;
+&lt;h2&gt;2) Enable automatic wakeup in BIOS&lt;/h2&gt;
+&lt;p&gt;Go to your BIOS setup, Under Power Management search for something like
+&amp;quot;Wake by RTC Alarm&amp;quot; or &amp;quot;Resume by RTC alarm&amp;quot; or &amp;quot;RTC resume&amp;quot;.Then enable
+it.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="set-the-hardware-clock-time-standard-as-utc"&gt;
+&lt;h2&gt;3) Set the hardware clock time standard as UTC&lt;/h2&gt;
+&lt;p&gt;Edit the /etc/rc.conf file as root and set the HARDWARECLOCK variable to
+UTC [sourcecode language=&amp;quot;text&amp;quot;][&lt;a class="reference external" href="mailto:ragsagar&amp;#64;h4ckb0x"&gt;ragsagar&amp;#64;h4ckb0x&lt;/a&gt; ~]$ grep
+^HARDWARECLOCK /etc/rc.conf HARDWARECLOCK=&amp;quot;UTC&amp;quot;[/sourcecode] Make sure
+that your timezone is set correctly in /etc/rc.conf More help :
+&lt;a class="reference external" href="https://wiki.archlinux.org/index.php/Time"&gt;https://wiki.archlinux.org/index.php/Time&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="set-the-alarm-time"&gt;
+&lt;h2&gt;4) Set the alarm time&lt;/h2&gt;
+&lt;p&gt;Execute the following commands as root [sourcecode language=&amp;quot;text&amp;quot;]#
+echo 0 &amp;gt; /sys/class/rtc/rtc0/wakealarm # echo `date '+%s' -d '+ 5
+minutes'` &amp;gt; /sys/class/rtc/rtc0/wakealarm [/sourcecode] This will set
+the the alarm time as 5 minutes into the future. &lt;a href="#id1"&gt;&lt;span class="problematic" id="id2"&gt;`|image0|`_&lt;/span&gt;&lt;/a&gt; Now run
+[sourcecode language=&amp;quot;text&amp;quot;]$ cat
+/sys/class/rtc/rtc0/wakealarm[/sourcecode] If the output of above
+command is something like &amp;quot;1313383930&amp;quot;, the alarm is set. It is epoch
+time. If it doesn't yield any result make sure that the HARDWARECLOCK
+variable is set to UTC and reboot and try again to set the alarm time.
+Now run [sourcecode language=&amp;quot;text&amp;quot;]$ cat /proc/driver/rtc [/sourcecode]
+&lt;a href="#id3"&gt;&lt;span class="problematic" id="id4"&gt;`|image1|`_&lt;/span&gt;&lt;/a&gt; Go through rtc_time, alrm_time and alrm_date and check if
+they are correct(will be in UTC).Turn off the system and leave the power
+on. Check if the system is booting automatically after five mintues.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="setting-the-alarm-to-a-particular-time-and-date"&gt;
+&lt;h2&gt;5) Setting the alarm to a particular time and date.&lt;/h2&gt;
+&lt;p&gt;To set the alarm to woke up the system at 16th Aug 2:05am, Run the
+following as root [sourcecode language=&amp;quot;text&amp;quot;]# echo 0 &amp;gt;
+/sys/class/rtc/rtc0/wakealarm # date --date &amp;quot;Aug 16 , 2011 02:05:00&amp;quot; +%s
+&amp;gt; /sys/class/rtc/rtc0/wakealarm[/sourcecode] You can convert the epoch
+time to readable format and check the alarm time is correct. [sourcecode
+language=&amp;quot;text&amp;quot;][&lt;a class="reference external" href="mailto:root&amp;#64;h4ckb0x"&gt;root&amp;#64;h4ckb0x&lt;/a&gt; ragsagar]# cat
+/sys/class/rtc/rtc0/wakealarm 1313440500 [&lt;a class="reference external" href="mailto:root&amp;#64;h4ckb0x"&gt;root&amp;#64;h4ckb0x&lt;/a&gt; ragsagar]# date
+-d &amp;#64;1313440500 +%F&amp;quot; &amp;quot;%T 2011-08-16 02:05:00 [/sourcecode] &lt;a href="#id5"&gt;&lt;span class="problematic" id="id6"&gt;`|image2|`_&lt;/span&gt;&lt;/a&gt;
+&lt;strong&gt;Note :&lt;/strong&gt; The mythtv wiki about acpi wakeup says that setting the
+hardware clock after setting alarm will disable the alarm while most of
+the linux distribution sets hardware clock during shutdown. They suggest
+to disable hardware clock adjusting during shutdown. To do that in
+Archlinux set the HARDWARECLOCK=&amp;quot;&amp;quot; in /etc/rc.conf . But in my arch
+system the alarm was not working when i set HARDWARECLOCK=&amp;quot;&amp;quot; whereas it
+worked when i gave HARDWARECLOCK=&amp;quot;UTC&amp;quot;. So if the wake up alarm is not
+working do try after changing the value of this variable. To start
+downloading when the system boots up, i added a cronjob to &lt;a class="reference external" href="http://ragsagar.wordpress.com/2011/08/13/script-to-reboot-teracom-router/"&gt;restart the
+router&lt;/a&gt; at 2:15 and 7:45 (to account the download in happy hours). Also
+added &amp;quot;transmission-gtk&amp;quot; to the gnome-session-properties. So that
+transmission will be launched on startup and downloading will be
+started. &lt;strong&gt;Reference :&lt;/strong&gt; &lt;a class="reference external" href="http://www.mythtv.org/wiki/ACPI_Wakeup"&gt;http://www.mythtv.org/wiki/ACPI_Wakeup&lt;/a&gt;
+&lt;a class="reference external" href="https://wiki.archlinux.org/index.php/Time"&gt;https://wiki.archlinux.org/index.php/Time&lt;/a&gt;&lt;/p&gt;
+&lt;/p&gt;&lt;/div&gt;
+&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id1"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/how-to-automatically-wake-up-your-computer-at-a-particular-time-resume-by-rtc-alarm-in-arch-linux.rst&lt;/tt&gt;, line 47); &lt;em&gt;&lt;a href="#id2"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Unknown target name: &amp;quot;|image0|&amp;quot;.&lt;/div&gt;
+&lt;div class="system-message" id="id3"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/how-to-automatically-wake-up-your-computer-at-a-particular-time-resume-by-rtc-alarm-in-arch-linux.rst&lt;/tt&gt;, line 47); &lt;em&gt;&lt;a href="#id4"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Unknown target name: &amp;quot;|image1|&amp;quot;.&lt;/div&gt;
+&lt;div class="system-message" id="id5"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/how-to-automatically-wake-up-your-computer-at-a-particular-time-resume-by-rtc-alarm-in-arch-linux.rst&lt;/tt&gt;, line 64); &lt;em&gt;&lt;a href="#id6"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Unknown target name: &amp;quot;|image2|&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="acpi"></category><category term="alarm"></category><category term="arch"></category><category term="automatic booting"></category><category term="automatic wakeup"></category><category term="how-to"></category><category term="linux"></category><category term="resume by rtc"></category><category term="RTC"></category><category term="wakeup"></category></entry></feed>

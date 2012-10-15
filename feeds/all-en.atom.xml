@@ -1,4 +1,853 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>r4g54g4r's h4ckl0g</title><link href="ragsagar.in/" rel="alternate"></link><link href="ragsagar.in/feeds/all-en.atom.xml" rel="self"></link><id>ragsagar.in/</id><updated>2012-10-09T00:00:00+05:30</updated><entry><title>Hello World from my new blog!</title><link href="ragsagar.in/hello-world-from-my-new-blog.html" rel="alternate"></link><updated>2012-10-09T00:00:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2012-10-09:hello-world-from-my-new-blog.html</id><summary type="html">&lt;p&gt;I bought the domain ragsagar.in and I was trying to setup github pages to host
+<feed xmlns="http://www.w3.org/2005/Atom"><title>r4g54g4r's h4ckl0g</title><link href="ragsagar.in/" rel="alternate"></link><link href="ragsagar.in/feeds/all-en.atom.xml" rel="self"></link><id>ragsagar.in/</id><updated>2012-10-11T00:00:00+05:30</updated><entry><title>Implementing forgot password option in django</title><link href="ragsagar.in/implementing-forgot-password-option-in-django.html" rel="alternate"></link><updated>2012-10-11T00:00:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2012-10-11:implementing-forgot-password-option-in-django.html</id><summary type="html">&lt;p&gt;Recently i implemented forgot password option in a django site. &lt;/p&gt;</summary><category term="django"></category><category term="python"></category><category term="forgot password"></category><category term="password reset"></category></entry><entry><title>Hello World from my new blog!</title><link href="ragsagar.in/hello-world-from-my-new-blog.html" rel="alternate"></link><updated>2012-10-09T00:00:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2012-10-09:hello-world-from-my-new-blog.html</id><summary type="html">&lt;p&gt;I bought the domain ragsagar.in and I was trying to setup github pages to host
 my account. I am using pelican to generate the pages. So see you soon with some
-interesting posts :-)&lt;/p&gt;</summary><category term="blogging"></category><category term="test"></category></entry></feed>
+interesting posts :-)&lt;/p&gt;</summary><category term="blogging"></category><category term="test"></category></entry><entry><title>Making a field in a django admin form visible or invisible depending on the user</title><link href="ragsagar.in/making-a-field-in-a-django-admin-form-visible-or-invisible-depending-on-the-user.html" rel="alternate"></link><updated>2012-05-09T22:52:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2012-05-09:making-a-field-in-a-django-admin-form-visible-or-invisible-depending-on-the-user.html</id><summary type="html">&lt;p&gt;While i was working on the project &lt;a class="reference external" href="https://github.com/ragsagar/onspot_v2"&gt;onspot_v2&lt;/a&gt;, i came across with a
+specific need. &lt;a class="reference external" href="https://github.com/ragsagar/onspot_v2"&gt;onspot_v2&lt;/a&gt; makes use of the django admin interface for
+data entry. When employees are entering data, 'branch' field in the form
+will get populated automatically as per the branch of the employee. When
+a manager is entering data using the form, an extra field should appear
+to select the 'branch' instead of automatically populating. Googling
+didn't help much. Finally i thought of overriding the
+&lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/contrib/admin/#django.contrib.admin.ModelAdmin.add_view"&gt;ModelAdmin.add_view()&lt;/a&gt; method which is invoked when you try to add an
+entry using the admin. I changed the editable property of the field
+'branch' inside after checking the request.user and it worked out. Part
+of my code in admin.py [sourcecode language=&amp;quot;python&amp;quot;] from
+django.contrib import admin from books.models import Agent, PolicyIssue
+class PolicyIssueAdmin(admin.ModelAdmin): def add_view(self, request,
+form_url='', extra_context=None): if
+request.user.get_profile().is_employee:
+self.model.branch.field.editable = False else:
+self.model.branch.field.editable = True return super(PolicyIssueAdmin,
+self).add_view(request, form_url) admin.site.register(PolicyIssue,
+PolicyIssueAdmin) [/sourcecode]&lt;/p&gt;
+</summary><category term="add_view"></category><category term="django admin"></category><category term="django form"></category><category term="Python"></category></entry><entry><title>Script to reboot dataone WA3002G4 wireless router</title><link href="ragsagar.in/script-to-reboot-dataone-wa3002g4-wireless-router.html" rel="alternate"></link><updated>2012-02-29T23:03:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2012-02-29:script-to-reboot-dataone-wa3002g4-wireless-router.html</id><summary type="html">&lt;p&gt;With the WA3002G4 wireless router i got recently from my friend i made a
+wifi hotspot in home. Haven't been downloading a lot since my &lt;a class="reference external" href="http://ragsagar.wordpress.com/2011/08/13/script-to-reboot-teracom-router/"&gt;script to
+reboot old teracom router&lt;/a&gt; was not working with the new one.Thinking
+that I should do something on the day which will come only in every four
+years I modified the old script to work with the new wireless router and
+I am sharing it here. [sourcecode language=&amp;quot;bash&amp;quot;] #!/usr/bin/env expect
+set username admin set pass admin set host 192.168.1.1 spawn telnet
+${host} expect -re &amp;quot;Login:&amp;quot; send &amp;quot;${username}\r&amp;quot; expect -re &amp;quot;Password:&amp;quot;
+send &amp;quot;${pass}\r&amp;quot; expect -re &amp;quot;Main Menu&amp;quot; send &amp;quot;13\r&amp;quot; send &amp;quot;1\r&amp;quot; expect
+eof [/sourcecode]&lt;/p&gt;
+</summary><category term="expect"></category><category term="restart router"></category><category term="wa3002g4"></category></entry><entry><title>Fed up with rumors about Anna University results!</title><link href="ragsagar.in/fed-up-with-rumors-about-anna-university-results.html" rel="alternate"></link><updated>2012-01-10T22:42:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2012-01-10:fed-up-with-rumors-about-anna-university-results.html</id><summary type="html">&lt;p&gt;Last month itself there were talks that the final year BE/BTech results
+will be available by January first or second week. When it became
+January there were posts in various unofficial blogs that the results
+will be coming out by January 4th. Blogs said that on worst case it will
+be postponed to January 5th and they even stated the time University
+will be updating it in the database. But days passed, nothing happened.
+And this cycle is still going on. I was thinking how much traffic will
+they be getting during these days. I just wanted to know how much clicks
+they will be getting for using those particular keywords in their posts.
+Even if they are providing fake news they will be getting lots of hits.
+Even i am checking those blogs twice daily. They are exploiting
+students' eagerness to know about their examination results. Let me
+check the increase in number of traffic to this blog after posting this.
+I will come up with an update to this post if there is considerable
+increase in number of clicks. BTW, now one of the University site says
+that the results are expected to come out by January 12th. Update: Yeah,
+This post did bring more than 100 hits in a single day as expected.&lt;/p&gt;
+</summary><category term="Anna"></category><category term="BE/Btech"></category><category term="expected date"></category><category term="nov/dec"></category><category term="results"></category><category term="University"></category></entry><entry><title>PHP script to generate Indian Flag</title><link href="ragsagar.in/php-script-to-generate-indian-flag.html" rel="alternate"></link><updated>2011-08-21T21:43:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2011-08-21:php-script-to-generate-indian-flag.html</id><summary type="html">&lt;p&gt;A script written by &lt;a class="reference external" href="http://www.facebook.com/adhilnv"&gt;Adhil Azeez&lt;/a&gt; to generate Indian flag in php.
+Actually he wanted to share the code here on Independence day. But i was
+not able to post it that day. After that a series of things happened
+that prevented me from getting online and updating my blog. So here is
+the code.. [sourcecode language=&amp;quot;php&amp;quot;] &amp;lt;?php /* * Filename:
+tricolor.php * Dependencies: GD Library mostly precombile with php 4.0+
+* Author: Adhil Azeez NV * Description: Generates Indian National Flag
+Image */ //Create a resource identifier for the image res in ration 3:2
+$flag = imagecreate(1350, 900); if (!$flag) { die(&amp;quot;Some error occured&amp;quot;);
+} //Color identifiers definitions $white = imagecolorallocate($flag,
+255, 255, 255); $saffron = imagecolorallocate($flag, 255, 153, 51);
+$green = imagecolorallocate($flag, 18, 136, 7); $blue =
+imagecolorallocate($flag, 00, 0, 137); //Draw the tricolor sections.The
+white portion is no need to be specified since //the background color is
+white. imagefilledrectangle($flag, 0, 0, 1350, 300, $saffron);
+imagefilledrectangle($flag, 0, 600, 1350, 900, $green); //Draw the
+Ashoka Chakra //The Circle can be created with imageellipse itself after
+setting the thickness. //But unfortunetly due to a bug in GD
+library(reported more than 5 years ago :() //the thickness is being
+ignored. imagefilledellipse($flag, 675, 450, 240, 240, $blue);
+imagefilledellipse($flag, 675, 450, 210, 210, $white); //Draw the center
+small circle imagefilledellipse($flag, 675, 450, 42, 42, $blue); for
+($angle = 0; $angle &amp;lt;= 360; $angle = $angle + 15) { //Draw 24 small
+circles in the Ashoka Chakra at the border of the circle adjacent // to
+24-spoke $x = 675 + 105 * cos(deg2rad($angle+7.5)); $y = 450 + 105 *
+sin(deg2rad($angle+7.5)); imagefilledellipse($flag, $x, $y, 10.5, 10.5,
+$blue); //Draw the 24 spooks $x1 = 675 + 8 * cos(deg2rad($angle)); $y1
+= 450 + 8 * sin(deg2rad($angle)); $x2 = $x1 + 40 * cos(deg2rad($angle
+- 5)); $y2 = $y1 + 40 * sin(deg2rad($angle - 5)); $x3 = 675 + 105 *
+cos(deg2rad($angle)); $y3 = 450 + 105 * sin(deg2rad($angle)); $x4 = $x1
++ 40 * cos(deg2rad($angle + 5)); $y4 = $y1 + 40 * sin(deg2rad($angle +
+5)); imagefilledpolygon($flag, array($x1, $y1, $x2, $y2, $x3,
+$y3,$x4,$y4), 4, $blue); } //if the script being invocked from CLI and
+has a filename arguments then write //the out put to the file else print
+to the outputstream. if (isset($_SERVER['argv'][1])) {
+if(imagejpeg($flag, $_SERVER['argv'][1] . '.jpg', 100)) echo &amp;quot;National
+Flag saved to &amp;quot;.$_SERVER['argv'][1] . '.jpg'; else echo &amp;quot;Some error
+occured&amp;quot;; } else { header(&amp;quot;Content-type: image/jpeg&amp;quot;); imagejpeg($flag,
+null, 100); } imagedestroy($flag); ?&amp;gt; [/sourcecode] &lt;strong&gt;Design&lt;/strong&gt; The
+script makes use of php GD library. It outputs the image to current
+output stream or save to a file. If php GD library have anti aliasing
+support then we can enable that for much better render.Currently anti
+aliasing is not enabled in the script. The output is in JPEG format but
+it can be changed to other format if necessary with a few modification
+in the script. &lt;strong&gt;Dependencies&lt;/strong&gt; PHP needs GD Library support. Most of
+the php distribution compiled with it. &lt;strong&gt;Usage&lt;/strong&gt; php flag.php filename
+Filename argument is optional. If not present the script will output to
+the current output stream for example: php flag.php | display will open
+the image in ImageMagick picture viewer&lt;/p&gt;
+</summary><category term="gd library"></category><category term="indian flag"></category><category term="php"></category></entry><entry><title>How to automatically wake up your computer at a particular time ( Resume by RTC alarm in Arch Linux )</title><link href="ragsagar.in/how-to-automatically-wake-up-your-computer-at-a-particular-time-resume-by-rtc-alarm-in-arch-linux.html" rel="alternate"></link><updated>2011-08-15T14:04:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2011-08-15:how-to-automatically-wake-up-your-computer-at-a-particular-time-resume-by-rtc-alarm-in-arch-linux.html</id><summary type="html">&lt;p&gt;My ISP provides unlimited download from 2am to 8am. So i was not able to
+sleep after 2 from the time i switched to the new broadband plan.
+Keeping the system on and setting a cronjob to start downloading after 2
+was an option. But i was more concerned about the increasing electricity
+charge, than my sleep. Besides it is my social responsibility to save
+energy as a gonna-be software engineer :p. After a bit of googling and
+hacking i was able to wake up my system at a particular time. Here i am
+going to explain how i made my arch linux system to boot automatically
+at 2 am. The configuration is done in Arch Linux. For automatic wakeup
+it needs a BIOS which supports RTC alarm. Most of them manufactured
+after 2000 supports this feature.&lt;/p&gt;
+&lt;div class="section" id="check-if-your-bios-supports-automatic-wakeup"&gt;
+&lt;h2&gt;1) Check if your BIOS supports automatic wakeup&lt;/h2&gt;
+&lt;p&gt;Execute the command below as root. [sourcecode language=&amp;quot;text&amp;quot;]# grep
+rtc /var/log/messages.log rtc_cmos 00:03: RTC can wake from S4 rtc0:
+alarms up to one month [/sourcecode] If you can find something like this
+in the output.It says that the system can wakeup and a wakeup time can
+be setup.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="enable-automatic-wakeup-in-bios"&gt;
+&lt;h2&gt;2) Enable automatic wakeup in BIOS&lt;/h2&gt;
+&lt;p&gt;Go to your BIOS setup, Under Power Management search for something like
+&amp;quot;Wake by RTC Alarm&amp;quot; or &amp;quot;Resume by RTC alarm&amp;quot; or &amp;quot;RTC resume&amp;quot;.Then enable
+it.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="set-the-hardware-clock-time-standard-as-utc"&gt;
+&lt;h2&gt;3) Set the hardware clock time standard as UTC&lt;/h2&gt;
+&lt;p&gt;Edit the /etc/rc.conf file as root and set the HARDWARECLOCK variable to
+UTC [sourcecode language=&amp;quot;text&amp;quot;][&lt;a class="reference external" href="mailto:ragsagar&amp;#64;h4ckb0x"&gt;ragsagar&amp;#64;h4ckb0x&lt;/a&gt; ~]$ grep
+^HARDWARECLOCK /etc/rc.conf HARDWARECLOCK=&amp;quot;UTC&amp;quot;[/sourcecode] Make sure
+that your timezone is set correctly in /etc/rc.conf More help :
+&lt;a class="reference external" href="https://wiki.archlinux.org/index.php/Time"&gt;https://wiki.archlinux.org/index.php/Time&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="set-the-alarm-time"&gt;
+&lt;h2&gt;4) Set the alarm time&lt;/h2&gt;
+&lt;p&gt;Execute the following commands as root [sourcecode language=&amp;quot;text&amp;quot;]#
+echo 0 &amp;gt; /sys/class/rtc/rtc0/wakealarm # echo `date '+%s' -d '+ 5
+minutes'` &amp;gt; /sys/class/rtc/rtc0/wakealarm [/sourcecode] This will set
+the the alarm time as 5 minutes into the future. &lt;a href="#id1"&gt;&lt;span class="problematic" id="id2"&gt;`|image0|`_&lt;/span&gt;&lt;/a&gt; Now run
+[sourcecode language=&amp;quot;text&amp;quot;]$ cat
+/sys/class/rtc/rtc0/wakealarm[/sourcecode] If the output of above
+command is something like &amp;quot;1313383930&amp;quot;, the alarm is set. It is epoch
+time. If it doesn't yield any result make sure that the HARDWARECLOCK
+variable is set to UTC and reboot and try again to set the alarm time.
+Now run [sourcecode language=&amp;quot;text&amp;quot;]$ cat /proc/driver/rtc [/sourcecode]
+&lt;a href="#id3"&gt;&lt;span class="problematic" id="id4"&gt;`|image1|`_&lt;/span&gt;&lt;/a&gt; Go through rtc_time, alrm_time and alrm_date and check if
+they are correct(will be in UTC).Turn off the system and leave the power
+on. Check if the system is booting automatically after five mintues.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="setting-the-alarm-to-a-particular-time-and-date"&gt;
+&lt;h2&gt;5) Setting the alarm to a particular time and date.&lt;/h2&gt;
+&lt;p&gt;To set the alarm to woke up the system at 16th Aug 2:05am, Run the
+following as root [sourcecode language=&amp;quot;text&amp;quot;]# echo 0 &amp;gt;
+/sys/class/rtc/rtc0/wakealarm # date --date &amp;quot;Aug 16 , 2011 02:05:00&amp;quot; +%s
+&amp;gt; /sys/class/rtc/rtc0/wakealarm[/sourcecode] You can convert the epoch
+time to readable format and check the alarm time is correct. [sourcecode
+language=&amp;quot;text&amp;quot;][&lt;a class="reference external" href="mailto:root&amp;#64;h4ckb0x"&gt;root&amp;#64;h4ckb0x&lt;/a&gt; ragsagar]# cat
+/sys/class/rtc/rtc0/wakealarm 1313440500 [&lt;a class="reference external" href="mailto:root&amp;#64;h4ckb0x"&gt;root&amp;#64;h4ckb0x&lt;/a&gt; ragsagar]# date
+-d &amp;#64;1313440500 +%F&amp;quot; &amp;quot;%T 2011-08-16 02:05:00 [/sourcecode] &lt;a href="#id5"&gt;&lt;span class="problematic" id="id6"&gt;`|image2|`_&lt;/span&gt;&lt;/a&gt;
+&lt;strong&gt;Note :&lt;/strong&gt; The mythtv wiki about acpi wakeup says that setting the
+hardware clock after setting alarm will disable the alarm while most of
+the linux distribution sets hardware clock during shutdown. They suggest
+to disable hardware clock adjusting during shutdown. To do that in
+Archlinux set the HARDWARECLOCK=&amp;quot;&amp;quot; in /etc/rc.conf . But in my arch
+system the alarm was not working when i set HARDWARECLOCK=&amp;quot;&amp;quot; whereas it
+worked when i gave HARDWARECLOCK=&amp;quot;UTC&amp;quot;. So if the wake up alarm is not
+working do try after changing the value of this variable. To start
+downloading when the system boots up, i added a cronjob to &lt;a class="reference external" href="http://ragsagar.wordpress.com/2011/08/13/script-to-reboot-teracom-router/"&gt;restart the
+router&lt;/a&gt; at 2:15 and 7:45 (to account the download in happy hours). Also
+added &amp;quot;transmission-gtk&amp;quot; to the gnome-session-properties. So that
+transmission will be launched on startup and downloading will be
+started. &lt;strong&gt;Reference :&lt;/strong&gt; &lt;a class="reference external" href="http://www.mythtv.org/wiki/ACPI_Wakeup"&gt;http://www.mythtv.org/wiki/ACPI_Wakeup&lt;/a&gt;
+&lt;a class="reference external" href="https://wiki.archlinux.org/index.php/Time"&gt;https://wiki.archlinux.org/index.php/Time&lt;/a&gt;&lt;/p&gt;
+&lt;/p&gt;&lt;/div&gt;
+&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id1"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/how-to-automatically-wake-up-your-computer-at-a-particular-time-resume-by-rtc-alarm-in-arch-linux.rst&lt;/tt&gt;, line 47); &lt;em&gt;&lt;a href="#id2"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Unknown target name: &amp;quot;|image0|&amp;quot;.&lt;/div&gt;
+&lt;div class="system-message" id="id3"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/how-to-automatically-wake-up-your-computer-at-a-particular-time-resume-by-rtc-alarm-in-arch-linux.rst&lt;/tt&gt;, line 47); &lt;em&gt;&lt;a href="#id4"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Unknown target name: &amp;quot;|image1|&amp;quot;.&lt;/div&gt;
+&lt;div class="system-message" id="id5"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/how-to-automatically-wake-up-your-computer-at-a-particular-time-resume-by-rtc-alarm-in-arch-linux.rst&lt;/tt&gt;, line 64); &lt;em&gt;&lt;a href="#id6"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Unknown target name: &amp;quot;|image2|&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="acpi"></category><category term="alarm"></category><category term="arch"></category><category term="automatic booting"></category><category term="automatic wakeup"></category><category term="how-to"></category><category term="linux"></category><category term="resume by rtc"></category><category term="RTC"></category><category term="wakeup"></category></entry><entry><title>Script to reboot teracom router</title><link href="ragsagar.in/script-to-reboot-teracom-router.html" rel="alternate"></link><updated>2011-08-13T05:53:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2011-08-13:script-to-reboot-teracom-router.html</id><summary type="html">&lt;p&gt;A slightly edited version of the script to restart router written by
+&lt;a class="reference external" href="http://www.madhusudancs.info/restart-router"&gt;Madhusudan.C.S&lt;/a&gt; to make it work with teracom router given by bsnl.
+[sourcecode language=&amp;quot;bash&amp;quot;] #!/usr/bin/env expect set username admin
+set pass admin set host 192.168.1.1 spawn telnet ${host} expect -re
+&amp;quot;Login:&amp;quot; send &amp;quot;${username}\r&amp;quot; expect &amp;quot;Password:&amp;quot; send &amp;quot;${pass}\r&amp;quot;
+expect -re &amp;quot;successful&amp;quot; send &amp;quot;console enable\r&amp;quot; send &amp;quot;restart\r&amp;quot;
+expect eof [/sourcecode]&lt;/p&gt;
+</summary><category term="expect"></category><category term="restart router"></category></entry><entry><title>Python code to find solution for jumbled word puzzle</title><link href="ragsagar.in/python-code-to-find-solution-for-jumbled-word-puzzle.html" rel="alternate"></link><updated>2011-07-24T15:14:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2011-07-24:python-code-to-find-solution-for-jumbled-word-puzzle.html</id><summary type="html">&lt;p&gt;Here is a python script to find solution for a jumbled word. Give a
+jumbled word as parameter, it will list the possible solutions.
+[sourcecode language=&amp;quot;python&amp;quot;] import sys dictfile =
+&amp;quot;/usr/share/dict/cracklib-small&amp;quot; def get_words(text): &amp;quot;&amp;quot;&amp;quot; Return a list
+of dict words &amp;quot;&amp;quot;&amp;quot; return text.split() def
+get_possible_words(words,jword): &amp;quot;&amp;quot;&amp;quot; Return a list of possible
+solutions &amp;quot;&amp;quot;&amp;quot; possible_words = [] jword_length = len(jword) for word
+in words: jumbled_word = jword if len(word) == jword_length: letters =
+list(word) for letter in letters: if jumbled_word.find(letter) != -1:
+jumbled_word = jumbled_word.replace(letter,'',1) if not jumbled_word:
+possible_words.append(word) return possible_words if __name__ ==
+'__main__': words = get_words(file(dictfile).read()) if
+len(sys.argv) != 2: print &amp;quot;python %s &amp;lt;jumbled word&amp;gt;&amp;quot; % sys.argv[0]
+sys.exit() jumbled_word = sys.argv[1] words =
+get_possible_words(words,jumbled_word) print &amp;quot;possible words :&amp;quot; print
+'\n'.join(words) [/sourcecode] Don't forget to change the 'dictfile' to
+the wordslist file you have in your system. Here is the screenshot of
+script output. &lt;a href="#id1"&gt;&lt;span class="problematic" id="id2"&gt;`|image0|`_&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id1"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/python-code-to-find-solution-for-jumbled-word-puzzle.rst&lt;/tt&gt;, line 6); &lt;em&gt;&lt;a href="#id2"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Unknown target name: &amp;quot;|image0|&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Python script that ranks Hollywood actors based on number of appearances in top 100 movies</title><link href="ragsagar.in/python-script-that-ranks-hollywood-actors-based-on-number-of-appearances-in-top-100-movies.html" rel="alternate"></link><updated>2011-06-15T19:41:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2011-06-15:python-script-that-ranks-hollywood-actors-based-on-number-of-appearances-in-top-100-movies.html</id><summary type="html">&lt;p&gt;&lt;p&gt;Actually this is a sample question appeared in codejam contest conducted
+by mobme wireless. Imdbpy python module is used to retrieve movie
+informations from imdb. For those who don't know about this event :
+&lt;a class="reference external" href="http://codejam.mobme.in/"&gt;http://codejam.mobme.in/&lt;/a&gt; Sample Question :&lt;/p&gt;
+&lt;blockquote&gt;
+Write a program that ranks Hollywood actors based on the number of
+their appearances in a list of top 100 movies. There are a number of
+top movie lists on the Internet and it's up to you to choose one.
+We'd prefer you choose one that has an open API.&lt;/blockquote&gt;
+&lt;p&gt;Solution in Python : [sourcecode language=&amp;quot;python&amp;quot;] #!/usr/bin/env
+python __author__ = &amp;quot;Rag Sagar.V&amp;quot; __email__ =
+'&amp;#64;'.join(['ragsagar','.'.join([_ for _ in ['gmail','com']])]) from
+twisted.internet import reactor, threads import re,imdb,itertools
+actors_rating = {} #actors_rating['actor name'] = rank rank = 0 count
+= 1 current_rank = 0 concurrent = 5 finished = itertools.count(1)
+reactor.suggestThreadPoolSize(concurrent) try: imdb_access =
+imdb.IMDb() except imdb.IMDbError, err: print err top_100 =
+imdb_access.get_top250_movies()[:100] def populate_actors(mid):
+movie = imdb_access.get_movie(int(mid)) #print movie for i in (0,1):
+actor_name = movie['cast'][i]['name'] if
+actors_rating.has_key(actor_name): actors_rating[actor_name] =
+actors_rating[actor_name] + 1 else: actors_rating[actor_name] = 1 if
+finished.next()==added: reactor.stop() added = 0 for movie in top_100:
+added += 1 req = threads.deferToThread(populate_actors, movie.getID())
+try: reactor.run() except KeyboardInterrupt: reactor.stop() for actor in
+sorted(actors_rating, key=actors_rating.get, reverse=True):
+previous_rank = current_rank current_rank = actors_rating[actor] if
+previous_rank != current_rank : rank += count count = 1 else: count +=
+1 print rank,actor [/sourcecode] Dependency : imdbpy&lt;/p&gt;
+&lt;/p&gt;</summary><category term="actors ranking"></category><category term="codejam"></category><category term="imdb"></category><category term="imdbpy"></category><category term="Python"></category></entry><entry><title>Display wishes depending on time when you open the console</title><link href="ragsagar.in/display-wishes-depending-on-time-when-you-open-the-console.html" rel="alternate"></link><updated>2011-06-07T23:12:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2011-06-07:display-wishes-depending-on-time-when-you-open-the-console.html</id><summary type="html">&lt;p&gt;&lt;p&gt;Here is a python script to wish you Good Morning or Good Evening
+according to the time of the day. [sourcecode language=&amp;quot;python&amp;quot;]
+#!/usr/bin/python import time current_hour =
+time.strptime(time.ctime(time.time())).tm_hour if current_hour &amp;lt; 12 :
+print &amp;quot;Good Morning!&amp;quot; elif current_hour == 12 : print &amp;quot;Good Noon!&amp;quot; elif
+current_hour &amp;gt; 12 and current_hour &amp;lt; 18 : print &amp;quot;Good AfterNoon!&amp;quot; elif
+current_hour &amp;gt;= 18 : print &amp;quot;Good Evening!&amp;quot; [/sourcecode] Now if you
+want to display it when you open the console add the following line to
+your ~/.bashrc file.&lt;/p&gt;
+&lt;blockquote&gt;
+python /path/to/the/script.py&lt;/blockquote&gt;
+&lt;p&gt;Happy Hacking! :)&lt;/p&gt;
+&lt;/p&gt;</summary><category term="bashrc"></category><category term="Python"></category><category term="time"></category></entry><entry><title>Reliance Customer Care freaking me out!! :-(</title><link href="ragsagar.in/reliance-customer-care-freaking-me-out-.html" rel="alternate"></link><updated>2011-04-01T20:54:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2011-04-01:reliance-customer-care-freaking-me-out-.html</id><summary type="html">&lt;p&gt;Two months before i lost 10rs from my mobile balance without using it.
+When i contacted Reliance customer care they told me that &amp;quot;A joke pack
+has activated in your account by me last month and this is for the
+second time they are taking money,It is not possible to refund the money
+now, but they will deactivate it. It is possible to refund the money
+only within 24hours after activation of the pack.&amp;quot; I told them that i
+didn't activate any such packs and told to deactivate it. On this month
+25th i again noticed a decrease in balance by 10rs. So i contacted the
+customer care executive on 25th morning. He told that a joke pack has
+been subscribed that's why i lost the money and it is possible to refund
+the money as no activation has yet taken place.So i told him to refund.
+As it didn't got activate after an hour, i contacted the Customer care
+again. They told me to wait for 24hours. I waited for 24 hours and
+contacted them again on 26th evening and what they said was the same, to
+wait for 24hours. Told the same when i called them on 27th. When i
+called on 28th one CC executive told me that a complaint has been
+registered and that i have to wait for two days and i will be getting
+the complaint no as sms. Within two days i got two messages from them
+one containing the complaint number and the other informing that the
+offer pack has been deactivated. But the money was still not refunded.
+So i contacted them on 31st (yesterday), a CC executive told me that i
+will be surely refunded within 24hours and told me to wait. Today when i
+called them one guy telling me that my pack is not yet deactivated, i
+can deactivate it through an sms and it is not possible to refund the
+money. WTF??????&lt;/p&gt;
+</summary><category term="customer care"></category><category term="reliance"></category><category term="sucks"></category></entry><entry><title>Times i hate being a Kottayam native</title><link href="ragsagar.in/times-i-hate-being-a-kottayam-native.html" rel="alternate"></link><updated>2011-01-26T10:58:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2011-01-26:times-i-hate-being-a-kottayam-native.html</id><summary type="html">&lt;p&gt;Yesterday i went to village office to get income certificate. To get
+subsidy in interest of educational loan from central govt we have to
+give income certificate to the bank. Village officer asked me about my
+native. I told him Palakkad. Then he asked about my father's native. i
+told him Kottayam. Then he asked me if we have any property there, i
+nodded my head and told him we are living here for the past 30 years and
+we have nothing left there. He told me to get a report from the village
+office in Kottayam that we don't have any property there. Then only he
+will give income certificate. i told him several times that we don't
+have anything left there and we have property here. But he kept on
+saying the same. I should have lied that my father's native is Palakkad.
+TIMES I HATE BEING A KOTTAYAM NATIVE&lt;/p&gt;
+</summary><category term="income certificate palakkad kottayam village office"></category></entry><entry><title>Fetch malayalam meanings of english words from ml.wiktionary.org in command line</title><link href="ragsagar.in/fetch-malayalam-meanings-of-english-words-from-mlwiktionaryorg-in-command-line.html" rel="alternate"></link><updated>2010-11-30T16:48:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2010-11-30:fetch-malayalam-meanings-of-english-words-from-mlwiktionaryorg-in-command-line.html</id><summary type="html">&lt;p&gt;This time its the script to fetch the malayalam meanings of english
+words from malayalam wiktionary. [sourcecode language=&amp;quot;python&amp;quot;]
+#!/usr/bin/python #-*- coding: utf-8 -*- #
+&lt;a class="reference external" href="http://ragsagar.wordpress.com"&gt;http://ragsagar.wordpress.com&lt;/a&gt; from HTMLParser import HTMLParser import
+urllib2,sys class Parser(HTMLParser): def __init__(self):
+self.in_header = False self.in_definition = False
+HTMLParser.__init__(self) def handle_starttag(self, tag, attrs): if
+tag == 'li': self.in_header = True if tag == 'a' and self.in_header :
+self.in_definition = True def handle_endtag(self, tag): if tag ==
+'li': self.in_header = False if tag == 'a' : self.in_defintion = False
+def handle_data(self, data): if self.in_definition: print data exit(0)
+try : search_item = sys.argv[1] except IndexError: print &amp;quot; syntax : %s
+&amp;lt;definiton&amp;gt; &amp;quot; % sys.argv[0] exit(1) search_link =
+&amp;quot;&lt;a class="reference external" href="http://ml.wiktionary.org/w/index.php?title=%s&amp;amp;printable=yes"&gt;http://ml.wiktionary.org/w/index.php?title=%s&amp;amp;printable=yes&lt;/a&gt;&amp;quot; %
+(urllib2.quote(search_item.encode('utf-8'))) request =
+urllib2.Request(search_link) request.add_header('User-agent',
+'Mozilla/5.0 (hb)') try : response = urllib2.urlopen(request) except
+urllib2.HTTPError : print &amp;quot;No definition found &amp;quot; except urllib2.URLError
+: print &amp;quot;Unable to connect to internet &amp;quot; else : parser = Parser() data =
+response.read() parser.feed(data) [/sourcecode] Output in my terminal
+[caption id=&amp;quot;attachment_179&amp;quot; align=&amp;quot;alignnone&amp;quot; width=&amp;quot;300&amp;quot;
+caption=&amp;quot;malayalam meaning&amp;quot;]&lt;a href="#id1"&gt;&lt;span class="problematic" id="id2"&gt;`|image0|`_&lt;/span&gt;&lt;/a&gt;[/caption]&lt;/p&gt;
+&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id1"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/174.rst&lt;/tt&gt;, line 7); &lt;em&gt;&lt;a href="#id2"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Unknown target name: &amp;quot;|image0|&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="malayalam"></category><category term="ml.wiktionary"></category><category term="Python"></category><category term="wikipedia"></category></entry><entry><title>Python script to find Imdb rating</title><link href="ragsagar.in/python-script-to-find-imdb-rating.html" rel="alternate"></link><updated>2010-11-20T10:31:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2010-11-20:python-script-to-find-imdb-rating.html</id><summary type="html">&lt;p&gt;Here is a script i wrote last night.It finds imdb rating of a movie.
+[sourcecode language=&amp;quot;python&amp;quot;] #ragsagar[at]gmail.com from mechanize
+import Browser from BeautifulSoup import BeautifulSoup import sys,re if
+len(sys.argv) != 2: print &amp;quot;\nSyntax: python %s 'Movie title'&amp;quot; %
+(sys.argv[0]) exit() else : movie = '+'.join(sys.argv[1].split()) br =
+Browser() br.open(&amp;quot;&lt;a class="reference external" href="http://www.imdb.com/find?s=tt&amp;amp;q="&gt;http://www.imdb.com/find?s=tt&amp;amp;q=&lt;/a&gt;&amp;quot;+movie) link =
+br.find_link(url_regex = re.compile(r&amp;quot;/title/tt*&amp;quot;)) res =
+br.follow_link(link) soup = BeautifulSoup(res.read()) try : title =
+soup.find('h1').contents[0].strip() rating =
+soup.find('span',attrs='rating-rating').contents[0] print &amp;quot;Movie :
+&amp;quot;,title print &amp;quot;Rating: &amp;quot;,rating,&amp;quot;/ 10.0&amp;quot; except : print &amp;quot;Not Found!&amp;quot;
+[/sourcecode] Here is the screenshot of output. [caption
+id=&amp;quot;attachment_171&amp;quot; align=&amp;quot;alignnone&amp;quot; width=&amp;quot;300&amp;quot; caption=&amp;quot;Output of
+the script&amp;quot;]&lt;a href="#id1"&gt;&lt;span class="problematic" id="id2"&gt;`|image0|`_&lt;/span&gt;&lt;/a&gt;[/caption]&lt;/p&gt;
+&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id1"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/python-script-to-find-imdb-rating.rst&lt;/tt&gt;, line 7); &lt;em&gt;&lt;a href="#id2"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Unknown target name: &amp;quot;|image0|&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="BeautifulSoup"></category><category term="command line"></category><category term="imdb"></category><category term="mechanize"></category><category term="movie"></category><category term="Python"></category><category term="rating"></category><category term="script"></category></entry><entry><title>Photorec , you are Photorock!</title><link href="ragsagar.in/photorec-you-are-photorock.html" rel="alternate"></link><updated>2010-09-30T22:31:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2010-09-30:photorec-you-are-photorock.html</id><summary type="html">&lt;p&gt;Yesterday my ubuntu installation went wrong when i misplaced an
+essential lib. Even the tab completion feature in gnome-terminal and cp,
+mv commands were not working. Some how i backed up some *important
+files* i stored in my root filesystem to my usb drive and installed
+ubuntu again, and moved back the *important files* to root filesystem.
+But again ubuntu stopped working after i installed some debs. But this
+time before reinstalling ubuntu i forgot to backup the important files
+from my root filesystem to the pendrive. I realized this only after the
+installation process reached 50% . What to do???. Today classes were
+suspended at 12 because of Ayodhya verdict, so came home earlier, sat in
+front of the lappy and started googling. While searching i found a tool
+named ntfsundelete, but really disppointed when i came to know that it
+works only for ntfs filesystems. My pendrive is having Fat32 filesystem.
+Again continued searching and found a &lt;a class="reference external" href="http://cuasan.wordpress.com/2008/03/31/undelete-files-on-a-vfat-partition-in-ubuntu/"&gt;blog&lt;/a&gt; discussing about a
+component of testdisk application named photorec. I ran apt-get install
+testdisk and photorec got installed. i ran photorec at the command line
+and it told me to run it as root. so ran it as root and it asked me to
+select the disk. i selected my pendrive, it needed some info about
+parition table and the directory where the recovered files should be
+stored which was defaulted to home directory. And it started recovering.
+When the recovery process completed there was about 45 directories in my
+home directory. After spending some time in searching those directories
+i found 4 out of 5 *important files*. Four is a lot better than none,
+isnt it?.. thanks photorec!&lt;/p&gt;
+</summary><category term="fat32"></category><category term="ntfsundelete"></category><category term="pendrive"></category><category term="photorec"></category><category term="recovery tool"></category><category term="testdisk"></category><category term="ubuntu"></category></entry><entry><title>Neighbour, Please switch on your wireless router !</title><link href="ragsagar.in/neighbour-please-switch-on-your-wireless-router.html" rel="alternate"></link><updated>2010-09-25T16:52:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2010-09-25:neighbour-please-switch-on-your-wireless-router.html</id><summary type="html">&lt;p&gt;Last wednesday night my friend Adhil called me to ask if he can use my
+internet connection to send some sms using his bulk sms account for his
+cousin. He wanted to send them that night itself as the govt was about
+to freeze bulk sms account from 12am due to Ayodhya verdict. I agreed
+and he came to my home with Shibin (sorry shib.in, yeah! recently he
+registered the domain shib.in to put coming soon banner :D ). When they
+reached home only i knew that my internet connection is down due to some
+problem in the phone line (it is a hobby of monkeys around here to bite
+down phone lines). There is no question of going to internet cafe as it
+was already 10:30 pm and the nearest cafe is 12kms away. Surprisingly
+Shibin's netbook detected a wifi connection named wifi-anil. He tried to
+connect, it got connected without requiring authentication. He typed
+google.com in a browser and tried to load, yes it got loaded.I opened
+the closed window doors in my room for better reception and Adhil
+without wasting a single second did his work. Even though his bulk sms
+account got banned by 11 30 he was able to send some part of messages.
+And thats the first time i am stealing someone else's internet
+connection. The next day itself i added WPA authentication to my
+wireless router.&lt;/p&gt;
+</summary><category term="Ayodhya verdict"></category><category term="bsnl"></category><category term="internet"></category><category term="router"></category><category term="wifi"></category><category term="wireless"></category></entry><entry><title>A rhythmbox plugin that sets the song title as status message in pidgin</title><link href="ragsagar.in/a-rhythmbox-plugin-that-sets-the-song-title-as-status-message-in-pidgin.html" rel="alternate"></link><updated>2010-03-28T09:32:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2010-03-28:a-rhythmbox-plugin-that-sets-the-song-title-as-status-message-in-pidgin.html</id><summary type="html">&lt;p&gt;Atlast i came up with a real rhythmbox plugin for setting the status
+message in pidgin as the current song title playing in Rhythmbox music
+player .I wrote it a few month before and was using it. Thought of
+sharing it before but didnt get time. Actually i forgot about my blog
+when i started microblogging. From now onwards i will be updating this
+blog regularly.( this is what i wanted to do always :-D ) Download the
+plugin from here : &lt;a class="reference external" href="http://ragsagar.freehostia.com/rb-nowplaying.tar.gz"&gt;http://ragsagar.freehostia.com/rb-nowplaying.tar.gz&lt;/a&gt;
+To install it. 1) Extract the tarball. 2) Copy it to
+~/.gnome2/rhythmbox/plugins/ (if no such directories exists, create
+them) 3) Open rhythmbox. Edit -&amp;gt; Plugins 4) Check 'Now Playing Pidgin'
+That's it. If you are facing any problems do comment.&lt;/p&gt;
+</summary><category term="im-status"></category><category term="Now Playing"></category><category term="Pidgin"></category><category term="Python"></category><category term="song title"></category><category term="status message"></category></entry><entry><title>Linked list implementation in C</title><link href="ragsagar.in/linked-list-implementation-in-c.html" rel="alternate"></link><updated>2009-11-26T18:46:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2009-11-26:linked-list-implementation-in-c.html</id><summary type="html">&lt;p&gt;Just thought of sharing the code i written to learn linked list
+implementation the day before my data structures model practical exam.
+[sourcecode language=&amp;quot;python&amp;quot;] /* * linkedlist.c * * Copyright 2009
+Rag Sagar.V &amp;lt;&lt;a class="reference external" href="mailto:ragsagar&amp;#64;gmail.com"&gt;ragsagar&amp;#64;gmail.com&lt;/a&gt;&amp;gt; * * This program is free software;
+you can redistribute it and/or modify * it under the terms of the GNU
+General Public License as published by * the Free Software Foundation;
+either version 2 of the License, or * (at your option) any later
+version. * * This program is distributed in the hope that it will be
+useful, * but WITHOUT ANY WARRANTY; without even the implied warranty
+of * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the *
+GNU General Public License for more details. * * You should have
+received a copy of the GNU General Public License * along with this
+program; if not, write to the Free Software * Foundation, Inc., 51
+Franklin Street, Fifth Floor, Boston, * MA 02110-1301, USA. */
+#include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; typedef struct list { int data;
+struct list *next; }LIST; LIST *ptr,*temp,*start=NULL; void
+insert_after(int ,int ); void remove_item(int ); void display(void);
+int count=0; int main() { int item,opt,dat; system(&amp;quot;clear&amp;quot;); ptr=NULL;
+/* printf(&amp;quot;%d&amp;quot;,sizeof(LIST)); */ do { printf(&amp;quot;\n########## MENU
+##########\n&amp;quot;); printf(&amp;quot;1.Insert\n2.Remove\n3.Display\n4.Exit\n&amp;quot;);
+printf(&amp;quot;Enter your option : &amp;quot;); scanf(&amp;quot;%d&amp;quot;,&amp;amp;opt); switch(opt) { case 1:
+printf(&amp;quot;Enter the data to insert &amp;quot;); scanf(&amp;quot;%d&amp;quot;,&amp;amp;item); if(count==0) {
+ptr = (LIST *)malloc(sizeof(LIST)); ptr-&amp;gt;next = NULL; ptr-&amp;gt;data = item;
+start = ptr; } else { printf(&amp;quot;Enter the item after which you have to
+insert new element : &amp;quot;); scanf(&amp;quot;%d&amp;quot;,&amp;amp;dat); insert_after(dat,item); }
+count++; break; case 2: if(count==0) { printf(&amp;quot;\nList is empty\n&amp;quot;);
+break; } printf(&amp;quot;Enter the item to remove : &amp;quot;); scanf(&amp;quot;%d&amp;quot;,&amp;amp;item);
+remove_item(item); count--; break; case 3: if(count==0) {
+printf(&amp;quot;\nList is empty\n&amp;quot;); break; } else { printf(&amp;quot;List elements are
+\n&amp;quot;); display(); } break; case 4: break; } }while(opt!=4); return 0; }
+void insert_after(int data, int item) { LIST *tmp; temp=(LIST
+*)malloc(sizeof(LIST)); temp-&amp;gt;data=item; ptr=start; while(ptr!=NULL) {
+if(ptr-&amp;gt;data==data) { tmp=ptr-&amp;gt;next; ptr-&amp;gt;next=temp; temp-&amp;gt;next=tmp;
+break; } ptr=ptr-&amp;gt;next; } } void remove_item(int item) { ptr=start;
+if(ptr-&amp;gt;data == item) { start = ptr-&amp;gt;next; free(ptr); }
+while(ptr-&amp;gt;next!=NULL) { if((ptr-&amp;gt;next)-&amp;gt;data==item) { temp=ptr-&amp;gt;next;
+ptr-&amp;gt;next=(ptr-&amp;gt;next)-&amp;gt;next; free(temp); break; } ptr=ptr-&amp;gt;next; } }
+void display() { ptr = start; while(ptr!=NULL) { printf(&amp;quot;%d -&amp;gt;
+&amp;quot;,ptr-&amp;gt;data); ptr=ptr-&amp;gt;next; } } [/sourcecode]&lt;/p&gt;
+</summary><category term="C"></category><category term="data structures"></category><category term="linked list"></category></entry><entry><title>Infix To Postfix conversion in python</title><link href="ragsagar.in/infix-to-postfix-conversion-in-python.html" rel="alternate"></link><updated>2009-09-22T22:34:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2009-09-22:infix-to-postfix-conversion-in-python.html</id><summary type="html">&lt;div class="section" id="about-infix-and-postfix"&gt;
+&lt;h2&gt;&lt;strong&gt;About Infix and Postfix&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;In an expression if the operators are placed between the operands, it is
+known as infix notation ( eg A+B) . On the other hand if the operators
+are placed after the operands then the expression is in postfix notation
+.( eg AB+)&lt;/p&gt;
+&lt;div class="section" id="infix-notation-postfix-notation"&gt;
+&lt;h3&gt;&lt;strong&gt;Infix Notation&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; Postfix Notation&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;(A-C)*B&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; AC-B*&lt;/em&gt; &lt;em&gt;A+(B*C)
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; ABC*+&lt;/em&gt;
+&lt;em&gt;(A+B)/(C-D)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; AB+CD-/&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="code"&gt;
+&lt;h2&gt;&lt;strong&gt;Code&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;[sourcecode language=&amp;quot;python&amp;quot;] #!/usr/bin/python
+#http://ragsagar.wordpress.com postfix = [] temp = [] operator = -10
+operand = -20 leftparentheses = -30 rightparentheses = -40 empty = -50
+def precedence(s): if s is '(': return 0 elif s is '+' or '-': return 1
+elif s is '*' or '/' or '%': return 2 else: return 99 def typeof(s): if
+s is '(': return leftparentheses elif s is ')': return rightparentheses
+elif s is '+' or s is '-' or s is '*' or s is '%' or s is '/': return
+operator elif s is ' ': return empty else : return operand infix =
+raw_input(&amp;quot;Enter the infix notation : &amp;quot;) for i in infix : type =
+typeof(i) if type is leftparentheses : temp.append(i) elif type is
+rightparentheses : next = temp.pop() while next is not '(':
+postfix.append(next) next = temp.pop() elif type is operand:
+postfix.append(i) elif type is operator: p = precedence(i) while
+len(temp) is not 0 and p &amp;lt;= precedence(temp[-1]) :
+postfix.append(temp.pop()) temp.append(i) elif type is empty: continue
+while len(temp) &amp;gt; 0 : postfix.append(temp.pop()) print &amp;quot;It's postfix
+notation is &amp;quot;,''.join(postfix) [/sourcecode]&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="code-explanation"&gt;
+&lt;h2&gt;&lt;strong&gt;Code Explanation&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Above code converts infix notation in variable &lt;strong&gt;infix&lt;/strong&gt; into postfix
+notation and stores in &lt;strong&gt;postfix&lt;/strong&gt; list. This algorithm makes use of
+list &lt;strong&gt;temp&lt;/strong&gt;to hold operators and left parantheses in the infix
+notation. The &lt;strong&gt;postfix&lt;/strong&gt; list will be constructed from left to right
+using operands from &lt;strong&gt;infix&lt;/strong&gt; and operators which are removed from
+&lt;strong&gt;temp&lt;/strong&gt;. [caption id=&amp;quot;attachment_149&amp;quot; align=&amp;quot;alignnone&amp;quot; width=&amp;quot;500&amp;quot;
+caption=&amp;quot;output&amp;quot;]&lt;a href="#id1"&gt;&lt;span class="problematic" id="id2"&gt;`|output|`_&lt;/span&gt;&lt;/a&gt;[/caption]&lt;/p&gt;
+&lt;/p&gt;&lt;/div&gt;
+&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id1"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/infix-to-postfix-conversion-in-python.rst&lt;/tt&gt;, line 46); &lt;em&gt;&lt;a href="#id2"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Unknown target name: &amp;quot;|output|&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="conversion"></category><category term="infix"></category><category term="postfix"></category><category term="Python"></category><category term="stack"></category></entry><entry><title>How to make IRC bot in python? - my first post in Tuxopia</title><link href="ragsagar.in/how-to-make-irc-bot-in-python-my-first-post-in-tuxopia.html" rel="alternate"></link><updated>2009-09-01T12:28:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2009-09-01:how-to-make-irc-bot-in-python-my-first-post-in-tuxopia.html</id><summary type="html">&lt;p&gt;My first post in &lt;a class="reference external" href="http://tuxopia.net"&gt;tuxopia&lt;/a&gt; is a how-to for writing basic IRC bot in
+python.Thought of sharing the link &lt;a class="reference external" href="http://www.tuxopia.net/making_an_IRC_bot_in_python"&gt;here&lt;/a&gt;:-)&lt;/p&gt;
+</summary><category term="bot"></category><category term="how-to"></category><category term="irc"></category><category term="Python"></category><category term="socket"></category></entry><entry><title>Weather Info Utility in Python</title><link href="ragsagar.in/weather-info-utility-in-python.html" rel="alternate"></link><updated>2009-07-21T21:37:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2009-07-21:weather-info-utility-in-python.html</id><summary type="html">&lt;div class="section" id="here-is-a-script-to-provide-weather-information-of-a-city-with-the-help-of-google-api"&gt;
+&lt;h2&gt;Here is a script to provide weather information of a city with the help of google api.&lt;/h2&gt;
+&lt;p&gt;[sourcecode language=&amp;quot;python&amp;quot;] #!/usr/bin/python #Rag Sagar #Free to
+copy, modify and redistribute import sys from urllib2 import urlopen,
+URLError from xml.sax import make_parser from xml.sax.handler import
+ContentHandler class WeatherFinder(ContentHandler): &amp;quot;&amp;quot;&amp;quot;the handler
+class&amp;quot;&amp;quot;&amp;quot; def __init__(self): self.weather_list = [] self.go_on =
+False def startElement(self, tag, attrs): &amp;quot;handles the opening tags&amp;quot; if
+tag == 'current_conditions': self.go_on = True if self.go_on : # so
+that only values inside current_conditions tag is appended if tag ==
+'condition' : self.weather_list.append('Condition:
+'+attrs.get('data',&amp;quot;&amp;quot;)) elif tag == 'humidity' :
+self.weather_list.append(attrs.get('data',&amp;quot;&amp;quot;)) elif tag == 'temp_c' :
+self.weather_list.append('Temperature:'+attrs.get('data',&amp;quot;&amp;quot;)+'C') elif
+tag == 'wind_condition' :
+self.weather_list.append(attrs.get('data',&amp;quot;&amp;quot;)) return def
+endElement(self, tag): &amp;quot;handles closing tags&amp;quot; if tag ==
+'current_conditions': self.go_on = False if len(sys.argv) is not 2 :
+print &amp;quot;Syntax : &amp;quot;,sys.argv[0],&amp;quot; \n&amp;quot; sys.exit(1) else : city =
+sys.argv[1] url = 'http://www.google.com/ig/api?weather='+city parser =
+make_parser() obj = WeatherFinder() parser.setContentHandler(obj) try :
+parser.parse(urlopen(url)) except URLError: print &amp;quot;\n\33[33m Unable to
+fetch data..\33[0m\n&amp;quot; sys.exit(1) if obj.weather_list == [] : print
+&amp;quot;\n\33[33m Invalid city name, Try another.. \33[0m\n &amp;quot; else : print
+&amp;quot;\33[33mWeather Conditions of&amp;quot;,city,&amp;quot;\33[36m&amp;quot; for i in
+obj.weather_list: print i print &amp;quot;\33[0m&amp;quot; [/sourcecode] Checkout its
+screenshot [caption id=&amp;quot;attachment_120&amp;quot; align=&amp;quot;alignnone&amp;quot; width=&amp;quot;499&amp;quot;
+caption=&amp;quot;Weather utility &amp;quot;]|Weather utility|[/caption] Thanks to
+&lt;a class="reference external" href="http://linrdx.blogspot.com"&gt;rohit&lt;/a&gt;&lt;/p&gt;
+&lt;/p&gt;&lt;!-- |Weather --&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/weather-info-utility-in-python.rst&lt;/tt&gt;, line 44)&lt;/p&gt;
+malformed substitution definition.&lt;/div&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/weather-info-utility-in-python.rst&lt;/tt&gt;, line 45)&lt;/p&gt;
+Explicit markup ends without a blank line; unexpected unindent.&lt;/div&gt;
+&lt;p&gt;utility| image:: &lt;a class="reference external" href="http://ragsagar.files.wordpress.com/2009/07/screenshot_weather.png"&gt;http://ragsagar.files.wordpress.com/2009/07/screenshot_weather.png&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="google api"></category><category term="Python"></category><category term="urllib2"></category><category term="weather"></category><category term="xml"></category></entry><entry><title>Shell script to count unique words in a file and print them in alphabetical order</title><link href="ragsagar.in/shell-script-to-count-unique-words-in-a-file-and-print-them-in-alphabetical-order.html" rel="alternate"></link><updated>2009-05-30T19:00:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2009-05-30:shell-script-to-count-unique-words-in-a-file-and-print-them-in-alphabetical-order.html</id><summary type="html">&lt;p&gt;Iam back with another shell script written for my sis as part of her
+assignment. This time what i wanted to do is to count the unique words
+in a file and to print it in alphabetical order. For that i iterated
+through the words in the given file using for loop, filtered out the
+unique words using sort -u and counted it using wc -l. [sourcecode
+language='shell'] #!/usr/bin/bash echo Enter the filename read fn for
+WORD in $(cat $fn) do echo &amp;quot;$WORD&amp;quot; done | sort -u | wc -l for WORD in
+$(cat $fn) do echo &amp;quot;$WORD &amp;quot; done | sort -u [/sourcecode] Hope this will
+help someone to do his/her assignment :-D&lt;/p&gt;
+</summary><category term="assignment"></category><category term="bash"></category><category term="IGNOU"></category><category term="shell script"></category><category term="unique words"></category><category term="unique words count"></category></entry><entry><title>Shell Script to cipher a text file (caesar method)</title><link href="ragsagar.in/shell-script-to-cipher-a-text-file-caesar-method.html" rel="alternate"></link><updated>2009-05-27T22:20:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2009-05-27:shell-script-to-cipher-a-text-file-caesar-method.html</id><summary type="html">&lt;p&gt;Ok here is a script to cipher text contents in a file. It will shift the
+letters to the fifth letter to its right, ie if &lt;strong&gt;a&lt;/strong&gt; is the letter, it
+will change it to &lt;strong&gt;f&lt;/strong&gt;. [sourcecode language='shell'] echo Enter the
+filename read fn while read -n 1 letter do case $letter in '') echo ;; '
+') printf ' ' ;; '.') printf '.' ;; *) asci=$(printf %d \'$letter)
+((asci+=5)) fwd_letter=$(printf &amp;quot;\\$(printf &amp;quot;%03o&amp;quot; $asci)&amp;quot;) printf
+&amp;quot;$fwd_letter&amp;quot; ;; esac done &amp;lt; $fn [/sourcecode] You can decipher it by
+just replacing the &lt;strong&gt;+ in 18th line to-&lt;/strong&gt; Note : This is a assignment my
+sis got from IGNOU. I hope this will help someone to do his/her
+assignment :-)&lt;/p&gt;
+</summary></entry><entry><title>My h4ckb0x</title><link href="ragsagar.in/my-h4ckb0x.html" rel="alternate"></link><updated>2009-05-10T20:27:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2009-05-10:my-h4ckb0x.html</id><summary type="html">&lt;p&gt;[caption id=&amp;quot;attachment_92&amp;quot; align=&amp;quot;alignnone&amp;quot; width=&amp;quot;500&amp;quot; caption=&amp;quot;My
+Intel P4 2.67 ghz PC with 1gb + 256mb ram &amp;quot;]|My Intel P4 2.67 ghz PC
+with 1gb + 256mb ram|[/caption]&lt;/p&gt;
+&lt;!-- |My Intel P4 2.67 ghz PC with 1gb + 256mb --&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/my-h4ckb0x.rst&lt;/tt&gt;, line 10)&lt;/p&gt;
+malformed substitution definition.&lt;/div&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/my-h4ckb0x.rst&lt;/tt&gt;, line 11)&lt;/p&gt;
+Explicit markup ends without a blank line; unexpected unindent.&lt;/div&gt;
+&lt;p&gt;ram| image:: &lt;a class="reference external" href="http://ragsagar.files.wordpress.com/2009/05/image285.jpg"&gt;http://ragsagar.files.wordpress.com/2009/05/image285.jpg&lt;/a&gt;&lt;/p&gt;
+</summary></entry><entry><title>Screenshots</title><link href="ragsagar.in/screenshots.html" rel="alternate"></link><updated>2009-05-09T21:52:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2009-05-09:screenshots.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Here you can find the screenies of my Gnu/linux installations&lt;/strong&gt;
+[caption id=&amp;quot;attachment_90&amp;quot; align=&amp;quot;alignnone&amp;quot; width=&amp;quot;500&amp;quot; caption=&amp;quot;LFS
+with fluxbox&amp;quot;]&lt;a href="#id1"&gt;&lt;span class="problematic" id="id2"&gt;|LFS with fluxbox|&lt;/span&gt;&lt;/a&gt;[/caption]&lt;/p&gt;
+&lt;!-- |LFS with --&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/screenshots.rst&lt;/tt&gt;, line 9)&lt;/p&gt;
+malformed substitution definition.&lt;/div&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/screenshots.rst&lt;/tt&gt;, line 10)&lt;/p&gt;
+Explicit markup ends without a blank line; unexpected unindent.&lt;/div&gt;
+&lt;p&gt;fluxbox| image:: &lt;a class="reference external" href="http://ragsagar.files.wordpress.com/2009/05/screenie21.jpg"&gt;http://ragsagar.files.wordpress.com/2009/05/screenie21.jpg&lt;/a&gt;&lt;/p&gt;
+&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id1"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/screenshots.rst&lt;/tt&gt;, line 5); &lt;em&gt;&lt;a href="#id2"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Undefined substitution referenced: &amp;quot;LFS with fluxbox&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Installing and Setting up Swanalekha in Slackware</title><link href="ragsagar.in/installing-and-setting-up-swanalekha-in-slackware.html" rel="alternate"></link><updated>2009-03-24T20:54:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2009-03-24:installing-and-setting-up-swanalekha-in-slackware.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;E&lt;/strong&gt;arlier we saw how to setup&lt;a class="reference external" href="http://ragsagar.wordpress.com/2008/11/20/setting-up-swanalekha-in-gentoo/"&gt;swanalekha in gentoo!&lt;/a&gt; Now lets see
+how to setup the same in slackware. Now its pretty easy when compared to
+what we have done in gentoo.As gentoo dont have any native binary
+package we downloaded the source from &lt;a href="#id2"&gt;&lt;span class="problematic" id="id3"&gt;`here`_&lt;/span&gt;&lt;/a&gt; and installed it.This time
+no need to install from source as i made a slackware binary package for
+swanalekha which makes the installation a piece of cake ;-) To install
+swanalekha, download the binary package from &lt;a href="#id4"&gt;&lt;span class="problematic" id="id5"&gt;`here`_&lt;/span&gt;&lt;/a&gt;
+&lt;tt class="docutils literal"&gt;$su #wget &lt;span class="pre"&gt;http://ragsagar.freehostia.com/swanalekha_0.3.1_2.tgz&lt;/span&gt; #installpkg swanalekha_0.3.1_2.tgz&lt;/tt&gt;
+Hey thats all. We installed swanalekha. Now start typing malayalam in
+your computer :-) For More Info on typing malayalam using swanalekha, go
+through &lt;a class="reference external" href="http://ragsagar.wordpress.com/2008/11/20/setting-up-swanalekha-in-gentoo/"&gt;this&lt;/a&gt; old post. . PS: Make sure that you have &lt;strong&gt;scim&lt;/strong&gt; already
+installed in your computer.&lt;/p&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/installing-and-setting-up-swanalekha-in-slackware.rst&lt;/tt&gt;, line 22); &lt;em&gt;&lt;a href="#id1"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Duplicate explicit target name: &amp;quot;here&amp;quot;.&lt;/div&gt;
+&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id2"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/installing-and-setting-up-swanalekha-in-slackware.rst&lt;/tt&gt;, line 7); &lt;em&gt;&lt;a href="#id3"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Duplicate target name, cannot be used as a unique reference: &amp;quot;here&amp;quot;.&lt;/div&gt;
+&lt;div class="system-message" id="id4"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/installing-and-setting-up-swanalekha-in-slackware.rst&lt;/tt&gt;, line 7); &lt;em&gt;&lt;a href="#id5"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Duplicate target name, cannot be used as a unique reference: &amp;quot;here&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="linux"></category><category term="malayalam input"></category><category term="malayalam typing"></category><category term="Scim"></category><category term="scim-ml"></category><category term="slackware"></category><category term="slackware binary package"></category><category term="Swanalekha"></category><category term="tgz"></category></entry><entry><title>Script for appending Title of Song Playing in Rhythmbox as Status Message in Pidgin</title><link href="ragsagar.in/script-for-appending-title-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.html" rel="alternate"></link><updated>2009-03-10T22:48:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2009-03-10:script-for-appending-title-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.html</id><summary type="html">&lt;p&gt;&lt;p&gt;Yesterday i installed debian lenny ( thanks to &lt;a class="reference external" href="http://aashiks.in"&gt;ashik salahudeen&lt;/a&gt; who
+sent me those DVDs for free :-) ). I was not ready to waste another
+holiday.So started thinking of doing something and got landed in my
+usual plugin stuff.This time not audacious,its Rhythmbox.So downloaded
+my pidgin-audacious now playing code and rewritten it to access
+rhythmbox methods.This time there is a lot of changes in the code.This
+code is not going to use 'watch' command to execute it after a fixed
+period and another interesting feature is a format specifier kinda
+thing. ie Just write what you want in the status message and place a
+format specifier where you want to see the song title , album title and
+artist. Format Specifiers are&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;strong&gt;%rbs --------------&amp;gt; for displaying song title %rbt
+--------------&amp;gt; for displaying album title %rba --------------&amp;gt; for
+displaying artist name&lt;/strong&gt;&lt;/blockquote&gt;
+&lt;p&gt;Script will append a seperate string containg songtitle and albumtitle
+if no format specifier is there in the status message at the time of
+running the script. An example for appending status message using format
+specifier kinda thing:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;strong&gt;%rbs in %rbt by %rba&lt;/strong&gt;&lt;/blockquote&gt;
+&lt;p&gt;[caption id=&amp;quot;attachment_64&amp;quot; align=&amp;quot;alignnone&amp;quot; width=&amp;quot;249&amp;quot;
+caption=&amp;quot;pidgin after appending format specifier kinda thing in status
+message&amp;quot;]&lt;a href="#id1"&gt;&lt;span class="problematic" id="id2"&gt;|pidgin-after-appending-formatspecifier kinda thing in status
+message|&lt;/span&gt;&lt;/a&gt;[/caption] Now download the script and run it using these
+commands&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;strong&gt;$wget http://ragsagar.freehostia.com/pidgin-rb.py $python
+pidgin-rb.py&lt;/strong&gt;&lt;/blockquote&gt;
+&lt;p&gt;[caption id=&amp;quot;attachment_73&amp;quot; align=&amp;quot;alignnone&amp;quot; width=&amp;quot;500&amp;quot;
+caption=&amp;quot;Downloading and running the script&amp;quot;]&lt;a href="#id3"&gt;&lt;span class="problematic" id="id4"&gt;|Downloading and running
+the script|&lt;/span&gt;&lt;/a&gt;[/caption] [caption id=&amp;quot;attachment_65&amp;quot; align=&amp;quot;alignnone&amp;quot;
+width=&amp;quot;249&amp;quot; caption=&amp;quot;pidgin after running the script&amp;quot;]&lt;a href="#id5"&gt;&lt;span class="problematic" id="id6"&gt;|pidgin after
+running the script|&lt;/span&gt;&lt;/a&gt;[/caption] &lt;strong&gt;PS : Run the script only after
+appending the format specifier kinda thing. You can run the script
+without appending anything, In this case the script will append status
+message like &amp;quot; listening to [songname] in [albumname] &amp;quot;&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;strong&gt;`Download Script`_&lt;/strong&gt;&lt;/blockquote&gt;
+&lt;/p&gt;&lt;!-- |pidgin-after-appending-formatspecifier kinda thing in status --&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/script-for-appending-song-titile-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.rst&lt;/tt&gt;, line 61)&lt;/p&gt;
+malformed substitution definition.&lt;/div&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/script-for-appending-song-titile-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.rst&lt;/tt&gt;, line 62)&lt;/p&gt;
+Explicit markup ends without a blank line; unexpected unindent.&lt;/div&gt;
+&lt;p&gt;message| image:: &lt;a class="reference external" href="http://ragsagar.files.wordpress.com/2009/03/pidb4run3.png"&gt;http://ragsagar.files.wordpress.com/2009/03/pidb4run3.png&lt;/a&gt;
+.. &lt;a href="#id7"&gt;&lt;span class="problematic" id="id8"&gt;|Downloading and running the
+script|&lt;/span&gt;&lt;/a&gt; image:: &lt;a class="reference external" href="http://ragsagar.files.wordpress.com/2009/03/terminal.png"&gt;http://ragsagar.files.wordpress.com/2009/03/terminal.png&lt;/a&gt;
+.. &lt;a href="#id9"&gt;&lt;span class="problematic" id="id10"&gt;|pidgin after running the
+script|&lt;/span&gt;&lt;/a&gt; image:: &lt;a class="reference external" href="http://ragsagar.files.wordpress.com/2009/03/pidafterrun.png"&gt;http://ragsagar.files.wordpress.com/2009/03/pidafterrun.png&lt;/a&gt;&lt;/p&gt;
+&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id1"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/script-for-appending-song-titile-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.rst&lt;/tt&gt;, line 34); &lt;em&gt;&lt;a href="#id2"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Undefined substitution referenced: &amp;quot;pidgin-after-appending-formatspecifier kinda thing in status message&amp;quot;.&lt;/div&gt;
+&lt;div class="system-message" id="id3"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/script-for-appending-song-titile-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.rst&lt;/tt&gt;, line 43); &lt;em&gt;&lt;a href="#id4"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Undefined substitution referenced: &amp;quot;Downloading and running the script&amp;quot;.&lt;/div&gt;
+&lt;div class="system-message" id="id5"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/script-for-appending-song-titile-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.rst&lt;/tt&gt;, line 43); &lt;em&gt;&lt;a href="#id6"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Undefined substitution referenced: &amp;quot;pidgin after running the script&amp;quot;.&lt;/div&gt;
+&lt;div class="system-message" id="id7"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/script-for-appending-song-titile-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.rst&lt;/tt&gt;, line 62); &lt;em&gt;&lt;a href="#id8"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Undefined substitution referenced: &amp;quot;Downloading and running the script&amp;quot;.&lt;/div&gt;
+&lt;div class="system-message" id="id9"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/script-for-appending-song-titile-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.rst&lt;/tt&gt;, line 62); &lt;em&gt;&lt;a href="#id10"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Undefined substitution referenced: &amp;quot;pidgin after running the script&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="Current Track"></category><category term="dbus"></category><category term="Now Playing"></category><category term="Pidgin"></category><category term="Python"></category><category term="rhythmbox"></category><category term="status updating"></category></entry><entry><title>A Not-So-Useful Script For Encoding &amp;amp; Decoding String!</title><link href="ragsagar.in/a-not-so-useful-script-for-encoding-amp-decoding-string.html" rel="alternate"></link><updated>2009-02-24T20:39:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2009-02-24:a-not-so-useful-script-for-encoding-amp-decoding-string.html</id><summary type="html">&lt;p&gt;Here is small simple script in python to encode and decode string using
+base64. ~Happy Hacking &lt;a class="reference external" href="http://ragsagar.freehostia.com/encoder.py"&gt;Click Here To Download the Script&lt;/a&gt;&lt;/p&gt;
+</summary></entry><entry><title>Simple Search Utility in Python</title><link href="ragsagar.in/simple-search-utility-in-python.html" rel="alternate"></link><updated>2009-01-14T18:38:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2009-01-14:simple-search-utility-in-python.html</id><summary type="html">&lt;p&gt;&lt;p&gt;Here is a simple search utility i wrote in python.it makes use of the
+modules os,os.path and re for the surfing through the filesystem and to
+match the files.The name of the file to find is given as an argument,ie&lt;/p&gt;
+&lt;blockquote&gt;
+python search &amp;lt;filename_u_want_to_find&amp;gt;&lt;/blockquote&gt;
+&lt;p&gt;It uses sys.argv to acces the arguments given.give '--help' as an
+argument to display help.&lt;/p&gt;
+&lt;blockquote&gt;
+python search --help&lt;/blockquote&gt;
+&lt;p&gt;You can download the script from &lt;a class="reference external" href="http://ragsagar.freehostia.com/search"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/p&gt;</summary><category term="os.path"></category><category term="Python"></category><category term="re"></category><category term="search utility"></category></entry><entry><title>Simple Calculator using Pygtk</title><link href="ragsagar.in/simple-calculator-using-pygtk.html" rel="alternate"></link><updated>2008-12-07T20:27:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2008-12-07:simple-calculator-using-pygtk.html</id><summary type="html">&lt;p&gt;&lt;p&gt;I was working with pygtk for fewdays.It is pretty interesting.Suddenly
+thoughts about making a calculator came into my mind.So i started
+working on it.GUI designing was pretty easy when compared to the
+calculation part. Finished the GUI part pretty fastly,but the
+calculation part really made my head at sixes and sevens :-o.Anyway soon
+i got a solution.In pygtk when a widget (eg button) is pressed it calls
+a particular function.For that we connects the signal emitted from the
+button with that function.So the calculation part should be in the
+function that is called when the operators(+,-,/,*) are pressed.The
+function that executed when the numbers are pressed just sends that
+number to the Text Entry widget (ie our calculator's screen).Hope you
+got an idea abt the program! Any way it is well commented as far as i
+can.So there wont be much problems to understand the code.As the code is
+somewhat big iam not pasting it here..You can download it from &lt;a class="reference external" href="http://ragsagar.freehostia.com/calculator.py"&gt;here&lt;/a&gt;
+Run it using this command :&lt;/p&gt;
+&lt;blockquote&gt;
+python calculator.py&lt;/blockquote&gt;
+&lt;p&gt;Here is its screenshot :- [caption id=&amp;quot;attachment_39&amp;quot; align=&amp;quot;alignnone&amp;quot;
+width=&amp;quot;497&amp;quot;
+caption=&amp;quot;pygtk_calculator&amp;quot;]&lt;a href="#id1"&gt;&lt;span class="problematic" id="id2"&gt;|pygtk\_calculator|&lt;/span&gt;&lt;/a&gt;[/caption] Dont
+forget to drop your comments , thanks :-)&lt;/p&gt;
+&lt;/p&gt;&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id1"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/simple-calculator-in-pygtk.rst&lt;/tt&gt;, line 29); &lt;em&gt;&lt;a href="#id2"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Undefined substitution referenced: &amp;quot;pygtk_calculator&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="calculator"></category><category term="gtk"></category><category term="gui"></category><category term="pygtk"></category><category term="Python"></category><category term="simple calculator"></category></entry><entry><title>Now Playing script for pidgin and audacious</title><link href="ragsagar.in/now-playing-script-for-pidgin-and-audacious.html" rel="alternate"></link><updated>2008-11-21T22:39:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2008-11-21:now-playing-script-for-pidgin-and-audacious.html</id><summary type="html">&lt;p&gt;&lt;p&gt;Few days ago i wrote a script to update the status message in pidgin
+with the title of the song playing in audacious music player.It is
+written in python.it makes use of the dbus for the inter application
+communication.when you invoke that script it just appends the title of
+the song currently playing in audacious as the status message in pidgin
+.i used the shell command $watch to invoke it in every 30 seconds so
+that the status message gets updated with the songtitle within 30
+seconds after the song change.You can reduce the number of seconds so
+that the status message gets updated frequently reducing the time delay
+between the song change and updation of status message.What the script
+does is, it retrieves the song title from the audacious music player
+using dbus.Then this songtitle is assigned as the status message in
+pidgin by communicating through dbus.This script needs dbus and
+py-dbus.So make sure that you have both packages installed in your
+system. Here is the script :&lt;/p&gt;
+&lt;blockquote&gt;
+def set_message(message): # Get current status type
+(Available/Away/etc.) current =
+purple.PurpleSavedstatusGetType(purple.PurpleSavedstatusGetCurrent())
+# Create new transient status and activate it status =
+purple.PurpleSavedstatusNew(&amp;quot;&amp;quot;, current) msg=&amp;quot;Now Playing: &amp;quot;
+emsg=msg+message purple.PurpleSavedstatusSetMessage(status, emsg)
+purple.PurpleSavedstatusActivate(status) import dbus
+session_bus=dbus.SessionBus() proxy =
+session_bus.get_object(&amp;quot;im.pidgin.purple.PurpleService&amp;quot;,
+&amp;quot;/im/pidgin/purple/PurpleObject&amp;quot;) purple = dbus.Interface(proxy,
+&amp;quot;im.pidgin.purple.PurpleInterface&amp;quot;) proxy1 =
+session_bus.get_object('org.mpris.audacious','/TrackList') purple1
+= dbus.Interface(proxy1,'org.freedesktop.MediaPlayer') ct =
+purple1.GetCurrentTrack() proxy2 =
+session_bus.get_object('org.mpris.audacious','/org/atheme/audacious')
+purple2 = dbus.Interface(proxy2,'org.atheme.audacious') currentsong
+= purple2.SongTitle(ct) print currentsong set_message(currentsong)&lt;/blockquote&gt;
+&lt;p&gt;Running this script will update the status message just once , so u have
+to shell command $watch as i said earlier.if you dont want to do this
+things manually, dont worry! i got package for this, grab it from here
+&lt;a class="reference external" href="http://ragsagar.freehostia.com/pidgin-audacious_plugin.tar.gz"&gt;http://ragsagar.freehostia.com/pidgin-audacious_plugin.tar.gz&lt;/a&gt; , untar
+it and run the installer..&lt;/p&gt;
+&lt;blockquote&gt;
+$wget &lt;a class="reference external" href="http://ragsagar.freehostia.com/pidgin-audacious_plugin.tar.gz"&gt;http://ragsagar.freehostia.com/pidgin-audacious_plugin.tar.gz&lt;/a&gt;
+$tar -xvf pidgin-audacious_plugin.tar.gz $cd pidgin-audacious\
+plugin/ $sudo chmod a+x installer $./installer&lt;/blockquote&gt;
+&lt;p&gt;Now run the script using this command :&lt;/p&gt;
+&lt;blockquote&gt;
+$pidgin-plugin&lt;/blockquote&gt;
+&lt;p&gt;PS: Make sure that you have both audacious and pidgin already running&lt;/p&gt;
+&lt;/p&gt;</summary><category term="Audacious"></category><category term="dbus"></category><category term="Now Playing"></category><category term="Pidgin"></category><category term="Py-dbus"></category><category term="Python"></category></entry><entry><title>Setting up swanalekha in Gentoo!</title><link href="ragsagar.in/setting-up-swanalekha-in-gentoo.html" rel="alternate"></link><updated>2008-11-20T14:27:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2008-11-20:setting-up-swanalekha-in-gentoo.html</id><summary type="html">&lt;p&gt;&lt;p&gt;Swanalekha is a scim malayalam phonetic input method.We can type
+malayalam easily using swanalekha as it uses transliteration based input
+method! Iam going to explain(not really :p) how i installed swanalekha
+in my gentoo installation! As it is scim based, swanalekha definitely
+needs scim,so we have to install it frist.To install it you can use
+emerge command.it downloads and compiles its source and solves
+dependecies by itself,so need to worry about dependecy! If you want to
+know the size and list of dependencies of scim that emerge downloads,
+use this command..&lt;/p&gt;
+&lt;blockquote&gt;
+#emerge -pv scim&lt;/blockquote&gt;
+&lt;p&gt;Install it using this command :&lt;/p&gt;
+&lt;blockquote&gt;
+#emerge scim&lt;/blockquote&gt;
+&lt;p&gt;Swanalekha needs another two packages named scim-tables and
+scim-m17n,they wont get installed with scim, so install them manually
+using this command..&lt;/p&gt;
+&lt;blockquote&gt;
+#emerge scim-tables scim-m17n&lt;/blockquote&gt;
+&lt;p&gt;Now get the source tarball from
+&lt;a class="reference external" href="http://savannah.inetbridge.net/smc/Swanalekha/swanalekha_0.3.1_2.tar.gz"&gt;http://savannah.inetbridge.net/smc/Swanalekha/swanalekha_0.3.1_2.tar.gz&lt;/a&gt;
+untar it and cd into it..&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$tar -xvf swanalekha_0.3.1_2.tar.gz&lt;/p&gt;
+&lt;p&gt;$cd swanalekha_0.3.1_2&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;now run make as root&lt;/p&gt;
+&lt;blockquote&gt;
+#make&lt;/blockquote&gt;
+&lt;p&gt;now configure scim and run&lt;/p&gt;
+&lt;blockquote&gt;
+$scim-setup&lt;/blockquote&gt;
+&lt;p&gt;[caption id=&amp;quot;attachment_9&amp;quot; align=&amp;quot;alignnone&amp;quot; width=&amp;quot;331&amp;quot;
+caption=&amp;quot;scim-setup window&amp;quot;]&lt;a href="#id7"&gt;&lt;span class="problematic" id="id8"&gt;`|scim-setup window|`_&lt;/span&gt;&lt;/a&gt;[/caption] In the
+Global Setup tab under IMengine enable Malayalam.Restart scim for the
+changes to take effect.Now open your favourite text editor.Right click
+and select Scim Input Method from Input Methods.Then left click in the
+scim tray icon,select Malalyalam-Swanalekha from it and start typing
+malayalam! &lt;a href="#id9"&gt;&lt;span class="problematic" id="id10"&gt;`|malayalam typed using swanalekha in leafpad texteditor|`_&lt;/span&gt;&lt;/a&gt;
+PS: Hope you have malayalam fonts installed,otherwise get some fonts
+from &lt;a class="reference external" href="http://download.savannah.gnu.org/releases/smc/fonts/malayalam-fonts-04/"&gt;here&lt;/a&gt; and copy it to ~/.fonts or /usr/share/fonts and restart x&lt;/p&gt;
+&lt;/p&gt;&lt;!-- |scim-setup --&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/setting-up-swanalekha-in-gentoo.rst&lt;/tt&gt;, line 67)&lt;/p&gt;
+malformed substitution definition.&lt;/div&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/setting-up-swanalekha-in-gentoo.rst&lt;/tt&gt;, line 68)&lt;/p&gt;
+Explicit markup ends without a blank line; unexpected unindent.&lt;/div&gt;
+&lt;p&gt;window| image:: &lt;a class="reference external" href="http://ragsagar.files.wordpress.com/2008/11/scim-setup.png"&gt;http://ragsagar.files.wordpress.com/2008/11/scim-setup.png&lt;/a&gt;
+.. &lt;a href="#id1"&gt;&lt;span class="problematic" id="id2"&gt;|malayalam typed using swanalekha in leafpad
+texteditor|&lt;/span&gt;&lt;/a&gt; image:: &lt;a class="reference external" href="http://ragsagar.files.wordpress.com/2008/11/swana_leafpad.png"&gt;http://ragsagar.files.wordpress.com/2008/11/swana_leafpad.png&lt;/a&gt;
+.. &lt;a href="#id3"&gt;&lt;span class="problematic" id="id4"&gt;|image2|&lt;/span&gt;&lt;/a&gt; image:: &lt;a class="reference external" href="http://ragsagar.files.wordpress.com/2008/11/scim-setup.png"&gt;http://ragsagar.files.wordpress.com/2008/11/scim-setup.png&lt;/a&gt;
+.. &lt;a href="#id5"&gt;&lt;span class="problematic" id="id6"&gt;|image3|&lt;/span&gt;&lt;/a&gt; image:: &lt;a class="reference external" href="http://ragsagar.files.wordpress.com/2008/11/swana_leafpad.png"&gt;http://ragsagar.files.wordpress.com/2008/11/swana_leafpad.png&lt;/a&gt;&lt;/p&gt;
+&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id1"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/setting-up-swanalekha-in-gentoo.rst&lt;/tt&gt;, line 68); &lt;em&gt;&lt;a href="#id2"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Undefined substitution referenced: &amp;quot;malayalam typed using swanalekha in leafpad texteditor&amp;quot;.&lt;/div&gt;
+&lt;div class="system-message" id="id3"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/setting-up-swanalekha-in-gentoo.rst&lt;/tt&gt;, line 68); &lt;em&gt;&lt;a href="#id4"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Undefined substitution referenced: &amp;quot;image2&amp;quot;.&lt;/div&gt;
+&lt;div class="system-message" id="id5"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/setting-up-swanalekha-in-gentoo.rst&lt;/tt&gt;, line 68); &lt;em&gt;&lt;a href="#id6"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Undefined substitution referenced: &amp;quot;image3&amp;quot;.&lt;/div&gt;
+&lt;div class="system-message" id="id7"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/setting-up-swanalekha-in-gentoo.rst&lt;/tt&gt;, line 49); &lt;em&gt;&lt;a href="#id8"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Unknown target name: &amp;quot;|scim-setup window|&amp;quot;.&lt;/div&gt;
+&lt;div class="system-message" id="id9"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/setting-up-swanalekha-in-gentoo.rst&lt;/tt&gt;, line 49); &lt;em&gt;&lt;a href="#id10"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Unknown target name: &amp;quot;|malayalam typed using swanalekha in leafpad texteditor|&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="Gentoo"></category><category term="Malyalam"></category><category term="Scim"></category><category term="Swanalekha"></category></entry><entry><title>എന്റെ ആദ്യത്തെ പോസ്റ്റ്</title><link href="ragsagar.in/enrre-aadytte-poosrrrr.html" rel="alternate"></link><updated>2008-08-27T02:53:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2008-08-27:enrre-aadytte-poosrrrr.html</id><summary type="html">&lt;p&gt;അങ്ങന്നെ ഞാന്‍ ആദ്യമായി ബ്ളോഗ്ഗിങ്ങ് തുടങ്ങുകയായി..അക്ഷരപിശകുകള്‍ വളരെ
+സജീവമായി തന്നെ എന്റെ പോസ്റ്റുകളില്‍ ഉണ്ടാകുമെന്നതില്‍
+സംശയമില്ല..നിങ്ങളുടെ സഹായത്തോടെ ഞാനതു കുറയ്ക്കാന്‍
+ശ്രമിക്കുന്നതായിരിക്കും.&lt;/p&gt;
+&lt;p&gt;&lt;a href="#id4"&gt;&lt;span class="problematic" id="id5"&gt;`|Spreadfirefox Affiliate Button|`_&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/p&gt;&lt;!-- |Spreadfirefox Affiliate --&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/%e0%b4%8e%e0%b4%a8%e0%b5%8d%e0%b4%b1%e0%b5%86-%e0%b4%86%e0%b4%a6%e0%b5%8d%e0%b4%af%e0%b4%a4%e0%b5%8d%e0%b4%a4%e0%b5%86-%e0%b4%aa%e0%b5%8b%e0%b4%b8%e0%b5%8d%e0%b4%b1%e0%b5%8d%e0%b4%b1%e0%b5%8d.rst&lt;/tt&gt;, line 19)&lt;/p&gt;
+malformed substitution definition.&lt;/div&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/%e0%b4%8e%e0%b4%a8%e0%b5%8d%e0%b4%b1%e0%b5%86-%e0%b4%86%e0%b4%a6%e0%b5%8d%e0%b4%af%e0%b4%a4%e0%b5%8d%e0%b4%a4%e0%b5%86-%e0%b4%aa%e0%b5%8b%e0%b4%b8%e0%b5%8d%e0%b4%b1%e0%b5%8d%e0%b4%b1%e0%b5%8d.rst&lt;/tt&gt;, line 20)&lt;/p&gt;
+Explicit markup ends without a blank line; unexpected unindent.&lt;/div&gt;
+&lt;p&gt;Button| image:: &lt;a class="reference external" href="http://sfx-images.mozilla.org/affiliates/Buttons/firefox3/120x240.png"&gt;http://sfx-images.mozilla.org/affiliates/Buttons/firefox3/120x240.png&lt;/a&gt;
+.. &lt;a href="#id2"&gt;&lt;span class="problematic" id="id3"&gt;|image1|&lt;/span&gt;&lt;/a&gt; image:: &lt;a class="reference external" href="http://sfx-images.mozilla.org/affiliates/Buttons/firefox3/120x240.png"&gt;http://sfx-images.mozilla.org/affiliates/Buttons/firefox3/120x240.png&lt;/a&gt;&lt;/p&gt;
+&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id2"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/%e0%b4%8e%e0%b4%a8%e0%b5%8d%e0%b4%b1%e0%b5%86-%e0%b4%86%e0%b4%a6%e0%b5%8d%e0%b4%af%e0%b4%a4%e0%b5%8d%e0%b4%a4%e0%b5%86-%e0%b4%aa%e0%b5%8b%e0%b4%b8%e0%b5%8d%e0%b4%b1%e0%b5%8d%e0%b4%b1%e0%b5%8d.rst&lt;/tt&gt;, line 20); &lt;em&gt;&lt;a href="#id3"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Undefined substitution referenced: &amp;quot;image1&amp;quot;.&lt;/div&gt;
+&lt;div class="system-message" id="id4"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/%e0%b4%8e%e0%b4%a8%e0%b5%8d%e0%b4%b1%e0%b5%86-%e0%b4%86%e0%b4%a6%e0%b5%8d%e0%b4%af%e0%b4%a4%e0%b5%8d%e0%b4%a4%e0%b5%86-%e0%b4%aa%e0%b5%8b%e0%b4%b8%e0%b5%8d%e0%b4%b1%e0%b5%8d%e0%b4%b1%e0%b5%8d.rst&lt;/tt&gt;, line 11); &lt;em&gt;&lt;a href="#id5"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Unknown target name: &amp;quot;|spreadfirefox affiliate button|&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>About</title><link href="ragsagar.in/about.html" rel="alternate"></link><updated>2008-08-27T02:10:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2008-08-27:about.html</id><summary type="html">&lt;p&gt;Hi friends! Iam Rag Sagar, FOSSill netizen from Palakkad(Kerala), doing
+2nd year Btech IT at SSKCET Coimbatore.&amp;nbsp; &lt;a href="#id1"&gt;&lt;span class="problematic" id="id2"&gt;`|my\_image|`_&lt;/span&gt;&lt;/a&gt; You can find me
+online 24x7 ( not really :-p) in the irc channel #orkut_linux at
+freenode ( &lt;a class="reference external" href="http://www.tuxopia.net/node/18"&gt;http://www.tuxopia.net/node/18&lt;/a&gt; )&lt;/p&gt;
+&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id1"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/about.rst&lt;/tt&gt;, line 5); &lt;em&gt;&lt;a href="#id2"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Unknown target name: &amp;quot;|my_image|&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
+</summary></entry></feed>

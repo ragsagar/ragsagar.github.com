@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>r4g54g4r's h4ckl0g</title><link href="ragsagar.in/" rel="alternate"></link><link href="ragsagar.in/feeds/My_Works,%20Python,%20Scripts.atom.xml" rel="self"></link><id>ragsagar.in/</id><updated>2009-07-21T21:37:00+05:30</updated><entry><title>Weather Info Utility in Python</title><link href="ragsagar.in/weather-info-utility-in-python.html" rel="alternate"></link><updated>2009-07-21T21:37:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2009-07-21:weather-info-utility-in-python.html</id><summary type="html">&lt;div class="section" id="here-is-a-script-to-provide-weather-information-of-a-city-with-the-help-of-google-api"&gt;
+&lt;h2&gt;Here is a script to provide weather information of a city with the help of google api.&lt;/h2&gt;
+&lt;p&gt;[sourcecode language=&amp;quot;python&amp;quot;] #!/usr/bin/python #Rag Sagar #Free to
+copy, modify and redistribute import sys from urllib2 import urlopen,
+URLError from xml.sax import make_parser from xml.sax.handler import
+ContentHandler class WeatherFinder(ContentHandler): &amp;quot;&amp;quot;&amp;quot;the handler
+class&amp;quot;&amp;quot;&amp;quot; def __init__(self): self.weather_list = [] self.go_on =
+False def startElement(self, tag, attrs): &amp;quot;handles the opening tags&amp;quot; if
+tag == 'current_conditions': self.go_on = True if self.go_on : # so
+that only values inside current_conditions tag is appended if tag ==
+'condition' : self.weather_list.append('Condition:
+'+attrs.get('data',&amp;quot;&amp;quot;)) elif tag == 'humidity' :
+self.weather_list.append(attrs.get('data',&amp;quot;&amp;quot;)) elif tag == 'temp_c' :
+self.weather_list.append('Temperature:'+attrs.get('data',&amp;quot;&amp;quot;)+'C') elif
+tag == 'wind_condition' :
+self.weather_list.append(attrs.get('data',&amp;quot;&amp;quot;)) return def
+endElement(self, tag): &amp;quot;handles closing tags&amp;quot; if tag ==
+'current_conditions': self.go_on = False if len(sys.argv) is not 2 :
+print &amp;quot;Syntax : &amp;quot;,sys.argv[0],&amp;quot; \n&amp;quot; sys.exit(1) else : city =
+sys.argv[1] url = 'http://www.google.com/ig/api?weather='+city parser =
+make_parser() obj = WeatherFinder() parser.setContentHandler(obj) try :
+parser.parse(urlopen(url)) except URLError: print &amp;quot;\n\33[33m Unable to
+fetch data..\33[0m\n&amp;quot; sys.exit(1) if obj.weather_list == [] : print
+&amp;quot;\n\33[33m Invalid city name, Try another.. \33[0m\n &amp;quot; else : print
+&amp;quot;\33[33mWeather Conditions of&amp;quot;,city,&amp;quot;\33[36m&amp;quot; for i in
+obj.weather_list: print i print &amp;quot;\33[0m&amp;quot; [/sourcecode] Checkout its
+screenshot [caption id=&amp;quot;attachment_120&amp;quot; align=&amp;quot;alignnone&amp;quot; width=&amp;quot;499&amp;quot;
+caption=&amp;quot;Weather utility &amp;quot;]|Weather utility|[/caption] Thanks to
+&lt;a class="reference external" href="http://linrdx.blogspot.com"&gt;rohit&lt;/a&gt;&lt;/p&gt;
+&lt;/p&gt;&lt;!-- |Weather --&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/weather-info-utility-in-python.rst&lt;/tt&gt;, line 44)&lt;/p&gt;
+malformed substitution definition.&lt;/div&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/weather-info-utility-in-python.rst&lt;/tt&gt;, line 45)&lt;/p&gt;
+Explicit markup ends without a blank line; unexpected unindent.&lt;/div&gt;
+&lt;p&gt;utility| image:: &lt;a class="reference external" href="http://ragsagar.files.wordpress.com/2009/07/screenshot_weather.png"&gt;http://ragsagar.files.wordpress.com/2009/07/screenshot_weather.png&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="google api"></category><category term="Python"></category><category term="urllib2"></category><category term="weather"></category><category term="xml"></category></entry><entry><title>A Not-So-Useful Script For Encoding &amp;amp; Decoding String!</title><link href="ragsagar.in/a-not-so-useful-script-for-encoding-amp-decoding-string.html" rel="alternate"></link><updated>2009-02-24T20:39:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2009-02-24:a-not-so-useful-script-for-encoding-amp-decoding-string.html</id><summary type="html">&lt;p&gt;Here is small simple script in python to encode and decode string using
+base64. ~Happy Hacking &lt;a class="reference external" href="http://ragsagar.freehostia.com/encoder.py"&gt;Click Here To Download the Script&lt;/a&gt;&lt;/p&gt;
+</summary></entry><entry><title>Simple Calculator using Pygtk</title><link href="ragsagar.in/simple-calculator-using-pygtk.html" rel="alternate"></link><updated>2008-12-07T20:27:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2008-12-07:simple-calculator-using-pygtk.html</id><summary type="html">&lt;p&gt;&lt;p&gt;I was working with pygtk for fewdays.It is pretty interesting.Suddenly
+thoughts about making a calculator came into my mind.So i started
+working on it.GUI designing was pretty easy when compared to the
+calculation part. Finished the GUI part pretty fastly,but the
+calculation part really made my head at sixes and sevens :-o.Anyway soon
+i got a solution.In pygtk when a widget (eg button) is pressed it calls
+a particular function.For that we connects the signal emitted from the
+button with that function.So the calculation part should be in the
+function that is called when the operators(+,-,/,*) are pressed.The
+function that executed when the numbers are pressed just sends that
+number to the Text Entry widget (ie our calculator's screen).Hope you
+got an idea abt the program! Any way it is well commented as far as i
+can.So there wont be much problems to understand the code.As the code is
+somewhat big iam not pasting it here..You can download it from &lt;a class="reference external" href="http://ragsagar.freehostia.com/calculator.py"&gt;here&lt;/a&gt;
+Run it using this command :&lt;/p&gt;
+&lt;blockquote&gt;
+python calculator.py&lt;/blockquote&gt;
+&lt;p&gt;Here is its screenshot :- [caption id=&amp;quot;attachment_39&amp;quot; align=&amp;quot;alignnone&amp;quot;
+width=&amp;quot;497&amp;quot;
+caption=&amp;quot;pygtk_calculator&amp;quot;]&lt;a href="#id1"&gt;&lt;span class="problematic" id="id2"&gt;|pygtk\_calculator|&lt;/span&gt;&lt;/a&gt;[/caption] Dont
+forget to drop your comments , thanks :-)&lt;/p&gt;
+&lt;/p&gt;&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id1"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/simple-calculator-in-pygtk.rst&lt;/tt&gt;, line 29); &lt;em&gt;&lt;a href="#id2"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Undefined substitution referenced: &amp;quot;pygtk_calculator&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="calculator"></category><category term="gtk"></category><category term="gui"></category><category term="pygtk"></category><category term="Python"></category><category term="simple calculator"></category></entry></feed>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  
+    
+    <meta charset="utf-8" />
+    <title>Linked list implementation in C — r4g54g4r's h4ckl0g</title>
+    <link rel="stylesheet" type="text/css" href="./theme/css/skeleton.css" />
+    <link rel="stylesheet" type="text/css" href="./theme/css/main.css" />
+    <link rel="shortcut icon" type="text/css" href="./favicon.ico" />
+    <link rel="alternate" type="application/atom+xml"
+                           title="r4g54g4r's h4ckl0g — Flux Atom"
+                           href="./" /> 
+    
+    <!--[if lte IE 8]><script src="./theme/js/html5shiv.js"></script><![endif]-->
+    <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no" />
+    
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-35491289-1']);
+          _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); 
+        ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    
+  
+    <meta name="author"   content="Rag Sagar.V" />
+    <meta name="keywords" content="C, data structures, linked list" />
+
+  </head>
+  <body>
+    <div class="page">
+      <header class="page-head">
+        <h1>
+          <a href="./index.html">r4g54g4r's h4ckl0g</a>
+        </h1>
+      </header>
+
+      <div class="page-content">
+        
+     <article class="post content">
+      <header class="post-header">
+        <time datetime="2009-11-26T18:46:00" pubdate="pubdate">
+          Thu 26 November 2009
+        </time>
+        <h1>
+          <a rel="bookmark"
+             href="./linked-list-implementation-in-c.html"
+             title="Lien permanent vers «Linked list implementation in C»">
+             Linked list implementation in C
+          </a>
+        </h1>
+        <div class="meta">
+            Dans «<a href="./category/my_works-scripts.html">My_Works, Scripts</a>» 
+            par <a href="./author/rag-sagarv.html">Rag Sagar.V</a>
+            
+        </div>
+      </header>
+      <div class="post-content"> 
+        <p>Just thought of sharing the code i written to learn linked list
+implementation the day before my data structures model practical exam.
+[sourcecode language=&quot;python&quot;] /* * linkedlist.c * * Copyright 2009
+Rag Sagar.V &lt;<a class="reference external" href="mailto:ragsagar&#64;gmail.com">ragsagar&#64;gmail.com</a>&gt; * * This program is free software;
+you can redistribute it and/or modify * it under the terms of the GNU
+General Public License as published by * the Free Software Foundation;
+either version 2 of the License, or * (at your option) any later
+version. * * This program is distributed in the hope that it will be
+useful, * but WITHOUT ANY WARRANTY; without even the implied warranty
+of * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the *
+GNU General Public License for more details. * * You should have
+received a copy of the GNU General Public License * along with this
+program; if not, write to the Free Software * Foundation, Inc., 51
+Franklin Street, Fifth Floor, Boston, * MA 02110-1301, USA. */
+#include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; typedef struct list { int data;
+struct list *next; }LIST; LIST *ptr,*temp,*start=NULL; void
+insert_after(int ,int ); void remove_item(int ); void display(void);
+int count=0; int main() { int item,opt,dat; system(&quot;clear&quot;); ptr=NULL;
+/* printf(&quot;%d&quot;,sizeof(LIST)); */ do { printf(&quot;\n########## MENU
+##########\n&quot;); printf(&quot;1.Insert\n2.Remove\n3.Display\n4.Exit\n&quot;);
+printf(&quot;Enter your option : &quot;); scanf(&quot;%d&quot;,&amp;opt); switch(opt) { case 1:
+printf(&quot;Enter the data to insert &quot;); scanf(&quot;%d&quot;,&amp;item); if(count==0) {
+ptr = (LIST *)malloc(sizeof(LIST)); ptr-&gt;next = NULL; ptr-&gt;data = item;
+start = ptr; } else { printf(&quot;Enter the item after which you have to
+insert new element : &quot;); scanf(&quot;%d&quot;,&amp;dat); insert_after(dat,item); }
+count++; break; case 2: if(count==0) { printf(&quot;\nList is empty\n&quot;);
+break; } printf(&quot;Enter the item to remove : &quot;); scanf(&quot;%d&quot;,&amp;item);
+remove_item(item); count--; break; case 3: if(count==0) {
+printf(&quot;\nList is empty\n&quot;); break; } else { printf(&quot;List elements are
+\n&quot;); display(); } break; case 4: break; } }while(opt!=4); return 0; }
+void insert_after(int data, int item) { LIST *tmp; temp=(LIST
+*)malloc(sizeof(LIST)); temp-&gt;data=item; ptr=start; while(ptr!=NULL) {
+if(ptr-&gt;data==data) { tmp=ptr-&gt;next; ptr-&gt;next=temp; temp-&gt;next=tmp;
+break; } ptr=ptr-&gt;next; } } void remove_item(int item) { ptr=start;
+if(ptr-&gt;data == item) { start = ptr-&gt;next; free(ptr); }
+while(ptr-&gt;next!=NULL) { if((ptr-&gt;next)-&gt;data==item) { temp=ptr-&gt;next;
+ptr-&gt;next=(ptr-&gt;next)-&gt;next; free(temp); break; } ptr=ptr-&gt;next; } }
+void display() { ptr = start; while(ptr!=NULL) { printf(&quot;%d -&gt;
+&quot;,ptr-&gt;data); ptr=ptr-&gt;next; } } [/sourcecode]</p>
+
+      </div>
+      <footer class="post-footer">
+        <div class="meta">
+            Posté dans «<a href="./category/my_works-scripts.html">My_Works, Scripts</a>» 
+            par <a href="./author/rag-sagarv.html">Rag Sagar.V</a><br />
+            Mots-clés:  #<a href="./tag/c.html">C</a> #<a href="./tag/data-structures.html">data structures</a> #<a href="./tag/linked-list.html">linked list</a>
+        </div>
+      </footer>
+      
+      <hr />
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'ragsagar'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+    </article>
+
+      </div>
+          <aside class="page-sidebar">
+      <nav class="widget">
+      <h3>Site</h3>
+        <ul>
+          <li><a href=".">Accueil</a></li>
+          <li><a href="./archives.html">Archives</a></li>
+          <li><a href="./tags.html">Mots-clés</a></li>
+        
+        
+          
+        
+        </ul>
+      </nav>
+
+     
+      <nav class="widget">
+        <h3>Catégories</h3>
+        <ul>
+        
+          <li><a href="./category/blog.html">Blog</a></li>
+        
+          <li><a href="./category/gnulinux-howtos.html">Gnu/Linux, Howtos</a></li>
+        
+          <li><a href="./category/gnulinux-howtos-python-scripts.html">Gnu/Linux, Howtos, Python, Scripts</a></li>
+        
+          <li><a href="./category/gnulinux-my-thoughts.html">Gnu/Linux, My Thoughts</a></li>
+        
+          <li><a href="./category/gnulinux-my_works-python-scripts.html">Gnu/Linux, My_Works, Python, Scripts</a></li>
+        
+          <li><a href="./category/gnulinux-my_works-python-scripts-shell-scripts.html">Gnu/Linux, My_Works, Python, Scripts, Shell Scripts</a></li>
+        
+          <li><a href="./category/gnulinux-scripts-shell-scripts.html">Gnu/Linux, Scripts, Shell Scripts</a></li>
+        
+          <li><a href="./category/howtos.html">Howtos</a></li>
+        
+          <li><a href="./category/howtos-python-scripts.html">Howtos, Python, Scripts</a></li>
+        
+          <li><a href="./category/my-thoughts.html">My Thoughts</a></li>
+        
+          <li><a href="./category/my_works-python-scripts.html">My_Works, Python, Scripts</a></li>
+        
+          <li><a href="./category/my_works-scripts.html">My_Works, Scripts</a></li>
+        
+          <li><a href="./category/python-scripts.html">Python, Scripts</a></li>
+        
+          <li><a href="./category/scripts.html">Scripts</a></li>
+        
+          <li><a href="./category/scripts-shell-scripts.html">Scripts, Shell Scripts</a></li>
+        
+          <li><a href="./category/uncategorized.html">Uncategorized</a></li>
+        
+          <li><a href="./category/django-howtos-python.html">django, Howtos, Python</a></li>
+        
+          <li><a href="./category/misc.html">misc</a></li>
+        
+        </ul>
+      </nav>
+      
+
+      
+      <nav class="widget">
+        <h3>Social</h3>
+        <ul>
+        
+          <li><a href="Twitter">http://twitter.com/ragsagar</a></li>
+        
+          <li><a href="Facebook">http://facebook.com/ragsagar</a></li>
+        
+          <li><a href="Github">http://github.com/ragsagar</a></li>
+        
+          <li><a href="Flickr">http://flickr.com/ragsagar</a></li>
+        
+          <li><a href="./" rel="alternate">Flux Atom</a></li>
+        
+        </ul>
+      </nav>
+      
+    </aside> 
+
+      <footer class="page-footer">
+        <p> Powered by <a href="http://pelican.readthedocs.org">Pelican</a></p>
+        <p><a id="github-link" href="http://github.com/ragsagar">Fork me on Github</a></p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  
+    
+    <meta charset="utf-8" />
+    <title>Infix To Postfix conversion in python — r4g54g4r's h4ckl0g</title>
+    <link rel="stylesheet" type="text/css" href="./theme/css/skeleton.css" />
+    <link rel="stylesheet" type="text/css" href="./theme/css/main.css" />
+    <link rel="shortcut icon" type="text/css" href="./favicon.ico" />
+    <link rel="alternate" type="application/atom+xml"
+                           title="r4g54g4r's h4ckl0g — Flux Atom"
+                           href="./" /> 
+    
+    <!--[if lte IE 8]><script src="./theme/js/html5shiv.js"></script><![endif]-->
+    <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no" />
+    
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-35491289-1']);
+          _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); 
+        ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    
+  
+    <meta name="author"   content="Rag Sagar.V" />
+    <meta name="keywords" content="conversion, infix, postfix, Python, stack" />
+
+  </head>
+  <body>
+    <div class="page">
+      <header class="page-head">
+        <h1>
+          <a href="./index.html">r4g54g4r's h4ckl0g</a>
+        </h1>
+      </header>
+
+      <div class="page-content">
+        
+     <article class="post content">
+      <header class="post-header">
+        <time datetime="2009-09-22T22:34:00" pubdate="pubdate">
+          Tue 22 September 2009
+        </time>
+        <h1>
+          <a rel="bookmark"
+             href="./infix-to-postfix-conversion-in-python.html"
+             title="Lien permanent vers «Infix To Postfix conversion in python»">
+             Infix To Postfix conversion in python
+          </a>
+        </h1>
+        <div class="meta">
+            Dans «<a href="./category/python-scripts.html">Python, Scripts</a>» 
+            par <a href="./author/rag-sagarv.html">Rag Sagar.V</a>
+            
+        </div>
+      </header>
+      <div class="post-content"> 
+        <div class="section" id="about-infix-and-postfix">
+<h2><strong>About Infix and Postfix</strong></h2>
+<p>In an expression if the operators are placed between the operands, it is
+known as infix notation ( eg A+B) . On the other hand if the operators
+are placed after the operands then the expression is in postfix notation
+.( eg AB+)</p>
+<div class="section" id="infix-notation-postfix-notation">
+<h3><strong>Infix Notation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Postfix Notation</strong></h3>
+<p><em>(A-C)*B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; AC-B*</em> <em>A+(B*C)
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; ABC*+</em>
+<em>(A+B)/(C-D)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AB+CD-/</em></p>
+</div>
+</div>
+<div class="section" id="code">
+<h2><strong>Code</strong></h2>
+<p>[sourcecode language=&quot;python&quot;] #!/usr/bin/python
+#http://ragsagar.wordpress.com postfix = [] temp = [] operator = -10
+operand = -20 leftparentheses = -30 rightparentheses = -40 empty = -50
+def precedence(s): if s is '(': return 0 elif s is '+' or '-': return 1
+elif s is '*' or '/' or '%': return 2 else: return 99 def typeof(s): if
+s is '(': return leftparentheses elif s is ')': return rightparentheses
+elif s is '+' or s is '-' or s is '*' or s is '%' or s is '/': return
+operator elif s is ' ': return empty else : return operand infix =
+raw_input(&quot;Enter the infix notation : &quot;) for i in infix : type =
+typeof(i) if type is leftparentheses : temp.append(i) elif type is
+rightparentheses : next = temp.pop() while next is not '(':
+postfix.append(next) next = temp.pop() elif type is operand:
+postfix.append(i) elif type is operator: p = precedence(i) while
+len(temp) is not 0 and p &lt;= precedence(temp[-1]) :
+postfix.append(temp.pop()) temp.append(i) elif type is empty: continue
+while len(temp) &gt; 0 : postfix.append(temp.pop()) print &quot;It's postfix
+notation is &quot;,''.join(postfix) [/sourcecode]</p>
+</div>
+<div class="section" id="code-explanation">
+<h2><strong>Code Explanation</strong></h2>
+<p>Above code converts infix notation in variable <strong>infix</strong> into postfix
+notation and stores in <strong>postfix</strong> list. This algorithm makes use of
+list <strong>temp</strong>to hold operators and left parantheses in the infix
+notation. The <strong>postfix</strong> list will be constructed from left to right
+using operands from <strong>infix</strong> and operators which are removed from
+<strong>temp</strong>. [caption id=&quot;attachment_149&quot; align=&quot;alignnone&quot; width=&quot;500&quot;
+caption=&quot;output&quot;]<a href="#id1"><span class="problematic" id="id2">`|output|`_</span></a>[/caption]</p>
+</p></div>
+<div class="system-messages section">
+<h2>Docutils System Messages</h2>
+<div class="system-message" id="id1">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">/home/ragsagar/Documents/myblog/content/infix-to-postfix-conversion-in-python.rst</tt>, line 46); <em><a href="#id2">backlink</a></em></p>
+Unknown target name: &quot;|output|&quot;.</div>
+</div>
+
+      </div>
+      <footer class="post-footer">
+        <div class="meta">
+            Posté dans «<a href="./category/python-scripts.html">Python, Scripts</a>» 
+            par <a href="./author/rag-sagarv.html">Rag Sagar.V</a><br />
+            Mots-clés:  #<a href="./tag/conversion.html">conversion</a> #<a href="./tag/infix.html">infix</a> #<a href="./tag/postfix.html">postfix</a> #<a href="./tag/python.html">Python</a> #<a href="./tag/stack.html">stack</a>
+        </div>
+      </footer>
+      
+      <hr />
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'ragsagar'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+    </article>
+
+      </div>
+          <aside class="page-sidebar">
+      <nav class="widget">
+      <h3>Site</h3>
+        <ul>
+          <li><a href=".">Accueil</a></li>
+          <li><a href="./archives.html">Archives</a></li>
+          <li><a href="./tags.html">Mots-clés</a></li>
+        
+        
+          
+        
+        </ul>
+      </nav>
+
+     
+      <nav class="widget">
+        <h3>Catégories</h3>
+        <ul>
+        
+          <li><a href="./category/blog.html">Blog</a></li>
+        
+          <li><a href="./category/gnulinux-howtos.html">Gnu/Linux, Howtos</a></li>
+        
+          <li><a href="./category/gnulinux-howtos-python-scripts.html">Gnu/Linux, Howtos, Python, Scripts</a></li>
+        
+          <li><a href="./category/gnulinux-my-thoughts.html">Gnu/Linux, My Thoughts</a></li>
+        
+          <li><a href="./category/gnulinux-my_works-python-scripts.html">Gnu/Linux, My_Works, Python, Scripts</a></li>
+        
+          <li><a href="./category/gnulinux-my_works-python-scripts-shell-scripts.html">Gnu/Linux, My_Works, Python, Scripts, Shell Scripts</a></li>
+        
+          <li><a href="./category/gnulinux-scripts-shell-scripts.html">Gnu/Linux, Scripts, Shell Scripts</a></li>
+        
+          <li><a href="./category/howtos.html">Howtos</a></li>
+        
+          <li><a href="./category/howtos-python-scripts.html">Howtos, Python, Scripts</a></li>
+        
+          <li><a href="./category/my-thoughts.html">My Thoughts</a></li>
+        
+          <li><a href="./category/my_works-python-scripts.html">My_Works, Python, Scripts</a></li>
+        
+          <li><a href="./category/my_works-scripts.html">My_Works, Scripts</a></li>
+        
+          <li><a href="./category/python-scripts.html">Python, Scripts</a></li>
+        
+          <li><a href="./category/scripts.html">Scripts</a></li>
+        
+          <li><a href="./category/scripts-shell-scripts.html">Scripts, Shell Scripts</a></li>
+        
+          <li><a href="./category/uncategorized.html">Uncategorized</a></li>
+        
+          <li><a href="./category/django-howtos-python.html">django, Howtos, Python</a></li>
+        
+          <li><a href="./category/misc.html">misc</a></li>
+        
+        </ul>
+      </nav>
+      
+
+      
+      <nav class="widget">
+        <h3>Social</h3>
+        <ul>
+        
+          <li><a href="Twitter">http://twitter.com/ragsagar</a></li>
+        
+          <li><a href="Facebook">http://facebook.com/ragsagar</a></li>
+        
+          <li><a href="Github">http://github.com/ragsagar</a></li>
+        
+          <li><a href="Flickr">http://flickr.com/ragsagar</a></li>
+        
+          <li><a href="./" rel="alternate">Flux Atom</a></li>
+        
+        </ul>
+      </nav>
+      
+    </aside> 
+
+      <footer class="page-footer">
+        <p> Powered by <a href="http://pelican.readthedocs.org">Pelican</a></p>
+        <p><a id="github-link" href="http://github.com/ragsagar">Fork me on Github</a></p>
+      </footer>
+    </div>
+  </body>
+</html>

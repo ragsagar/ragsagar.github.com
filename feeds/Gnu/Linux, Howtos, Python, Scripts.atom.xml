@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>r4g54g4r's h4ckl0g</title><link href="ragsagar.in/" rel="alternate"></link><link href="ragsagar.in/feeds/Gnu/Linux,%20Howtos,%20Python,%20Scripts.atom.xml" rel="self"></link><id>ragsagar.in/</id><updated>2009-03-10T22:48:00+05:30</updated><entry><title>Script for appending Title of Song Playing in Rhythmbox as Status Message in Pidgin</title><link href="ragsagar.in/script-for-appending-title-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.html" rel="alternate"></link><updated>2009-03-10T22:48:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2009-03-10:script-for-appending-title-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.html</id><summary type="html">&lt;p&gt;&lt;p&gt;Yesterday i installed debian lenny ( thanks to &lt;a class="reference external" href="http://aashiks.in"&gt;ashik salahudeen&lt;/a&gt; who
+sent me those DVDs for free :-) ). I was not ready to waste another
+holiday.So started thinking of doing something and got landed in my
+usual plugin stuff.This time not audacious,its Rhythmbox.So downloaded
+my pidgin-audacious now playing code and rewritten it to access
+rhythmbox methods.This time there is a lot of changes in the code.This
+code is not going to use 'watch' command to execute it after a fixed
+period and another interesting feature is a format specifier kinda
+thing. ie Just write what you want in the status message and place a
+format specifier where you want to see the song title , album title and
+artist. Format Specifiers are&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;strong&gt;%rbs --------------&amp;gt; for displaying song title %rbt
+--------------&amp;gt; for displaying album title %rba --------------&amp;gt; for
+displaying artist name&lt;/strong&gt;&lt;/blockquote&gt;
+&lt;p&gt;Script will append a seperate string containg songtitle and albumtitle
+if no format specifier is there in the status message at the time of
+running the script. An example for appending status message using format
+specifier kinda thing:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;strong&gt;%rbs in %rbt by %rba&lt;/strong&gt;&lt;/blockquote&gt;
+&lt;p&gt;[caption id=&amp;quot;attachment_64&amp;quot; align=&amp;quot;alignnone&amp;quot; width=&amp;quot;249&amp;quot;
+caption=&amp;quot;pidgin after appending format specifier kinda thing in status
+message&amp;quot;]&lt;a href="#id1"&gt;&lt;span class="problematic" id="id2"&gt;|pidgin-after-appending-formatspecifier kinda thing in status
+message|&lt;/span&gt;&lt;/a&gt;[/caption] Now download the script and run it using these
+commands&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;strong&gt;$wget http://ragsagar.freehostia.com/pidgin-rb.py $python
+pidgin-rb.py&lt;/strong&gt;&lt;/blockquote&gt;
+&lt;p&gt;[caption id=&amp;quot;attachment_73&amp;quot; align=&amp;quot;alignnone&amp;quot; width=&amp;quot;500&amp;quot;
+caption=&amp;quot;Downloading and running the script&amp;quot;]&lt;a href="#id3"&gt;&lt;span class="problematic" id="id4"&gt;|Downloading and running
+the script|&lt;/span&gt;&lt;/a&gt;[/caption] [caption id=&amp;quot;attachment_65&amp;quot; align=&amp;quot;alignnone&amp;quot;
+width=&amp;quot;249&amp;quot; caption=&amp;quot;pidgin after running the script&amp;quot;]&lt;a href="#id5"&gt;&lt;span class="problematic" id="id6"&gt;|pidgin after
+running the script|&lt;/span&gt;&lt;/a&gt;[/caption] &lt;strong&gt;PS : Run the script only after
+appending the format specifier kinda thing. You can run the script
+without appending anything, In this case the script will append status
+message like &amp;quot; listening to [songname] in [albumname] &amp;quot;&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;strong&gt;`Download Script`_&lt;/strong&gt;&lt;/blockquote&gt;
+&lt;/p&gt;&lt;!-- |pidgin-after-appending-formatspecifier kinda thing in status --&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/script-for-appending-song-titile-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.rst&lt;/tt&gt;, line 61)&lt;/p&gt;
+malformed substitution definition.&lt;/div&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/script-for-appending-song-titile-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.rst&lt;/tt&gt;, line 62)&lt;/p&gt;
+Explicit markup ends without a blank line; unexpected unindent.&lt;/div&gt;
+&lt;p&gt;message| image:: &lt;a class="reference external" href="http://ragsagar.files.wordpress.com/2009/03/pidb4run3.png"&gt;http://ragsagar.files.wordpress.com/2009/03/pidb4run3.png&lt;/a&gt;
+.. &lt;a href="#id7"&gt;&lt;span class="problematic" id="id8"&gt;|Downloading and running the
+script|&lt;/span&gt;&lt;/a&gt; image:: &lt;a class="reference external" href="http://ragsagar.files.wordpress.com/2009/03/terminal.png"&gt;http://ragsagar.files.wordpress.com/2009/03/terminal.png&lt;/a&gt;
+.. &lt;a href="#id9"&gt;&lt;span class="problematic" id="id10"&gt;|pidgin after running the
+script|&lt;/span&gt;&lt;/a&gt; image:: &lt;a class="reference external" href="http://ragsagar.files.wordpress.com/2009/03/pidafterrun.png"&gt;http://ragsagar.files.wordpress.com/2009/03/pidafterrun.png&lt;/a&gt;&lt;/p&gt;
+&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id1"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/script-for-appending-song-titile-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.rst&lt;/tt&gt;, line 34); &lt;em&gt;&lt;a href="#id2"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Undefined substitution referenced: &amp;quot;pidgin-after-appending-formatspecifier kinda thing in status message&amp;quot;.&lt;/div&gt;
+&lt;div class="system-message" id="id3"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/script-for-appending-song-titile-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.rst&lt;/tt&gt;, line 43); &lt;em&gt;&lt;a href="#id4"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Undefined substitution referenced: &amp;quot;Downloading and running the script&amp;quot;.&lt;/div&gt;
+&lt;div class="system-message" id="id5"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/script-for-appending-song-titile-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.rst&lt;/tt&gt;, line 43); &lt;em&gt;&lt;a href="#id6"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Undefined substitution referenced: &amp;quot;pidgin after running the script&amp;quot;.&lt;/div&gt;
+&lt;div class="system-message" id="id7"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/script-for-appending-song-titile-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.rst&lt;/tt&gt;, line 62); &lt;em&gt;&lt;a href="#id8"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Undefined substitution referenced: &amp;quot;Downloading and running the script&amp;quot;.&lt;/div&gt;
+&lt;div class="system-message" id="id9"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/ragsagar/Documents/myblog/content/script-for-appending-song-titile-of-song-playing-in-rhythmbox-as-status-message-in-pidgin.rst&lt;/tt&gt;, line 62); &lt;em&gt;&lt;a href="#id10"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Undefined substitution referenced: &amp;quot;pidgin after running the script&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="Current Track"></category><category term="dbus"></category><category term="Now Playing"></category><category term="Pidgin"></category><category term="Python"></category><category term="rhythmbox"></category><category term="status updating"></category></entry></feed>

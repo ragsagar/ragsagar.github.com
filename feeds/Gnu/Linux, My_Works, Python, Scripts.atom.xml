@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>r4g54g4r's h4ckl0g</title><link href="ragsagar.in/" rel="alternate"></link><link href="ragsagar.in/feeds/Gnu/Linux,%20My_Works,%20Python,%20Scripts.atom.xml" rel="self"></link><id>ragsagar.in/</id><updated>2010-03-28T09:32:00+05:30</updated><entry><title>A rhythmbox plugin that sets the song title as status message in pidgin</title><link href="ragsagar.in/a-rhythmbox-plugin-that-sets-the-song-title-as-status-message-in-pidgin.html" rel="alternate"></link><updated>2010-03-28T09:32:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2010-03-28:a-rhythmbox-plugin-that-sets-the-song-title-as-status-message-in-pidgin.html</id><summary type="html">&lt;p&gt;Atlast i came up with a real rhythmbox plugin for setting the status
+message in pidgin as the current song title playing in Rhythmbox music
+player .I wrote it a few month before and was using it. Thought of
+sharing it before but didnt get time. Actually i forgot about my blog
+when i started microblogging. From now onwards i will be updating this
+blog regularly.( this is what i wanted to do always :-D ) Download the
+plugin from here : &lt;a class="reference external" href="http://ragsagar.freehostia.com/rb-nowplaying.tar.gz"&gt;http://ragsagar.freehostia.com/rb-nowplaying.tar.gz&lt;/a&gt;
+To install it. 1) Extract the tarball. 2) Copy it to
+~/.gnome2/rhythmbox/plugins/ (if no such directories exists, create
+them) 3) Open rhythmbox. Edit -&amp;gt; Plugins 4) Check 'Now Playing Pidgin'
+That's it. If you are facing any problems do comment.&lt;/p&gt;
+</summary><category term="im-status"></category><category term="Now Playing"></category><category term="Pidgin"></category><category term="Python"></category><category term="song title"></category><category term="status message"></category></entry><entry><title>Simple Search Utility in Python</title><link href="ragsagar.in/simple-search-utility-in-python.html" rel="alternate"></link><updated>2009-01-14T18:38:00+05:30</updated><author><name>Rag Sagar.V</name></author><id>tag:ragsagar.in,2009-01-14:simple-search-utility-in-python.html</id><summary type="html">&lt;p&gt;&lt;p&gt;Here is a simple search utility i wrote in python.it makes use of the
+modules os,os.path and re for the surfing through the filesystem and to
+match the files.The name of the file to find is given as an argument,ie&lt;/p&gt;
+&lt;blockquote&gt;
+python search &amp;lt;filename_u_want_to_find&amp;gt;&lt;/blockquote&gt;
+&lt;p&gt;It uses sys.argv to acces the arguments given.give '--help' as an
+argument to display help.&lt;/p&gt;
+&lt;blockquote&gt;
+python search --help&lt;/blockquote&gt;
+&lt;p&gt;You can download the script from &lt;a class="reference external" href="http://ragsagar.freehostia.com/search"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/p&gt;</summary><category term="os.path"></category><category term="Python"></category><category term="re"></category><category term="search utility"></category></entry></feed>
