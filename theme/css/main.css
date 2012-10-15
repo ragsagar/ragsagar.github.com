@@ -1,283 +1,425 @@
-@import        url("pygments.css");
+/*
+	Name: Smashing HTML5
+	Date: July 2009
+	Description: Sample layout for HTML5 and CSS3 goodness.
+	Version: 1.0
+	Author: Enrique Ramírez
+	Autor URI: http://enrique-ramirez.com
+*/
 
-/******************************************************************************/
-/*                               General Style                                */
-/******************************************************************************/
+/* Imports */
+@import url("reset.css");
+@import url("pygment.css");
+@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz&subset=latin);
 
-
+/***** Global *****/
+/* Body */
 body {
-
-    background-color: white;
-    color: #101010;
-
-    font-family: helvetica, arial, freesans, clean, sans-serif;
-    font-size: 95%;
-    line-height: 1.35em;
-    letter-spacing: .1em;
+    background: #F5F4EF url('../images/bg.png');
+    color: #000305;
+    font-size: 87.5%; /* Base font size: 14px */
+    font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    line-height: 1.429;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    max-width: 1440px;
+    min-width: 1000px;
 }
 
-h1, h2, h3,
-h4, h5, h6 {
-    color: #333333;
 
-    font-family: "Georgia", "FreeSerif", serif;
+
+/* Headings */
+h1 {font-size: 2em }
+h2 {font-size: 1.571em}	/* 22px */
+h3 {font-size: 1.429em}	/* 20px */
+h4 {font-size: 1.286em}	/* 18px */
+h5 {font-size: 1.143em}	/* 16px */
+h6 {font-size: 1em}		/* 14px */
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 400;
+	line-height: 1.1;
+	margin-bottom: .8em;
+    font-family: 'Yanone Kaffeesatz', arial, serif;
+}
+
+h3, h4, h5, h6 { margin-top: .8em; }
+	
+hr { border: 2px solid #EEEEEE; }
+
+/* Anchors */
+a {outline: 0;}
+a img {border: 0px; text-decoration: none;}
+a:link, a:visited {
+	color: #C74350;
+	padding: 0 1px;
+	text-decoration: underline;
+}
+a:hover, a:active, a.active, .active>a {
+	background-color: #C74350;
+	color: white;
+	text-decoration: none;
+	text-shadow: 1px 1px 1px #333;
+}
+
+h1 a:hover {
+    background-color: inherit
+}
+	
+/* Paragraphs */
+p {margin-bottom: 1.143em;}
+
+strong, b {font-weight: bold;}
+em, i {font-style: italic;}
+
+::-moz-selection {background: #F6CF74; color: #fff;}
+::selection {background: #F6CF74; color: #fff;}
+
+/* Lists */
+ul {
+	list-style: outside disc;
+	margin: 1em 0 1.5em 1.5em;
+}
+
+ol {
+	list-style: outside decimal;
+	margin: 1em 0 1.5em 1.5em;
+}
+
+.post-info {
+    float:right;
+    margin:10px;
+    padding:5px;
+}
+
+.post-info p{
+    margin-bottom: 1px;
+}
+
+.readmore { float: right }
+
+dl {margin: 0 0 1.5em 0;}
+dt {font-weight: bold;}
+dd {margin-left: 1.5em;}
+
+pre{background-color: #000; padding: 10px; color: #fff; margin: 10px; overflow: auto;}
+
+/* Quotes */
+blockquote {
+    margin: 20px;
     font-style: italic;
-    font-weight: bolder;
+}
+cite {}
+
+q {}
+
+/* Tables */
+table {margin: .5em auto 1.5em auto; width: 98%;}
+	
+	/* Thead */
+	thead th {padding: .5em .4em; text-align: left; border: thin solid grey;}
+	thead td {border: thin solid grey;}
+
+	/* Tbody */
+	tbody td {padding: .5em .4em; border: thin solid grey;}
+	tbody th {border: thin solid grey;}
+	
+	tbody .alt td {}
+	tbody .alt th {}
+	
+	/* Tfoot */
+	tfoot th {}
+	tfoot td {}
+	
+/* HTML5 tags */
+header, section, footer,
+aside, nav, article, figure {
+	display: block;
 }
 
-h1 a, h2 a,
-h3 a, h4 a, 
-h5 a, h6 a {
-    color: inherit;
-    text-decoration: inherit;
-}
+/***** Layout *****/
+img.right figure.right {float: right; margin: 0 0 2em 2em;}
+img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 
-h1 a:hover, h2 a:hover,
-h3 a:hover, h4 a:hover, 
-h5 a:hover, h6 a:hover {
-    text-decoration: inherit;
-}
-
-a {
-    color: #2a6a88;
-
-    font-weight: bold;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-img, table, pre {
-    margin: 1em .5em;
-    padding: .25em;
-    border: thin solid silver;
-    overflow: auto;
-}
-
-figure {
-    display: block;
-    margin: 1em auto;
-    border: thin solid silver;
-    text-align: center;
-    font-size: .9em;
-}
-
-figure img {
-    margin: .1em;
-    padding: .1em;
-    border: none;
-    max-width: 100%;
-    overflow: auto;
-}
-
-pre {
-    margin: 1em .5em;
-    padding: .75em;
-    border: 1px solid silver;
-    background: #111111;
-    color: #ffffff; 
-
-    font-family: monospace;
-    line-height: 1.15em;
-
-    overflow: auto;
-}
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    border-radius: 4px;
-}
-
-table th {
-    font-weight: bolder;
-    margin: .6em .5em;
-}
-
-table td {
-    margin: .4em .5em;
-}
-
-table th,
-table td {
-    border: thin dashed silver;
-}
-
-table tr {
-    border: thin solid silver;
-}
-
-
-
-/******************************************************************************/
-/*                              Specific Styles                               */
-/******************************************************************************/
-
-
-.page-head h1 {
-    margin: .7em auto;
-
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 2.8em;
-    text-align: center;
-}
-
-.widget ul li {
-    margin: .1em .4em;
-
-    font-size: 0.8em;
-    letter-spacing: 0.2em;
-    text-decoration: none;
-    font-variant: small-caps;
-}
-
-.page-content #page-title {
-    font-size: .9em;
-}
-
-
-.page-content .post {
+/*
+	Header
+*****************/
+#banner {
     clear: both;
-    margin: 1em 0 3em 0;
+	margin: 0 auto 0 auto;
+	padding: 2.5em 0 0 0;
 }
 
-
-.post .post-header {
-    margin: 0;
-    padding: .1em;
-    font-family: Georgia, "Times New Roman", Times, serif;
-}
-
-
-.post .post-header time {
-    margin: 0;
-    padding: 0;
-
-    font-size: .7em;
-    line-height: 1em;
-    text-transform: uppercase;
-    letter-spacing: .2em;
-    font-weight: lighter;
-}
-
-
-.post .post-header h1 {
-    margin: 0;
-    padding: 0;
-
-    border-bottom: thin dashed silver;
-
-    font-size: 1.5em;
-    font-weight: bolder;
-    font-style: normal;
-    letter-spacing: 0.0em;
-    line-height: 1em;
-}
-
-.post .post-header h1:hover {
-    border-bottom: thin dashed #333;
-}
-
-.post .post-header .meta {
-    font-size: .9em;
-    letter-spacing: 0.2em;
-    text-decoration: none;
-}
-
-
-.post .post-content {
-    clear: both;
-    margin: 0;
-    padding: .5em .1em;
-}
-
-
-.post .post-footer {
-    clear: both;
-    margin: 0;
-    padding: .1em;
-
-    font-family: Georgia, "Times New Roman", Times, serif;
-}
-
-
-.post .post-footer .readmore {
-    font-size: 0.8em;
-    letter-spacing: 0.2em;
-    text-decoration: none;
-    font-variant: small-caps;
-}
-
-
-.page-footer p {
-    display: block;
-    width: 60%;
-
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#pagination {
-    display: block;
-    clear: both;
-    text-align: center;
-}
-
-
-
-/******************************************************************************/
-/*                                    Misc                                    */
-/******************************************************************************/
-
-// GitHub button
-
-@media screen and (min-width: 800px) {
-    #github-link {
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 50px;
-        height: 100px;
-        background-image: url("../img/corner.png");
-        margin: 0;
-        border: none;
-        text-decoration: none;
-        color: transparent;
-        font-size: 0;
+	/* Banner */
+	#banner h1 {
+        font-size: 3.571em; 
+        line-height: 0;
+	    margin: 0 auto 0 auto;
     }
+	#banner h1 a:link, #banner h1 a:visited {
+		color: #000305;
+		display: block;
+		font-weight: bold;
+		margin: 0 auto .6em auto;
+		text-decoration: none;
+		width: 427px;
+	}
+	#banner h1 a:hover, #banner h1 a:active {
+		background: none;
+		color: #C74350;
+		text-shadow: none;
+	}
+	
+	#banner h1 strong {font-size: 0.36em; font-weight: normal;}
+	
+	/* Main Nav */
+	#banner nav {
+		background: #000305;
+		font-size: 1.143em;
+		height: 40px;
+		line-height: 30px;
+		margin: 0 auto 2em auto;
+		padding: 0;
+		width: 90%;
+		
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+	}
+	
+	#banner nav ul {list-style: none; margin: 0 auto;}
+	#banner nav li {float: left; display: inline; margin: 0;}
+	
+	#banner nav a:link, #banner nav a:visited {
+		color: #fff;
+		display: inline-block;
+		height: 30px;
+		padding: 5px 1.5em;
+		text-decoration: none;
+	}
+	#banner nav a:hover, #banner nav a:active,
+	#banner nav .active a:link, #banner nav .active a:visited {
+		background: #C74451;
+		color: #fff;
+		text-shadow: none !important;
+	}
+	
+	#banner nav li:first-child a {
+		border-top-left-radius: 5px;
+		-moz-border-radius-topleft: 5px;
+		-webkit-border-top-left-radius: 5px;
+		
+		border-bottom-left-radius: 5px;
+		-moz-border-radius-bottomleft: 5px;
+		-webkit-border-bottom-left-radius: 5px;
+	}
+
+/*
+	Featured
+*****************/
+#content {
+	background: #fff;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+    float: left;
+    margin: 1em 10px 2em 7%;
+	background: #fff;
+	overflow: hidden;
+	padding: 20px 20px;
+	min-width: 600px;
+	width: 60%;
 }
 
-// Tag list
-
-ul#tagslist {
-    display: block;
-    width: 75%;
-    margin: 1em auto;
-    list-style-type: none;
+/*
+	Extras
+*****************/
+#sidebar {
+    float: right; 
+    margin: 1em 7% 2em 10px;
+	background: #fff;
+	overflow: hidden;
+	padding: 20px 20px;
+	width: 15%;
+	
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 }
 
-ul#tagslist li {
-    display: inline-block;
-    list-style-type: none;
-    margin: .5em .2em;
-    transition: transform 1s ease 0s;
-    -o-transition: -o-transform 1s ease 0s;
-    -ms-transition: -ms-transform 1s ease 0s;
-    -moz-transition: -moz-transform 1s ease 0s;
-    -webkit-transition: -webkit-transform 1s ease 0s;
+#sidebar ul {list-style: none; margin: 0;}
+#sidebar li {border-bottom: 1px solid #fff;}
+
+#sidebar h2 {
+	color: #C74350;
+	font-size: 1.429em;
+	margin-top: .75em;
+	margin-bottom: .25em;
+	padding: 0 3px;
 }
 
+#sidebar a:link, #sidebar a {
+	color: #444;
+	display: block;
+	border-bottom: 1px solid #F4E3E3;
+	text-decoration: none;
+	padding: .3em .25em;
+}
+#sidebar li.active a {color: white;}
 
+#sidebar li:last-child,
+#sidebar li:last-child a {border: 0}
 
-ul#tagslist li:hover {
-    transform: rotate(0deg) scale(1.2, 1.2) !important;
-    -o-transform: rotate(0deg) scale(1.2, 1.2) !important;
-    -ms-transform: rotate(0deg) scale(1.2, 1.2) !important;
-    -moz-transform: rotate(0deg) scale(1.2, 1.2) !important;
-    -webkit-transform: rotate(0deg) scale(1.2, 1.2) !important;
+#sidebar .blogroll li:nth-last-child(2),
+#sidebar .blogroll li:nth-last-child(3),
+#sidebar .blogroll li:nth-last-child(2) a,
+#sidebar .blogroll li:nth-last-child(3) a {border: 0;}
+
+#sidebar a:hover, #sidebar a:active {color: #fff;}
+
+	/* Blogroll */
+	#sidebar .blogroll {
+		width: 100%;
+	}
+	
+	#sidebar .blogroll li {float: left; margin: 0 20px 0 0; width: 185px;}
+	
+	
+	.social a {
+		background-repeat: no-repeat;
+		background-position: 3px 6px;
+	}
+	
+		/* Icons */
+		.social a[href*='delicious.com']:before {content: url('../images/icons/delicious.png'); margin-right: 2px; vertical-align: -3px;}
+		.social a[href*='digg.com']:before {content: url('../images/icons/digg.png'); margin-right: 2px; vertical-align: -3px;}
+		.social a[href*='facebook.com']:before {content: url('../images/icons/facebook.png'); margin-right: 2px; vertical-align: -3px;}
+		.social a[href*='atom.xml']:before {content: url('../images/icons/rss.png'); margin-right: 2px; vertical-align: -3px;}
+		.social a[href*='last.fm']:before, .social a[href*='lastfm.']:before {content: url('../images/icons/rss.png'); margin-right: 2px; vertical-align: -3px;}
+		.social a[href*='jamendo.com']:before {content: url('../images/icons/jamendo.png'); margin-right: 2px; vertical-align: -3px;}
+		.social a[href*='stackoverflow.com']:before {content: url('../images/icons/stackoverflow.png'); margin-right: 2px; vertical-align: -3px;}
+		.social a[href*='rss.xml']:before {content: url('../images/icons/rss.png'); margin-right: 2px; vertical-align: -3px;}
+		.social a[href*='twitter.com']:before {content: url('../images/icons/twitter.png'); margin-right: 2px; vertical-align: -3px;}
+		.social a[href*='linkedin.com']:before {content: url('../images/icons/linkedin.png'); margin-right: 2px; vertical-align: -3px;}
+        .social a[href*='gitorious.org']:before {content: url('../images/icons/gitorious.png'); margin-right: 2px; vertical-align: -3px;}
+
+/*
+	About
+*****************/
+#about {
+	background: #fff;
+	font-style: normal;
+	margin-bottom: 2em;
+	overflow: hidden;
+	padding: 20px;
+	text-align: left;
+	width: 760px;
+	
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 }
 
+#about .primary {float: left; width: 165px;}
+#about .primary strong {color: #C64350; display: block; font-size: 1.286em;}
+#about .photo {float: left; margin: 5px 20px;}
+
+#about .url:link, #about .url:visited {text-decoration: none;}
+
+#about .bio {float: right; width: 500px;}
+
+/*
+	Footer
+*****************/
+#footer {
+    padding-bottom: 2em; 
+    text-align: center; 
+    clear: both; 
+    width: 80%;
+    margin: 20px auto;
+}
+
+/***** Sections *****/
+/* Blog */
+.hentry {
+	border-bottom: 1px solid #eee;
+	padding: 1.5em 0;
+}
+li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
+#content > .hentry {padding: 1em 0;}
+.hentry img{display : none ;}
+.entry-title {font-size: 3em; margin-bottom: 10px; margin-top: 0;}
+.entry-title a:link, .entry-title a:visited {text-decoration: none; color: #333;}
+.entry-title a:visited {background-color: #fff;}
+
+.hentry .post-info * {font-style: normal;}
+
+	/* Content */
+	.hentry footer {margin-bottom: 2em;}
+	.hentry footer address {display: inline;}
+	#posts-list footer address {display: block;}
+
+	/* Blog Index */
+	#posts-list {list-style: none; margin: 0;}
+	#posts-list .hentry {padding-left: 10px; position: relative;}
+	
+	#posts-list footer {
+		left: 10px;
+		position: relative;
+        float: left;
+		top: 0.5em;
+		width: 190px;
+	}
+	
+	/* About the Author */
+	#about-author {
+		background: #f9f9f9;
+		clear: both;
+		font-style: normal;
+		margin: 2em 0;
+		padding: 10px 20px 15px 20px;
+		
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+	}
+	
+	#about-author strong {
+		color: #C64350;
+		clear: both;
+		display: block;
+		font-size: 1.429em;
+	}
+	
+	#about-author .photo {border: 1px solid #ddd; float: left; margin: 5px 1em 0 0;}
+	
+	/* Comments */
+	#comments-list {list-style: none; margin: 0 1em;}
+	#comments-list blockquote {
+		background: #f8f8f8;
+		clear: both;
+		font-style: normal;
+		margin: 0;
+		padding: 15px 20px;
+		
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+	}
+	#comments-list footer {color: #888; padding: .5em 1em 0 0; text-align: right;}
+	
+	#comments-list li:nth-child(2n) blockquote {background: #F5f5f5;}
+	
+	/* Add a Comment */
+	#add-comment label {clear: left; float: left; text-align: left; width: 150px;}
+	#add-comment input[type='text'],
+	#add-comment input[type='email'],
+	#add-comment input[type='url'] {float: left; width: 200px;}
+	
+	#add-comment textarea {float: left; height: 150px; width: 495px;}
+	
+	#add-comment p.req {clear: both; margin: 0 .5em 1em 0; text-align: right;}
+	
+	#add-comment input[type='submit'] {float: right; margin: 0 .5em;}
+	#add-comment * {margin-bottom: .5em;}
