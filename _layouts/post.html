@@ -1,9 +1,23 @@
 ---
-layout: default
+layout: postpage 
 ---
-<h2>{{ page.title }}</h2>
-<p class="meta">{{ page.date | date_to_string }}</p>
-
-<div class="post">
-{{ content }}
+<div class="col-lg-3">
+    <br/>
+    <br/>
+    <p class="meta text-muted pull-right">{{ page.date | date_to_string }}</p>
+</div>
+<div class="col-lg-6">
+    <h2>
+        <div class="post-title">{{ page.title }}</div>
+    </h2>
+    <div class="line"></div> <!-- horizontal line -->
+    <div class="post">
+        <p>
+            <div class="post-body">
+                {{ content }}
+            </div>
+        </p>
+    </div>
+</div>
+<div class="col-lg-3">
 </div>

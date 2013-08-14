@@ -1,0 +1,25 @@
+.site-name {
+    font-family: 'Fauna One', serif;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.post-title {
+    font-family: 'Fauna One', serif;
+}
+
+.post-excerpt {
+    font-family: 'Flamenco', cursive;
+}
+
+.post-body p{
+    font-family: 'Flamenco', cursive;
+    font-size: 20px;
+    font-weight: 560;
+}
+
+.line {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #EDE8EA;
+}
