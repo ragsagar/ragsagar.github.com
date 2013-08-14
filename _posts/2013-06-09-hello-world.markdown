@@ -6,7 +6,7 @@ categories: blog
 ---
 
 Hello World! Finally I am launching my blog in my own domain using jekyll and
-github pages. Bye bye to my [old blog in wordpress]. It would be fun to
+github pages. Bye bye to my [old blog] in wordpress. It would be fun to
 publish new posts using `git push`. :-)
 
 
