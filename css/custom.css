@@ -8,6 +8,10 @@
     font-family: 'Fauna One', serif;
 }
 
+.menu-item {
+    font-family: 'Fauna One', serif;
+}
+
 .post-excerpt {
     font-family: 'Flamenco', cursive;
 }
@@ -16,6 +20,11 @@
     font-family: 'Flamenco', cursive;
     font-size: 20px;
     font-weight: 560;
+}
+
+.date {
+    font-family: 'Flamenco', cursive;
+    font-size: 20px;
 }
 
 .line {
