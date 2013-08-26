@@ -156,3 +156,5 @@ it will show the placeholder 'Search'.
     <input type="text" value="{% raw %}{{ query_string }}{% endraw %}" placeholder="Search" name="q">
 </form>
 {% endhighlight %}
+
+That's all for now! Happy hacking with django :-)
