@@ -3,3 +3,7 @@ pygments: true
 include: ['.htaccess']
 timezone: Asia/Kolkata
 paginate: 7
+analytics:
+    provider: google
+    google:
+        tracking_id: 'UA-35491289-1'
