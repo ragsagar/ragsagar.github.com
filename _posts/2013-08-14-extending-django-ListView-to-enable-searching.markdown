@@ -157,4 +157,8 @@ it will show the placeholder 'Search'.
 </form>
 {% endhighlight %}
 
+The same can be achieved by constructing a Mixin from this and using it with
+the `ListView` in your existing views. But I prefer overriding `ListView` and 
+using `ListSearchView`.
+
 That's all for now! Happy hacking with django :-)
