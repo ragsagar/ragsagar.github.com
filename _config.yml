@@ -1,5 +1,5 @@
 name: r4gs4g4r`s h4cklog
-pygments: true
+highlighter: true
 include: ['.htaccess']
 timezone: Asia/Kolkata
 paginate: 7
