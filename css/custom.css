@@ -32,3 +32,8 @@
     border-width: 1px;
     border-color: #EDE8EA;
 }
+
+.copyleft {
+  display:inline-block;
+  transform: rotate(180deg);
+}
