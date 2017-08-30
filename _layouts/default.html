@@ -1,49 +1,37 @@
 <!DOCTYPE html>
 <html>
-    {% include headers.html %}
-    <body>
-        {% include navbar.html %}
-
-        <div class="content">
-            <div class="row">
-                <div class="col-lg-3">
-                </div>
-                <div class="col-lg-6">
-                    <div class="text-center">
-                        {{ content }}
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                </div>
-            </div>
-
-            <!-- Pagination links -->
-            <div class="row">
-                <div class="col-lg-3">
-                </div>
-                <div class="col-lg-6">
-                    {% if total_pages > 1 %}
-                        <ul class="pager">
-                            {% if paginator.previous_page %}
-                                <li class="previous"><a href="/page{{ paginator.previous_page }}">&larr;</a></li>
-                            {% else %}
-                                <li class="disabled"><a href="#">&larr;</a></li>
-                            {% endif %}
-                                <li><span class="page_number">{{ paginator.page }}</span></li>
-                            {% if paginator.next_page %}
-                                <li><a href="/page{{ paginator.next_page }}" class="next">&rarr;</a></li>
-                            {% else %}
-                                <li class="disabled"><a href="#">&rarr;</a></li>
-                            {% endif %}
-                        </ul>
-                    {% endif %}
-                </div>
-                <div class="col-lg-3">
-                </div>
-            </div>
-        </div>
-        {% include footer.html %}
-        {% include analytics.html %}
+  {% include headers.html %}
+  <body>
+    {% include navbar.html %}
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+          <div class="col-6">
+            {{ content }}
+          </div>
+      </div>
+      <!-- Pagination links -->
+      <div class="row">
+          <div class="col-6">
+              {% if total_pages > 1 %}
+                  <ul class="pager">
+                      {% if paginator.previous_page %}
+                          <li class="previous"><a href="/page{{ paginator.previous_page }}">&larr;</a></li>
+                      {% else %}
+                          <li class="disabled"><a href="#">&larr;</a></li>
+                      {% endif %}
+                          <li><span class="page_number">{{ paginator.page }}</span></li>
+                      {% if paginator.next_page %}
+                          <li><a href="/page{{ paginator.next_page }}" class="next">&rarr;</a></li>
+                      {% else %}
+                          <li class="disabled"><a href="#">&rarr;</a></li>
+                      {% endif %}
+                  </ul>
+              {% endif %}
+          </div>
+      </div>
+    </div>
+    {% include footer.html %}
+    {% include analytics.html %}
     </body>
 
 </html>

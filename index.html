@@ -8,7 +8,7 @@ title: Your New Jekyll Site
         {% for post in site.posts %}
         
         <div class="post pull-left">
-            <h4>
+            <h5>
                 <div class="row">
                     <div class="post-title">
                         <span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a>
@@ -19,7 +19,7 @@ title: Your New Jekyll Site
                         <small class="pull-left text-muted">{{ post.excerpt | truncatewords:10 }}</small>
                     </div>
                 </div>
-            </h4>
+            </h5>
         </div>
 
         {% endfor %}

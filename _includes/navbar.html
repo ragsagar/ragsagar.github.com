@@ -1,10 +1,22 @@
-<nav class="navbar" role="navigation">
-    <div class="navbar-header">
-        <a class="navbar-brand site-name" href="/">{{ site.name }}</a>
-        <ul class="nav navbar-nav pull-right">
-            <li class="menu-item"><a href="/">Home</a></li>
-            <li class="menu-item"><a href="/about/">About</a></li>
-            <li class="menu-item"><a href="https://github.com/ragsagar/resume/raw/master/ragsagar.pdf">Resume</a></li>
-        </ul>
-    </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light site-name">
+  <a class="navbar-brand" href="/">{{ site.name }}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about/">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/ragsagar/resume/raw/master/ragsagar.pdf">Resume</a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+      <a class="nav-link" href="http://ragsagar.wordpress.com">Old blog</a>
+    </span>
+  </div>
 </nav>
