@@ -61,7 +61,7 @@ This returned archive id can be saved in shelve.
 import shelve
 
 description = "largeFile.zip"
-archive_id = upload_large_file("BackupVault, "us-west-2", "/home/ragsagar/largeFile.zip", description)
+archive_id = upload_large_file("BackupVault", "us-west-2", "/home/ragsagar/largeFile.zip", description)
 db = shelve.open("/home/ragsagar/glacier.db")
 db[description] = archive_id
 db.close()

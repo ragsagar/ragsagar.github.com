@@ -1,5 +1,5 @@
 name: r4gs4g4r`s h4cklog
-highlighter: true
+highlighter: rouge
 include: ['.htaccess']
 timezone: Asia/Kolkata
 paginate: 7
